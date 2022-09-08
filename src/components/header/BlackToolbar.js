@@ -44,7 +44,7 @@ const BlackToolbar = () => {
                         Lunes a viernes 10:00-14:00, 15:00-20:30 . Sábado 10:00-14:00
                     </Typography>
 
-                    <LocalPhoneIcon
+                    <LocalPhoneIcon width="16"
                     />
                     <Typography ml={0.5} variant="subtitle1">956 44 15 36</Typography>
                 </Stack>
