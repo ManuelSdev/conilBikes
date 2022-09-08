@@ -3,10 +3,12 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  /*
   future: {
     webpack5: true, // by default, if you customize webpack config, they switch back to version 4. 
     // Looks like backward compatibility approach.
   },
+  */
   images: {
     domains: ['www.sbbikestogo.com'],
   },
