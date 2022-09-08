@@ -28,7 +28,14 @@ async function dbConnect() {
     const opts = {
       bufferCommands: false,
     }
+    mongoose.connection.on('error', err => {
+      console.log('Error de conexión', err);
+      process.exit(1);
+    });
 
+    mongoose.connection.once('open', () => {
+      console.log('Conectado a MongoDB en', mongoose.connection.name);
+    });
     cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
       return mongoose
     })

@@ -1,4 +1,4 @@
-import Layout from "../components/layouts/Layout"
+import Layout from "../../components/layouts/Layout"
 
 
 
@@ -6,7 +6,6 @@ const Reservas = () => {
 
     return (
         <Layout>RESERVAS</Layout>
-
 
     )
 }

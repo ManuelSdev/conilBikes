@@ -7,12 +7,9 @@ import a from './../../assets/images/corpName.svg'
 import CorpName from "./../../assets/images/corpName.svg"
 
 //import bb from "./../../../public/corpName.svg"
-import misma from "./corpName.svg"
-import Cc from '../../../public/vercel.svg'
-import vaca from './../../assets/images/vaca.jpg'
-import Vaca2 from './../../../public/vaca.jpg'
-import reactLogo from './../../../public/vercel.svg';
-import bas from "./corpName.svg"
+
+import BlackToolbar from './BlackToolbar'
+import { AppBar } from '@mui/material'
 
 /**
  * https://stackoverflow.com/questions/54519654/how-do-i-add-color-to-my-svg-image-in-react
@@ -26,15 +23,8 @@ const Header = () => {
     const n = 'vaca.jpg'
 
     return (
-        <Box
-            className='aaaaaaaaaaaaaaaa'
-            sx={{
-                bgcolor: 'grey',
-
-            }}
-        >
-
-
+        <AppBar className='appBar' position="sticky">
+            <BlackToolbar className='blackToolBar' />
             <Image
                 src="/corpName.svg"
                 alt="Corporation main logo"
@@ -42,8 +32,11 @@ const Header = () => {
                 height={100}
             // layout='fill'
             />
+        </AppBar>
 
-        </Box>
+
+
+
     )
 }
 

@@ -4,12 +4,13 @@ import { bikesUrls } from "../../assets/images/temp/bikesURLs";
 import Link from "../elements/Link";
 
 const loading = false
-
+const bikesLink = ['paseo', 'electricas', 'montana', 'carretera']
 const BikeTypes = () => {
 
     return (
         <Box
             sx={{ display: 'block' }}
+            mt={4}
         >
             <Stack
                 alignItems='center'
