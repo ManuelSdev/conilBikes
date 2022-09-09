@@ -14,7 +14,7 @@ const BikesCategoryPage = ({ bikes }) => {
                     alignItems='center'
                     spacing={2}
                 >
-                    {bikes.map(bike => <BikeCard bike={bike}></BikeCard>
+                    {bikes.map(bike => <BikeCard key={bike._id} bike={bike}></BikeCard>
                     )}
 
                 </Stack>
