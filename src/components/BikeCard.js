@@ -5,29 +5,36 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { Box } from '@mui/system';
 
-export default function ImgMediaCard({ brand, model, description, image }) {
+export default function BikeCard({ bike }) {
+    const { brand, model, description, images } = bike
     return (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card
+        //  sx={{ maxWidth: 345 }}
+        >
             <CardMedia
                 component="img"
                 alt="green iguana"
-                height="140"
-                image={image}
+                //height="140"
+                image={images}
             />
-            <CardContent>
+            <CardContent >
                 <Typography gutterBottom variant="h5" component="div">
-                    Marca: {brand}
+                    {`${brand} ${model}`}
                 </Typography>
-                <Typography gutterBottom variant="h4" component="div">
-                    Modelo: {model}
-                </Typography>
+
                 <Typography variant="body2" color="text.secondary">
                     {description}
                 </Typography>
             </CardContent>
-            <CardActions>
-                <Button size="small">Resevar</Button>
+            <CardActions
+                sx={{ justifyContent: 'center' }}
+            >
+
+                <Button href="/reservas" size="small">Resevar</Button>
+
+
 
             </CardActions>
         </Card>

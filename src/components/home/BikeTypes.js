@@ -1,10 +1,10 @@
 import { Box, Button, Skeleton, Stack } from "@mui/material"
 import Image from "next/image";
-import { bikesUrls } from "../../assets/images/temp/bikesURLs";
+import { bikeLogos } from "../../lib/utils/temp";
 import Link from "../elements/Link";
 
 const loading = false
-const bikesLink = ['paseo', 'electricas', 'montana', 'carretera']
+
 const BikeTypes = () => {
 
     return (
@@ -18,14 +18,20 @@ const BikeTypes = () => {
             >
                 <Button
                     href="/reservas"
-                    variant="contained">RESERVAR</Button>
-                {bikesUrls.map((url, index) =>
-                    loading ?
+                    variant="contained"
+                >
+                    RESERVAR
+                </Button>
+                {bikeLogos.map((arr, index) => {
+                    const [category, url] = arr
+                    return loading ?
                         <Skeleton key={index} variant="rectangular" width={210} height={118} />
                         :
+
+
                         <Link
-                            href="/reservas"
-                            key={index}
+                            href={`/category/${category}`}
+                            key={category}
                         >
                             <Image
 
@@ -35,6 +41,10 @@ const BikeTypes = () => {
                                 height={172}
                             />
                         </Link>
+                }
+
+
+
 
                 )}
             </Stack>

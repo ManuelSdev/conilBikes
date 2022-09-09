@@ -44,7 +44,7 @@ const BlackToolbar = () => {
                         Lunes a viernes 10:00-14:00, 15:00-20:30 . Sábado 10:00-14:00
                     </Typography>
 
-                    <LocalPhoneIcon width="16"
+                    <LocalPhoneIcon width="1em"
                     />
                     <Typography ml={0.5} variant="subtitle1">956 44 15 36</Typography>
                 </Stack>
@@ -69,7 +69,7 @@ const BlackToolbar = () => {
                     alignItems='center'
                     direction='row'
                 >
-                    <LocalPhoneIcon />
+                    <LocalPhoneIcon width="1em" />
                     <Typography ml={0.5} variant="subtitle1">956 44 15 36</Typography>
                 </Stack>
                 <Box sx={{ flexGrow: 1 }}>

@@ -23,15 +23,19 @@ const Header = () => {
     const n = 'vaca.jpg'
 
     return (
-        <AppBar className='appBar' position="sticky">
+        <AppBar className='appBar' position="sticky" sx={{ marginBottom: 7 }} >
             <BlackToolbar className='blackToolBar' />
-            <Image
-                src="/corpName.svg"
-                alt="Corporation main logo"
-                width={650}
-                height={100}
-            // layout='fill'
-            />
+            <Link href='/'>
+                <Image
+
+                    src="/corpName.svg"
+                    alt="Corporation main logo"
+                    width={650}
+                    height={100}
+                // layout='fill'
+                />
+            </Link>
+
         </AppBar>
 
 
