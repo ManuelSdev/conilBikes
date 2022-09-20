@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../header/Header";
 import Footer from "../footer/Footer";
+import { Container } from "@mui/system";
 
 const Layout = ({ children }) => {
     //const matches = useMediaQuery("(min-width:600px)", { color: 'red', });
@@ -17,7 +18,10 @@ const Layout = ({ children }) => {
         >
             <Header />
             <main>
-                {children}
+                <Container>
+                    {children}
+                </Container>
+
             </main>
             <footer>
                 <Footer></Footer>

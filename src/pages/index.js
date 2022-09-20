@@ -9,16 +9,10 @@ export default function Home() {
   return (
 
     <Layout>
-      <Container
-
-      //  sx={{ minHeight: 'calc(100vh - 488.02px)' }}
 
 
-      >
 
-
-        <BikeTypes></BikeTypes>
-      </Container>
+      <BikeTypes></BikeTypes>
     </Layout>
 
   )

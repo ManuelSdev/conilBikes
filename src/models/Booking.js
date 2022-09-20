@@ -1,16 +1,22 @@
 
 import mongoose from 'mongoose'
 
-const bookingSchema = mongoose.Schema({
-    name: String,
-    surname: String,
-    phone: { type: Number, index: true },
-    bikesIds: { type: [String], index: true },
-    address: String,
-    totalPrice: Number,
+const bookingSchema = new mongoose.Schema(
+    {
+        name: String,
+        surname: String,
+        phone: { type: Number, index: true },
+        bikes: { type: [mongoose.ObjectId], index: true },
+        address: String,
+        price: Number,
+        //date: { type: [Date], index: true },
+        from: { type: Date, index: true },
+        to: { type: Date, index: true },
+        completed: Boolean,
 
-
-})
+    },
+    { timestamps: true }
+)
 
 //productSchema.index({ name: 'text' });
 //bikeSchema.index({ name: 'text', categories: 'text', size: 'text', description: 'text' })

@@ -2,10 +2,10 @@ import { Stack } from "@mui/material"
 import { Container } from "@mui/system"
 import BikeCard from "../../components/BikeCard"
 import Layout from "../../components/layouts/Layout"
-import { categories } from "../../lib/utils/temp"
-import { getBikes } from "../api/bikes/getBikes"
+import { types } from "../../lib/utils/temp"
+import { getBikes } from "../api/bikes"
 
-const BikesCategoryPage = ({ bikes }) => {
+const BikesTypePage = ({ bikes }) => {
 
     return (
         <Layout>
@@ -27,20 +27,21 @@ const BikesCategoryPage = ({ bikes }) => {
 }
 
 
-export default BikesCategoryPage
+export default BikesTypePage
 
 export async function getStaticPaths() {
-    const paths = categories.map(category => ({ params: { category: category } }))
+    const paths = types.map(type => ({ params: { type: type } }))
     return { paths, fallback: 'blocking' }
 }
 
 export async function getStaticProps(context) {
     //CATEGORIAS
     const { params: filter } = context
-    console.log('PARAMS', filter)
+    //console.log('PARAMS', filter)
     const res = await getBikes(filter)
+
     const bikes = JSON.parse(JSON.stringify(res))
-    console.log('CATEGORIES', bikes)
+    // console.log('CATEGORIES', bikes)
     return {
         props: { bikes }, // will be passed to the page component as props
         //  revalidate: 1

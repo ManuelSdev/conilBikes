@@ -1,9 +1,13 @@
 import { createTheme } from "@mui/material/styles";
 import { bgcolor } from "@mui/system";
+//import { esES } from '@mui/material/locale';
+import { esES as coreEsES } from "@mui/material/locale";
+import { esES } from '@mui/x-date-pickers/locales';
 
-
-
+//console.log(esES.components.MuiLocalizationProvider.defaultProps.localeText)
+//console.log(coreEsES)
 const theme = createTheme({
+    coreEsES,
     breakpoints: {
         values: {
             xs: 0,
@@ -46,6 +50,15 @@ const theme = createTheme({
         },
     },
     components: {
+        MuiLocalizationProvider: {
+            defaultProps: {
+                localeText: {
+                    ...esES.components.MuiLocalizationProvider.defaultProps.localeText,
+                    okButtonLabel: "ACEPTAR",
+                    cancelButtonLabel: "CANCELAR"
+                }
+            }
+        },
         // Name of the component ⚛️
         MuiContainer: {
             defaultProps: {
@@ -145,6 +158,28 @@ const theme = createTheme({
 
 
             },
+        },
+        MuiButtonBase: {
+            styleOverrides: {
+                root: {
+
+                    '& .MuiDatePickerToolbar-root MuiDatePickerToolbar-root': {
+                        visibility: 'hidden'
+
+                    },
+
+                }
+            }
+        },
+
+        MuiPickersToolbar: {
+            styleOverrides: {
+                penIconButton: {
+                    visibility: 'hidden',
+                    width: 0
+
+                }
+            }
         },
 
 

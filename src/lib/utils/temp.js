@@ -8,4 +8,4 @@ export const bikeLogos = [
     ['road', 'https://www.sbbikestogo.com/wp-content/uploads/road-b.jpg']
 ]
 
-export const categories = ['road', 'electric', 'mountain', 'city']
+export const types = ['road', 'electric', 'mountain', 'city']

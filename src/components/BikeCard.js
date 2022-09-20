@@ -17,7 +17,7 @@ export default function BikeCard({ bike }) {
                 component="img"
                 alt="green iguana"
                 //height="140"
-                image={images}
+                image={images[0]}
             />
             <CardContent >
                 <Typography gutterBottom variant="h5" component="div">
@@ -32,7 +32,7 @@ export default function BikeCard({ bike }) {
                 sx={{ justifyContent: 'center' }}
             >
 
-                <Button href="/reservas" size="small">Resevar</Button>
+                <Button href="/bookings" size="small">Resevar</Button>
 
 
 

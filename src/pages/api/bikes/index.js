@@ -6,7 +6,7 @@ export async function getBikes(filters) {
     await dbConnect()
     console.log('FILTERS', filters)
     const bikes = await Bike.find(filters)
-    console.log('BIKES', bikes)
+    // console.log('BIKES', bikes)
     return bikes
 }
 

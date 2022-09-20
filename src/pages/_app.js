@@ -7,6 +7,10 @@ import { wrapper } from '../app/store'
 import createEmotionCache from '../lib/createEmotionCache'
 import { CacheProvider } from '@emotion/react';
 
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import LocalizationProvider from '@mui/x-date-pickers/LocalizationProvider';
+
+
 import '../../styles/globals.css'
 
 //Material UI-Next.js
@@ -19,6 +23,7 @@ function App({ Component, pageProps, emotionCache = clientSideEmotionCache }) {
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
+
         <Component {...pageProps} />
 
       </ThemeProvider>

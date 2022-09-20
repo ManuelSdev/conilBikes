@@ -6,7 +6,7 @@ import Link from "../elements/Link";
 const loading = false
 
 const BikeTypes = () => {
-
+    console.log('tipes')
     return (
         <Box
             sx={{ display: 'block' }}
@@ -17,21 +17,21 @@ const BikeTypes = () => {
                 spacing={2}
             >
                 <Button
-                    href="/reservas"
+                    href="/bookings"
                     variant="contained"
                 >
                     RESERVAR
                 </Button>
                 {bikeLogos.map((arr, index) => {
-                    const [category, url] = arr
+                    const [type, url] = arr
                     return loading ?
                         <Skeleton key={index} variant="rectangular" width={210} height={118} />
                         :
 
 
                         <Link
-                            href={`/category/${category}`}
-                            key={category}
+                            href={`/type/${type}`}
+                            key={type}
                         >
                             <Image
 

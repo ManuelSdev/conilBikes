@@ -17,7 +17,7 @@ const BlackToolbar = () => {
     //const { isLogged } = useSelector(getAuth)
     const { sm750Up, xs550Up } = useBreakpoints()
 
-    console.log(sm750Up)
+    //console.log(sm750Up)
     return (
         sm750Up ?
             <Toolbar
