@@ -41,8 +41,8 @@ export async function getBikes(filters) {
             range: range
         }
     )
-    console.log('activeBookings', activeBookings)
-    console.log('avaiableBikes', avaiableBikes)
+    //console.log('activeBookings', activeBookings)
+    console.log('AVAIABLE BIKES RES', avaiableBikes.length)
     // console.log('BIKES', bikes)
     return avaiableBikes
 }

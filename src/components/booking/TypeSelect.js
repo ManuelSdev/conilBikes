@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 
 import { useDispatch, useSelector } from 'react-redux';
 import { getDate, getSize, getType } from '../../app/store/selectors';
-import { useGetRangesQuery, useGetTypesQueryState, useLazyGetRangesQuery } from "../../app/store/services/filterApi"
+import { useGetRangesQuery, useGetTypesQuery, useGetTypesQueryState, useLazyGetRangesQuery, useLazyGetTypesQuery } from "../../app/store/services/filterApi"
 import { typesMap } from "../../lib/utils/detailsMaps"
 import { setType } from "../../app/store/bookingFormSlice"
 
@@ -16,31 +16,25 @@ const TypeSelect = () => {
     const selectedType = useSelector(getType)
 
     const params = (b) => new URLSearchParams(b)
-    const [skip, setSkip] = useState(true)
+    const args = params({ ...isoDate, size: selectedSize }).toString()
+
     const handleChange = (event) => {
         dispatch(setType(event.target.value))
     };
-    const { data: avaiableRanges, isSuccess, refetch, isFetching } =
-        useGetRangesQuery(params({ ...isoDate, size: selectedSize, type: selectedType }).toString(), { skip, refetchOnMountOrArgChange: true })
-
-    console.log('avaiablRanges en typeselec', avaiableRanges)
-
-    const [trigger, result, lastPromiseInfo] = useLazyGetRangesQuery()
 
 
-    const { currentData: avaiableTypes, data } = useGetTypesQueryState(params({ ...isoDate, size: selectedSize }).toString())
-    console.log('avaiableTypes', avaiableTypes)
+    const [trigger, { data: avaiableTypes, isSuccess, unsubscribe }, lastPromiseInfo] = useLazyGetTypesQuery()
+
 
     useEffect(() => {
-        skip && selectedType ?
-            setSkip(false)
-            :
-            selectedType && trigger()
-        // console.log(date)
-    }, [selectedType]);
+        selectedType &&
+            //   console.log('@@@@@@@@ dispatch typeSelect') ||
+            dispatch(setType(''))
+        selectedSize && trigger(args)
+    }, [selectedSize]);
 
     return (
-        <FormControl fullWidth>
+        <FormControl fullWidth disabled={!!!selectedSize}>
             <InputLabel id="bike-type-select-label">Tipo</InputLabel>
             <Select
                 required

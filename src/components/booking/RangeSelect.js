@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 
 import { useDispatch, useSelector } from 'react-redux';
 import { getDate, getRange, getSize, getType } from '../../app/store/selectors';
-import { useGetRangesQueryState } from "../../app/store/services/filterApi"
+import { useGetRangesQuery, useGetRangesQueryState, useLazyGetRangesQuery } from "../../app/store/services/filterApi"
 import { rangesMap } from "../../lib/utils/detailsMaps"
 import { setRange } from "../../app/store/bookingFormSlice"
 import { useGetAvaiableBikesQuery, useLazyGetAvaiableBikesQuery } from "../../app/store/services/bikeApi"
@@ -17,36 +17,31 @@ const RangeSelect = () => {
     const selectedType = useSelector(getType)
     const selectedRange = useSelector(getRange)
 
-
     const params = (b) => new URLSearchParams(b)
-    const [skip, setSkip] = useState(true)
+    const args = params({ ...isoDate, size: selectedSize, type: selectedType }).toString()
 
     const handleChange = (event) => {
+        //  console.log('@@@@@@@@ handleChange rangeSelect')
         dispatch(setRange(event.target.value))
 
     };
 
-
-    const { data: avaiableBikes, isSuccess, refetch, isFetching } =
-        useGetAvaiableBikesQuery(params({ ...isoDate, size: selectedSize, type: selectedType, range: selectedRange }).toString(), { skip, refetchOnMountOrArgChange: true })
-    console.log('avaiableBikes recibidas en rangeSelect', avaiableBikes)
-    const [trigger, result, lastPromiseInfo] = useLazyGetAvaiableBikesQuery()
-
-
-    const { currentData: avaiableRanges, data } = useGetRangesQueryState(params({ ...isoDate, size: selectedSize, type: selectedType }).toString())
-    console.log('avaiableClasses', avaiableRanges)
-
+    const [trigger, { data: avaiableRanges }, lastPromiseInfo] = useLazyGetRangesQuery()
 
     useEffect(() => {
-        skip && selectedRange ?
-            setSkip(false)
-            :
-            selectedRange && trigger()
-        // console.log(date)
-    }, [selectedRange]);
+
+        selectedRange &&
+            //  console.log('@@@@@@@@ dispatch rangeSelect') || 
+            dispatch(setRange(''))
+        selectedType &&
+            //   console.log('@@@@@@@@ trigger rangeSelect') ||
+            trigger(args)
+
+    }, [selectedType]);
+
 
     return (
-        <FormControl fullWidth>
+        <FormControl fullWidth disabled={!!!selectedType}>
             <InputLabel id="bike-range-select-label">Gama</InputLabel>
             <Select
                 required

@@ -41,8 +41,8 @@ export async function getTypes(filters) {
             size: size
         }
     )
-    console.log('activeBookings', activeBookings)
-    console.log('avaiableBikesTypes', avaiableBikesTypes)
+    //  console.log('activeBookings', activeBookings)
+    console.log('BIKES TYPES RES', avaiableBikesTypes)
     // console.log('BIKES', bikes)
     return avaiableBikesTypes
 }

@@ -3,18 +3,17 @@ import { Container } from "@mui/system"
 import BikeCard from "./BikeCard"
 
 
-const BikesGrid = ({ bikes }) => {
+const BikesGrid = ({ bikes, ...props }) => {
+    //bikes && console.log(bikes.lenght)
     return (
-        <Container>
-            <Stack
-                alignItems='center'
-                spacing={2}
-            >
-                {bikes.map(bike => <BikeCard key={bike._id} bike={bike}></BikeCard>
-                )}
+        <Stack
+            alignItems='center'
+            spacing={2}
+        >
+            {bikes.map(bike => <BikeCard key={bike._id} bike={bike}></BikeCard>
+            )}
 
-            </Stack>
-        </Container>
+        </Stack>
     )
 }
 

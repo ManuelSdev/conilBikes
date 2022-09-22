@@ -41,7 +41,7 @@ export const bikess = [
         brand: 'Kross',
         model: 'SPARK RC SL EVO AXS',
         size: 'xxl',
-        type: 'type 2',
+        type: 'road',
         range: 'electric',
         dayPrice: 10,
         specs: ['spec1', 'spec2'],

@@ -8,12 +8,13 @@ import { FormHelperText } from '@mui/material';
 import { sizesMap } from '../../lib/utils/detailsMaps';
 import { useGetSizesQuery, usePrefetch, useLazyGetSizesQuery, useGetSizesQueryState, useGetTypesQuery, useLazyGetTypesQuery } from '../../app/store/services/filterApi';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDate, getSize } from '../../app/store/selectors';
+import { getDate, getDateError, getSize } from '../../app/store/selectors';
 import { setSize } from '../../app/store/bookingFormSlice';
-
+import compareAsc from "date-fns/compareAsc";
 export default function SizeSelect() {
     const dispatch = useDispatch()
     const isoDate = useSelector(getDate)
+    const dateError = useSelector(getDateError)
     const selectedSize = useSelector(getSize)
 
     const params = (b) => new URLSearchParams(b)
@@ -23,25 +24,35 @@ export default function SizeSelect() {
         //setAge(event.target.value);
         dispatch(setSize(event.target.value))
     };
-    const { data: avaiableTypes, isSuccess, refetch, isFetching } =
-        useGetTypesQuery(params({ ...isoDate, size: selectedSize }).toString(), { skip, refetchOnMountOrArgChange: true })
 
-    const [trigger, result, lastPromiseInfo] = useLazyGetTypesQuery()
 
-    const { currentData: avaiableSizes, data } = useGetSizesQueryState(params(isoDate).toString())
+
+    const { data: avaiableSizes, isSuccess, refetch, isFetching } = useGetSizesQuery(
+        params(isoDate).toString(),
+        {
+            skip,
+            // refetchOnMountOrArgChange: true
+        })
+
+    const [trigger, result, lastPromiseInfo] = useLazyGetSizesQuery()
+
+    const dateIsCorrect = () =>
+        (!!isoDate.from
+            && !!isoDate.to
+            && (compareAsc(new Date(isoDate.to), new Date(isoDate.from)) === 1)
+            && !!!dateError) ?
+            true : false
+
     React.useEffect(() => {
-        skip && selectedSize ?
-            setSkip(false)
-            :
-            selectedSize && trigger()
-        // console.log(date)
-    }, [selectedSize]);
-    //useLazyGetTypesQuery
+
+        if (dateIsCorrect())
+            skip ?
+                setSkip(false)
+                :
+                dispatch(setSize(''))
+    }, [isoDate]);
 
 
-
-    console.log('avaiableSizes', avaiableSizes)
-    console.log('data', data)
 
 
 

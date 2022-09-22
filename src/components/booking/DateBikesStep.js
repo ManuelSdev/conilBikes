@@ -1,29 +1,20 @@
-import Layout from "../components/layouts/Layout"
 import * as React from 'react';
 
-import { format, addYears, addDays } from 'date-fns'
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
-import { CalendarPicker, LocalizationProvider, esES, DatePicker } from '@mui/x-date-pickers';
-import esLocale from 'date-fns/locale/es';
+
 //import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
-import TextField from '@mui/material/TextField';
-import { width } from "@mui/system";
+
 import { Box, Button, Container, Stack } from "@mui/material";
 import BookingForm from "../components/booking/BookingForm";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useGetSizesQuery } from "../app/store/services/filterApi";
-import BikesGrid from "../components/BikesGrid";
-import { useGetAvaiableBikesQueryState } from "../app/store/services/bikeApi";
-import { getAddButton, getDate, getFormIsActive, getNumberOfBikes, getRange, getSize, getType } from "../app/store/selectors";
+import { getAddButton, getFormIsActive, getNumberOfBikes } from "../app/store/selectors";
 import DateSelect from "../components/booking/DateSelect";
-import { setAddButton, setAnotherForm, setFormIsActive } from "../app/store/bookingFormSlice";
+import { setAddButton, setFormIsActive } from "../app/store/bookingFormSlice";
 import { useEffect } from "react";
 
 
-const BookingsPage = () => {
+const DateBikeStep = () => {
     const dispatch = useDispatch()
     const amount = useSelector(getNumberOfBikes)
     const addButton = useSelector(getAddButton)
@@ -44,7 +35,7 @@ const BookingsPage = () => {
         }, [amount]);
     */
     return (
-        <Layout>
+        <Box>
             <div >RESERVAS</div>
             <Box>{amount} {amount == 1 ? 'Bicicleta' : 'Bicicletas'} en la reserva</Box>
             <Stack mb={5} spacing={2}>
@@ -73,8 +64,8 @@ const BookingsPage = () => {
                 onClick={handleAddBike}
             >Añadir bicicleta</Button>
 
-        </Layout >
+        </Box >
     )
 }
 
-export default BookingsPage
+export default DateBikeStep

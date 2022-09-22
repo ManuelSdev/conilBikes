@@ -41,8 +41,8 @@ export async function getClasses(filters) {
             type: type
         }
     )
-    console.log('activeBookings', activeBookings)
-    console.log('avaiableBikesRanges', avaiableBikesRanges)
+    //console.log('activeBookings', activeBookings)
+    console.log('BIKES RANGE RES', avaiableBikesRanges)
     // console.log('BIKES', bikes)
     return avaiableBikesRanges
 }

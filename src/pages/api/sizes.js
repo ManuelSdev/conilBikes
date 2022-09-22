@@ -5,7 +5,7 @@ import dbConnect from '../../lib/dbConnect'
 
 export async function getSizes(filters) {
     await dbConnect()
-    console.log('FILTERS', filters)
+    console.log('FILTERS en sizes', filters)
     const { from: fromDate, to: toDate } = filters
     // console.log('toDate en ISO', ISODate(toDate))
     //Consideramos que el día de entrega o recogida no se puede reservar
@@ -37,8 +37,8 @@ export async function getSizes(filters) {
         'size',
         { _id: { $nin: d } }
     )
-    console.log('activeBookings', activeBookings)
-    console.log('avaiableBikesSizes', avaiableBikesSizes)
+    // console.log('activeBookings', activeBookings)
+    console.log('BIKES SIZE RES', avaiableBikesSizes)
     // console.log('BIKES', bikes)
     return avaiableBikesSizes
 }

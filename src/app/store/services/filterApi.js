@@ -4,11 +4,16 @@ import { baseApi } from "./baseApi";
 const filterApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         getSizes: builder.query({
-            query: (filters) => console.log('??????????????', filters.toString()) || `/sizes?${filters}`,
+            query: (filters) =>
+                //               console.log('++LLAMADA endpoint getSizes', filters.toString()) ||
+                `/sizes?${filters}`,
             // providesTags: ['User'],
         }),
         getTypes: builder.query({
-            query: (filters) => `/types?${filters}`,
+
+            query: (filters) =>
+                //       console.log('++LLAMADA endpoint getTypes', filters.toString()) ||
+                `/types?${filters}`,
             // providesTags: ['User'],
         }),
         getRanges: builder.query({
