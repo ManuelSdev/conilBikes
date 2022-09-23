@@ -9,6 +9,7 @@ const bookingSchema = new mongoose.Schema(
         bikes: { type: [mongoose.ObjectId], index: true },
         address: String,
         price: Number,
+        mail: String,
         //date: { type: [Date], index: true },
         from: { type: Date, index: true },
         to: { type: Date, index: true },

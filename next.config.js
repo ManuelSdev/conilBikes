@@ -10,7 +10,7 @@ const nextConfig = {
   },
   */
   images: {
-    domains: ['www.sbbikestogo.com'],
+    domains: ['www.sbbikestogo.com', 'assets.specialized.com'],
   },
   webpack: (config, options) => {
     config.module.rules.push({

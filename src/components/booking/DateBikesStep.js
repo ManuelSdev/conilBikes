@@ -5,13 +5,14 @@ import * as React from 'react';
 
 
 import { Box, Button, Container, Stack } from "@mui/material";
-import BookingForm from "../components/booking/BookingForm";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAddButton, getFormIsActive, getNumberOfBikes } from "../app/store/selectors";
-import DateSelect from "../components/booking/DateSelect";
-import { setAddButton, setFormIsActive } from "../app/store/bookingFormSlice";
 import { useEffect } from "react";
+import BookingForm from './BookingForm';
+import { setAddButton, setFormIsActive } from '../../app/store/bookingFormSlice';
+import { getAddButton, getFormIsActive, getNumberOfBikes } from '../../app/store/selectors';
+import DateSelect from './DateSelect';
+import SelectedBikesTable from './SelectedBikesTable';
 
 
 const DateBikeStep = () => {
@@ -36,9 +37,10 @@ const DateBikeStep = () => {
     */
     return (
         <Box>
-            <div >RESERVAS</div>
+
             <Box>{amount} {amount == 1 ? 'Bicicleta' : 'Bicicletas'} en la reserva</Box>
             <Stack mb={5} spacing={2}>
+                <SelectedBikesTable></SelectedBikesTable>
                 <DateSelect />
                 {formIsActive ?
                     <BookingForm key={amount} />
@@ -49,7 +51,7 @@ const DateBikeStep = () => {
                         <Button
                             onClick={handleAddBike}
                         >Añadir bicicleta</Button>
-                        <Button>Continuar</Button>
+
                     </Stack>
 
                 }
@@ -58,11 +60,6 @@ const DateBikeStep = () => {
 
             </Stack>
 
-            <Button
-                //disabled={handleValidate()}
-                disabled
-                onClick={handleAddBike}
-            >Añadir bicicleta</Button>
 
         </Box >
     )

@@ -11,6 +11,13 @@ const initialState = {
     range: '',
     bikes: [],
 
+    name: '',
+    address: '',
+    phone: '',
+    mail: '',
+
+
+
 }
 
 export const bookingFormSlice = createSlice({
@@ -43,6 +50,19 @@ export const bookingFormSlice = createSlice({
         setBikes: (state, action) => {
             state.bikes.push(action.payload)
         },
+        setName: (state, action) => {
+            state.name = action.payload
+        },
+        setAddress: (state, action) => {
+            state.address = action.payload
+        },
+        setPhone: (state, action) => {
+            state.phone = action.payload
+        },
+        setMail: (state, action) => {
+            state.mail = action.payload
+        },
+
         setAnotherForm: (state, action) => {
             state.size = ''
             state.type = ''
@@ -64,6 +84,10 @@ export const {
     setType,
     setRange,
     setBikes,
+    setName,
+    setAddress,
+    setPhone,
+    setMail,
     setAnotherForm
 
 } = bookingFormSlice.actions

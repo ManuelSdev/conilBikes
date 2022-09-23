@@ -21,7 +21,7 @@ import { getAddButton, getDate, getFormIsActive, getNumberOfBikes, getRange, get
 import DateSelect from "../components/booking/DateSelect";
 import { setAddButton, setAnotherForm, setFormIsActive } from "../app/store/bookingFormSlice";
 import { useEffect } from "react";
-import BookingStepper from '../components/booking/BookingStepper'
+
 
 const BookingsPage = () => {
     const dispatch = useDispatch()
@@ -45,7 +45,34 @@ const BookingsPage = () => {
     */
     return (
         <Layout>
-            <BookingStepper></BookingStepper>
+            <div >RESERVAS</div>
+            <Box>{amount} {amount == 1 ? 'Bicicleta' : 'Bicicletas'} en la reserva</Box>
+            <Stack mb={5} spacing={2}>
+                <DateSelect />
+                {formIsActive ?
+                    <BookingForm key={amount} />
+                    :
+                    <Stack alignItems='center'
+                    // sx={{ display: 'flex', justifyContent: 'center' }}
+                    >
+                        <Button
+                            onClick={handleAddBike}
+                        >Añadir bicicleta</Button>
+                        <Button>Continuar</Button>
+                    </Stack>
+
+                }
+                {/*bookingForms.map(form => <BookingForm />)*/}
+
+
+            </Stack>
+
+            <Button
+                //disabled={handleValidate()}
+                disabled
+                onClick={handleAddBike}
+            >Añadir bicicleta</Button>
+
         </Layout >
     )
 }
