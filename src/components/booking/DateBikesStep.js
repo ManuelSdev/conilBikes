@@ -12,7 +12,7 @@ import BookingForm from './BookingForm';
 import { setAddButton, setFormIsActive } from '../../app/store/bookingFormSlice';
 import { getAddButton, getFormIsActive, getNumberOfBikes } from '../../app/store/selectors';
 import DateSelect from './DateSelect';
-import SelectedBikesTable from './SelectedBikesTable';
+import SelectedBikesList from './SelectedBikesList';
 
 
 const DateBikeStep = () => {
@@ -39,8 +39,9 @@ const DateBikeStep = () => {
         <Box>
 
             <Box>{amount} {amount == 1 ? 'Bicicleta' : 'Bicicletas'} en la reserva</Box>
-            <Stack mb={5} spacing={2}>
-                <SelectedBikesTable></SelectedBikesTable>
+            <Stack mb={2} spacing={2}>
+                {/* <SelectedBikesTable></SelectedBikesTable>*/}
+                <SelectedBikesList />
                 <DateSelect />
                 {formIsActive ?
                     <BookingForm key={amount} />

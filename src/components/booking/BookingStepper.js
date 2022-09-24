@@ -4,9 +4,11 @@ import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import DateBikeStep from './DateBikesStep';
-import { Button, Grid } from '@mui/material';
+import { Button, Grid, Stack } from '@mui/material';
 import DetailsStep from './DetailsStep';
 import ResumeStep from './ResumeStep';
+import { useSelector } from 'react-redux';
+import { getNumberOfBikes } from '../../app/store/selectors';
 
 const steps = [
     'Fecha y bicicletas',
@@ -15,6 +17,7 @@ const steps = [
 ];
 
 export default function BookingStepper() {
+    const amount = useSelector(getNumberOfBikes)
     const [activeStep, setActiveStep] = React.useState(0);
     const [completed, setCompleted] = React.useState({});
     const totalSteps = () => {
@@ -39,11 +42,14 @@ export default function BookingStepper() {
                 activeStep + 1;
         setActiveStep(newActiveStep);
     };
+    const allStepsCompleted = () => {
+        return completedSteps() === totalSteps();
+    };
     const handleBack = () => {
         activeStep > 0 && setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
     return (
-        <>
+        <Stack spacing={2}>
             <Box pt={2} pb={2} sx={{ width: '100%', background: "#009CAC" }}>
                 <Stepper activeStep={activeStep} alternativeLabel>
                     {steps.map((label) => (
@@ -65,9 +71,31 @@ export default function BookingStepper() {
 
                     }
                 </Grid>
-                <Button onClick={handleNext}>Continuar</Button>
+
             </Box >
-        </>
+            {activeStep === 0 ?
+                <Button
+                    //disabled={!!!amount} 
+                    onClick={handleNext}>Continuar</Button>
+                :
+                activeStep === 1 ?
+                    <Box>
+                        <Button onClick={handleNext}>Continuar</Button>
+                        <Button onClick={handleBack}>Atras</Button>
+                    </Box>
+                    :
+                    <Box>
+                        <Button >Confirmar reserva</Button>
+                        <Button onClick={handleBack} >Atras</Button>
+                    </Box>
+
+            }
+
+
+
+        </Stack>
+
+
 
     );
 }

@@ -8,7 +8,7 @@ const bikeSchema = new mongoose.Schema({
     size: String,
     type: String,
     range: String,
-    dayPrice: Number,
+    price: Number,
     specs: [String],
     description: String,
     images: [String],
