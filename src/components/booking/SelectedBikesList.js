@@ -34,6 +34,7 @@ export default function SelectedBikesList() {
             <List sx={{ pb: 0, mb: 0 }} dense>
                 {bikes.map(bike =>
                     <ListItem
+                        key={bike._id}
                         //  alignItems="flex-start"
                         secondaryAction={
                             <IconButton edge="end" aria-label="delete">
