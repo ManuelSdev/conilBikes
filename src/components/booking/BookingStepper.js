@@ -21,6 +21,23 @@ const steps = [
     'Resumen',
 ];
 
+const StepWrapper = ({ children, textHeader }) =>
+    <Box>
+        <Typography sx={{ mt: 1, mb: 1 }} variant="h5" component="div">
+            {textHeader}
+        </Typography>
+        <Paper
+            elevation={1}
+            p={1}
+            component={Stack}
+            sx={{ width: '100%' }}
+        // mb={5}
+        //  spacing={1}
+        >
+            {children}
+        </Paper>
+
+    </Box>
 export default function BookingStepper() {
     const isoDate = useSelector(getDate)
     const amount = useSelector(getNumberOfBikes)
@@ -65,26 +82,9 @@ export default function BookingStepper() {
     const dateIsValid = () => (isoDate.from && isoDate.to) ? true : false
     const contactInfoIsValid = () => contactInfo.every(elem => !!elem)
 
-    console.log('render stepper@@@@@@@@@@@@@@@@')
 
 
-    const StepWrapper = ({ children, textHeader }) =>
-        <Box>
-            <Typography sx={{ mt: 1, mb: 1 }} variant="h5" component="div">
-                {textHeader}
-            </Typography>
-            <Paper
-                elevation={1}
-                p={1}
-                component={Stack}
-                sx={{ width: '100%' }}
-            // mb={5}
-            //  spacing={1}
-            >
-                {children}
-            </Paper>
 
-        </Box>
 
     return (
         <Stack id='bookingStepper' spacing={2}>
@@ -137,7 +137,7 @@ export default function BookingStepper() {
                         activeStep === 2 ?
                             <Box  >
                                 <Button sx={{ mb: 2 }}
-                                    // disabled={!contactInfoIsValid()}
+                                    disabled={!contactInfoIsValid()}
                                     fullWidth onClick={handleNext}>Continuar</Button>
                                 <Button onClick={handleBack}>Atras</Button>
                             </Box>

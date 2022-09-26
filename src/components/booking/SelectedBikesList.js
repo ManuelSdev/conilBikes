@@ -15,19 +15,25 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import FolderIcon from '@mui/icons-material/Folder';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getBikes } from '../../app/store/selectors';
 
 import PedalBikeIcon from '@mui/icons-material/PedalBike';
-
+import { rangesMap, typesMap } from '../../lib/utils/detailsMaps';
+import { deleteBike } from '../../app/store/bookingFormSlice';
 
 export default function SelectedBikesList() {
     const [secondary, setSecondary] = React.useState(false);
     const bikes = useSelector(getBikes)
+    const dispatch = useDispatch()
+
+    const handleDelete = bike => ev => {
+        // console.log(ev)
+        console.log(bike)
+        dispatch(deleteBike(bike))
+    }
     return (
         <Box sx={{ flexGrow: 1, maxWidth: 752 }}>
-
-
             <List sx={{ pb: 0, mb: 0 }} dense>
                 {bikes.map(bike =>
                     <ListItem
@@ -35,7 +41,9 @@ export default function SelectedBikesList() {
                         key={bike._id}
                         //  alignItems="flex-start"
                         secondaryAction={
-                            <IconButton edge="end" aria-label="delete">
+                            <IconButton
+                                onClick={handleDelete(bike)}
+                                edge="end" aria-label="delete">
                                 <DeleteIcon />
                             </IconButton>
                         }
@@ -46,16 +54,13 @@ export default function SelectedBikesList() {
 
                         <ListItemText
                             primary={`${bike.brand} ${bike.model}`}
-                            secondary={`${bike.type} - ${bike.range === 'premium' ? '' : 'gama'} ${bike.range} - ${bike.price}€/día`}
-
-
-
+                        //  secondary={`${bike.type} - ${bike.range === 'premium' ? '' : 'gama'} ${bike.range} - ${bike.price}€/día`}
                         />
                     </ListItem>
                 )}
 
 
             </List>
-        </Box>
+        </Box >
     );
 }

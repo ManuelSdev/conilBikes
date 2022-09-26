@@ -53,6 +53,14 @@ export const bookingFormSlice = createSlice({
             state.bikes.push(action.payload)
             state.price += action.payload.price * days
         },
+        deleteBike: (state, action) => {
+            const from = new Date(state.date.from)
+            const to = new Date(state.date.to)
+            const days = differenceInDays(to, from)
+            const start = state.bikes.findIndex(bike => bike._id === action.payload._id)
+            state.bikes.splice(start, 1)
+            state.price -= action.payload.price * days
+        },
         setName: (state, action) => {
             state.name = action.payload
         },
@@ -88,6 +96,7 @@ export const {
     setType,
     setRange,
     setBikes,
+    deleteBike,
     setName,
     setAddress,
     setPhone,

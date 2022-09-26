@@ -9,12 +9,12 @@ import { setAnotherForm } from "../../app/store/bookingFormSlice"
 
 
 const BikeForm = () => {
-    //console.log('@@@@@@@@@@@@@@@@@@', key)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        console.log("++++++++++++++Component mounted.");
-        return () => console.log("------------Component unmounted.") || dispatch(setAnotherForm())
+        //  console.log("++++++++++++++Component mounted.");
+        return () => //console.log("------------Component unmounted.") || 
+            dispatch(setAnotherForm())
     }, []);
     return (
         <Stack spacing={2}>
