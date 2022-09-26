@@ -10,7 +10,7 @@ const ContactInfo = () => {
     const data = ['Nombre', 'Email', 'Teléfono', 'Dirección']
     return (
         <Box >
-            {info.map((elem, index) => <Typography><strong>{data[index]}:</strong>{elem}</Typography>
+            {info.map((elem, index) => <Typography key={elem}><strong>{data[index]}:</strong>{elem}</Typography>
             )}
         </Box>
     )
