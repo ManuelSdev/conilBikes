@@ -42,7 +42,7 @@ const ResumeStep = () => {
                 <Typography variant="h6">
                     Datos de contacto
                 </Typography>
-                {info.map((elem, index) => <Typography variant="subtitle2"><strong>{data[index]}: </strong>{elem}</Typography>
+                {info.map((elem, index) => <Typography key={elem} variant="subtitle2"><strong>{data[index]}: </strong>{elem}</Typography>
                 )}
             </Box>
 
