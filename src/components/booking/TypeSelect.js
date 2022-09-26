@@ -27,11 +27,13 @@ const TypeSelect = () => {
 
 
     useEffect(() => {
+        console.log('useEffect+++++++++++++++++++++')
         selectedType &&
             //   console.log('@@@@@@@@ dispatch typeSelect') ||
             dispatch(setType(''))
         selectedSize && trigger(args)
     }, [selectedSize]);
+
 
     return (
         <FormControl fullWidth disabled={!!!selectedSize}>

@@ -71,6 +71,7 @@ export const bookingFormSlice = createSlice({
             state.size = ''
             state.type = ''
             state.range = ''
+
         },
 
 

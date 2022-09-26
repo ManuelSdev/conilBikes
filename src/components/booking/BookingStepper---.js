@@ -23,7 +23,6 @@ const steps = [
 export default function BookingStepper() {
     const isoDate = useSelector(getDate)
     const amount = useSelector(getNumberOfBikes)
-
     const contactInfo = useSelector(getContactInfo)
     const [activeStep, setActiveStep] = React.useState(0);
     const [completed, setCompleted] = React.useState({});
@@ -58,8 +57,7 @@ export default function BookingStepper() {
 
     const dateIsValid = () => (isoDate.from && isoDate.to) ? true : false
     const contactInfoIsValid = () => contactInfo.every(elem => !!elem)
-
-    console.log('render stepper@@@@@@@@@@@@@@@@')
+    console.log(contactInfoIsValid())
 
 
     const StepWrapper = ({ children, textHeader }) =>
@@ -123,7 +121,7 @@ export default function BookingStepper() {
                     activeStep === 1 ?
                         <Box  >
                             <Button sx={{ mb: 2 }}
-                                // disabled={!!!amount}
+                                disabled={!!!amount}
                                 fullWidth onClick={handleNext}>Continuar</Button>
                             <Button onClick={handleBack}>Atras</Button>
                         </Box>

@@ -8,7 +8,7 @@ import { Box, Button, Container, Divider, Stack, Typography } from "@mui/materia
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import BookingForm from './BookingForm';
+import BookingForm from './BikeForm';
 import { setAddButton, setFormIsActive } from '../../app/store/bookingFormSlice';
 import { getAddButton, getFormIsActive, getNumberOfBikes } from '../../app/store/selectors';
 import DateSelect from './DateSelect';

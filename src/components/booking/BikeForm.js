@@ -8,17 +8,16 @@ import { useDispatch } from "react-redux"
 import { setAnotherForm } from "../../app/store/bookingFormSlice"
 
 
-const BookingForm = () => {
+const BikeForm = () => {
     //console.log('@@@@@@@@@@@@@@@@@@', key)
     const dispatch = useDispatch()
 
     useEffect(() => {
         console.log("++++++++++++++Component mounted.");
-        return () => console.log("------------Component unmounted.") || dispatch(setAnotherForm())
+        return () => console.log("------------Component unmounted.")
     }, []);
     return (
         <Stack spacing={2}>
-
             <SizeSelect />
             <TypeSelect />
             <RangeSelect />
@@ -29,4 +28,4 @@ const BookingForm = () => {
 
 }
 
-export default BookingForm
+export default BikeForm

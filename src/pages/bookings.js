@@ -11,7 +11,6 @@ import esLocale from 'date-fns/locale/es';
 import TextField from '@mui/material/TextField';
 import { width } from "@mui/system";
 import { Box, Button, Container, Stack } from "@mui/material";
-import BookingForm from "../components/booking/BookingForm";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useGetSizesQuery } from "../app/store/services/filterApi";

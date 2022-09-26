@@ -47,13 +47,13 @@ export default function SizeSelect() {
 
         if (dateIsCorrect())
             skip ?
-                setSkip(false)
+                console.log('skip----------------------') || setSkip(false)
                 :
-                dispatch(setSize(''))
+                console.log('dispatch+++++++++++++++++++++') || dispatch(setSize(''))
     }, [isoDate]);
 
 
-
+    console.log(isoDate)
 
 
     return (
