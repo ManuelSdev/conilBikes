@@ -1,22 +1,22 @@
 import * as React from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
+import { useTheme } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import Paper from '@mui/material/Paper';
-import Image from "next/image"
-import IconButton from "@mui/material/IconButton"
-import DeleteIcon from '@mui/icons-material/HighlightOffOutlined';
-import Link from '../elements/Link'
+import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import SkipNextIcon from '@mui/icons-material/SkipNext';
 
 
 //import DirectProductAmountButton from './DirectProductAmountButton';
-import { Button } from '@mui/material';
+import { Button, Grid, Stack } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { getBikes } from '../../app/store/selectors';
+import Image from 'next/image';
+import { rangesMap, typesMap } from '../../lib/utils/detailsMaps';
 
 const divStyle = {
     backgroundColor: 'red',
@@ -25,72 +25,89 @@ const divStyle = {
 const SelectedBikesTable = () => {
     const selectedBikes = useSelector(getBikes)
     return (
+        <Box spacing={1}
 
-        <TableContainer component={Paper}>
-            <Typography p={2} variant='h6' sx={{ fontWeight: 'bold' }} >
-                Resumen
-            </Typography>
-            <Table aria-label="collapsible table">
+        >
+            {selectedBikes.map(bike => {
+                const [image] = bike.images
+                return (
+                    <Grid
+                        key={bike._id}
+                        container spacing={1}
+                        mb={1}
+                    >
+                        <Grid item xs={4} >
+                            <Image
+                                width='100%'
+                                height='100%'
+                                objectFit='contain'
+                                src={image}
+                                alt="Imagen de producto"
 
-                <TableBody>
-                    {selectedBikes.map((bike) => {
-                        const [image] = bike.images
-                        return <TableRow
-                            key={bike._id}
-                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                        >
-                            <TableCell rowSpan={2} component="th" scope="row">
-                                { /*<Link href={`/product/${bike.url}`}>*/}
-                                <Link href={`/}`}>
-                                    <Image
-                                        width='100%'
-                                        height='100%'
-                                        objectFit='contain'
-                                        src={image}
-                                        alt="Imagen de producto"
+                                style={{ backgroundColor: '#F1F1F1' }}
+                            />
+                        </Grid>
+                        <Grid item xs={8} >
+                            <Stack mr={4}
+                                sx={{ width: '100%' }}
+                            >
+                                <Typography component="div" variant="subtitle2">{bike.brand} {bike.model}</Typography>
+                                <Typography variant="body2"
+                                    color="text.secondary"
+                                    component="div">
+                                    Talla: {bike.size}
+                                </Typography>
+                                {typesMap.map(type => {
+                                    const [engType, spaType] = type
+                                    return (
+                                        bike.type === engType &&
+                                        <Typography key={engType} component="div" color="text.secondary" variant="body2">
 
-                                        style={{ backgroundColor: '#F1F1F1' }}
-                                    />
-                                </Link>
-                            </TableCell>
-                            <TableCell
-                                sx={{ '&.MuiTableCell-root': { borderBottom: '0px solid red', paddingBottom: 0 } }}
-                                colSpan={4}>
-                                <Typography>{bike.brand}</Typography>
+                                            Tipo: {spaType}
+                                        </Typography>
+                                    )
+                                })}
 
-                                <Typography>{bike.model}</Typography>
-                            </TableCell>
+                                {rangesMap.map(range => {
+                                    const [engRange, spaRange] = range
+
+                                    return (
+                                        bike.range === engRange &&
+                                        <Typography key={engRange} component="div" variant="body2" color="text.secondary">
+
+                                            Gama: {spaRange}
+                                        </Typography>
+                                    )
+                                })}
+                                <Stack
+                                    direction="row"
+                                    justifyContent=' space-between'
+                                >
+                                    <Typography variant="body2"
+                                        color="text.secondary"
+                                        component="div">
+                                        Precio por día:
+                                    </Typography>
+                                    <Typography variant="body2"
+                                        color="text.secondary"
+                                        component="div">
+                                        {bike.price}€
+                                    </Typography>
+                                </Stack>
+
+                            </Stack>
+                        </Grid>
 
 
-                        </TableRow>
+                    </Grid>
+
+                )
+            }
+            )}
+        </Box>
 
 
-                    })
-                    }
-                    {selectedBikes.map((bike) => {
-                        const [image] = bike.images
-                        return <TableRow key={bike._id}>
-                            {/*    <TableCell align="right">
-                                    {  <DirectProductAmountButton product={product} />}
 
-                                </TableCell>*/}
-                            <TableCell align="right">
-                                {/*{Math.round(bike.price * bike.amount * 100) / 100} €*/}
-                                20€/día
-                            </TableCell>
-                            <TableCell align="right">
-                                <IconButton
-                                    // onClick={handleDelete(product)}
-                                    color="primary" aria-label="upload picture" component="span">
-                                    <DeleteIcon />
-                                </IconButton>
-                            </TableCell>
-                        </TableRow>
-                    })
-                    }
-                </TableBody>
-            </Table>
-        </TableContainer>
     )
 
 }

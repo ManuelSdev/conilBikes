@@ -1,10 +1,11 @@
-import { Stack, TextField } from "@mui/material"
+import { Stack, TextField, Typography } from "@mui/material"
+import { Box } from "@mui/system";
 import { useDispatch, useSelector } from "react-redux"
 import { setAddress, setMail, setName, setPhone } from "../../app/store/bookingFormSlice";
 import { getAddress, getMail, getName, getPhone } from "../../app/store/selectors";
 
 
-const DetailsStep = () => {
+const ContactStep = () => {
 
     const name = useSelector(getName)
     const address = useSelector(getAddress)
@@ -26,7 +27,8 @@ const DetailsStep = () => {
     useDispatch
     return (
 
-        <Stack component='form' mb={5} spacing={2}>
+
+        <Stack component='form' mb={2} spacing={2}>
             <TextField
                 fullWidth
                 id="name"
@@ -59,7 +61,8 @@ const DetailsStep = () => {
                 helperText="Indica donde quieres que te entreguemos las bicicletas"
             />
         </Stack>
+
     )
 }
 
-export default DetailsStep
+export default ContactStep

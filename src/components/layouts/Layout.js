@@ -18,7 +18,7 @@ const Layout = ({ children }) => {
         >
             <Header />
             <main>
-                <Container>
+                <Container sx={{ mb: 5 }}>
                     {children}
                 </Container>
 

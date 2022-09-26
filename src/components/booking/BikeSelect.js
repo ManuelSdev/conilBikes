@@ -40,9 +40,10 @@ const BikesSelect = () => {
     return (
         <Container
         >
-            <Stack alignItems='center'>
+            <Stack alignItems='center' spacing={2}>
                 {selectedRange &&
                     <Button
+
                         //disabled={!!!selectedRange}
                         onClick={handleTrigger}
                     >Mostrar bicicletas</Button>}

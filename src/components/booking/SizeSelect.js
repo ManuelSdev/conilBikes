@@ -61,6 +61,7 @@ export default function SizeSelect() {
             <FormControl fullWidth disabled={!!!avaiableSizes}>
                 <InputLabel id="bike-size-select-label">Talla</InputLabel>
                 <Select
+
                     labelId="bike-size-select-label"
                     id="bike-size-select"
                     value={selectedSize}

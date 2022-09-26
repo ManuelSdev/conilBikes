@@ -4,7 +4,7 @@ import * as React from 'react';
 //import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 
-import { Box, Button, Container, Stack } from "@mui/material";
+import { Box, Button, Container, Stack, Typography } from "@mui/material";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -15,7 +15,7 @@ import DateSelect from './DateSelect';
 import SelectedBikesList from './SelectedBikesList';
 
 
-const DateBikeStep = () => {
+const DateStep = () => {
     const dispatch = useDispatch()
     const amount = useSelector(getNumberOfBikes)
     const addButton = useSelector(getAddButton)
@@ -37,33 +37,16 @@ const DateBikeStep = () => {
     */
     return (
         <Box>
+            <Typography sx={{ mt: 1, mb: 0 }} variant="h6" component="div">
+                Selecciona la fecha
+            </Typography>
 
-            <Box>{amount} {amount == 1 ? 'Bicicleta' : 'Bicicletas'} en la reserva</Box>
-            <Stack mb={2} spacing={2}>
-                {/* <SelectedBikesTable></SelectedBikesTable>*/}
-                <SelectedBikesList />
-                <DateSelect />
-                {formIsActive ?
-                    <BookingForm key={amount} />
-                    :
-                    <Stack alignItems='center'
-                    // sx={{ display: 'flex', justifyContent: 'center' }}
-                    >
-                        <Button
-                            onClick={handleAddBike}
-                        >Añadir bicicleta</Button>
+            <DateSelect />
 
-                    </Stack>
-
-                }
-                {/*bookingForms.map(form => <BookingForm />)*/}
-
-
-            </Stack>
 
 
         </Box >
     )
 }
 
-export default DateBikeStep
+export default DateStep

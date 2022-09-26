@@ -1,6 +1,6 @@
 
 import { createSlice, current } from '@reduxjs/toolkit'
-
+import { format, differenceInDays } from 'date-fns'
 const initialState = {
     addButton: true,
     formIsActive: true,
@@ -15,7 +15,7 @@ const initialState = {
     address: '',
     phone: '',
     mail: '',
-
+    price: 0
 
 
 }
@@ -48,7 +48,11 @@ export const bookingFormSlice = createSlice({
             state.range = action.payload
         },
         setBikes: (state, action) => {
+            const from = new Date(state.date.from)
+            const to = new Date(state.date.to)
+            const days = differenceInDays(to, from)
             state.bikes.push(action.payload)
+            state.price += action.payload.price * days
         },
         setName: (state, action) => {
             state.name = action.payload

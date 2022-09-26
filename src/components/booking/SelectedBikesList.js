@@ -18,7 +18,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { useSelector } from 'react-redux';
 import { getBikes } from '../../app/store/selectors';
 
-
+import PedalBikeIcon from '@mui/icons-material/PedalBike';
 
 
 export default function SelectedBikesList() {
@@ -27,13 +27,11 @@ export default function SelectedBikesList() {
     return (
         <Box sx={{ flexGrow: 1, maxWidth: 752 }}>
 
-            <Typography sx={{ mt: 1, mb: 0 }} variant="h6" component="div">
-                Detalles de la reserva
-            </Typography>
 
             <List sx={{ pb: 0, mb: 0 }} dense>
                 {bikes.map(bike =>
                     <ListItem
+                        disablePadding
                         key={bike._id}
                         //  alignItems="flex-start"
                         secondaryAction={
@@ -42,11 +40,10 @@ export default function SelectedBikesList() {
                             </IconButton>
                         }
                     >
-                        <ListItemAvatar>
-                            <Avatar>
-                                <FolderIcon />
-                            </Avatar>
-                        </ListItemAvatar>
+                        <ListItemIcon>
+                            <PedalBikeIcon fontSize='large' />
+                        </ListItemIcon>
+
                         <ListItemText
                             primary={`${bike.brand} ${bike.model}`}
                             secondary={
