@@ -17,6 +17,7 @@ export const getMail = state => state.bookingForm.mail
 export const getPrice = state => state.bookingForm.price
 
 export const getContactInfo = state =>
+
     [
         state.bookingForm.name,
         state.bookingForm.mail,
@@ -25,6 +26,17 @@ export const getContactInfo = state =>
 
     ]
 
+export const getBookingData = state => (
+    {
+        from: state.bookingForm.date.from,
+        to: state.bookingForm.date.to,
+        bikes: state.bookingForm.bikes.map(bike => bike._id),
+        name: state.bookingForm.name,
+        address: state.bookingForm.address,
+        phone: state.bookingForm.phone,
+        price: state.bookingForm.price,
 
+    }
+)
 export const getBikes = state => state.bookingForm.bikes
 export const getNumberOfBikes = state => state.bookingForm.bikes.length

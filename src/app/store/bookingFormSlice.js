@@ -4,20 +4,19 @@ import { format, differenceInDays } from 'date-fns'
 const initialState = {
     addButton: true,
     formIsActive: true,
-    date: {},
     dateError: '',
+
     size: '',
     type: '',
     range: '',
-    bikes: [],
 
+    date: {},
+    bikes: [],
     name: '',
     address: '',
     phone: '',
     mail: '',
     price: 0
-
-
 }
 
 export const bookingFormSlice = createSlice({

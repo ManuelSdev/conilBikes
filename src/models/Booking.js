@@ -5,14 +5,14 @@ const bookingSchema = new mongoose.Schema(
     {
         name: String,
         surname: String,
-        phone: { type: Number, index: true },
-        bikes: { type: [mongoose.ObjectId], index: true },
-        address: String,
-        price: Number,
         mail: String,
-        //date: { type: [Date], index: true },
+        phone: { type: Number, index: true },
+        address: String,
+
         from: { type: Date, index: true },
         to: { type: Date, index: true },
+        bikes: { type: [mongoose.ObjectId], index: true },
+        price: Number,
         completed: Boolean,
 
     },

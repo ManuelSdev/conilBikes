@@ -8,11 +8,12 @@ import { Button, Grid, Paper, Stack, Typography } from '@mui/material';
 import ContactStep from './ContactStep';
 import ResumeStep from './ResumeStep';
 import { useSelector } from 'react-redux';
-import { getNumberOfBikes, getDate, getContactInfo } from '../../app/store/selectors';
+import { getNumberOfBikes, getDate, getName, getMail, getPhone, getAddress } from '../../app/store/selectors';
 import DateSelect from './DateSelect';
 import DateStep from './DateStep';
 import { Container } from '@mui/system';
 import compareAsc from "date-fns/compareAsc";
+import ConfirmBookingButton from './ConfirmBookingButton';
 const steps = [
     'Fecha',
     'Bicicletas',
@@ -24,7 +25,12 @@ export default function BookingStepper() {
     const isoDate = useSelector(getDate)
     const amount = useSelector(getNumberOfBikes)
 
-    const contactInfo = useSelector(getContactInfo)
+    const name = useSelector(getName)
+    const mail = useSelector(getMail)
+    const phone = useSelector(getPhone)
+    const address = useSelector(getAddress)
+    const contactInfo = [name, mail, phone, address]
+
     const [activeStep, setActiveStep] = React.useState(0);
     const [completed, setCompleted] = React.useState({});
     const totalSteps = () => {
@@ -123,7 +129,7 @@ export default function BookingStepper() {
                     activeStep === 1 ?
                         <Box  >
                             <Button sx={{ mb: 2 }}
-                                // disabled={!!!amount}
+                                disabled={!!!amount}
                                 fullWidth onClick={handleNext}>Continuar</Button>
                             <Button onClick={handleBack}>Atras</Button>
                         </Box>
@@ -131,13 +137,14 @@ export default function BookingStepper() {
                         activeStep === 2 ?
                             <Box  >
                                 <Button sx={{ mb: 2 }}
-                                    disabled={!contactInfoIsValid()}
+                                    // disabled={!contactInfoIsValid()}
                                     fullWidth onClick={handleNext}>Continuar</Button>
                                 <Button onClick={handleBack}>Atras</Button>
                             </Box>
                             :
                             <Box >
-                                <Button sx={{ mb: 2 }} fullWidth >Confirmar reserva</Button>
+                                {/*<Button sx={{ mb: 2 }} fullWidth >Confirmar reserva</Button>*/}
+                                <ConfirmBookingButton />
                                 <Button onClick={handleBack} >Atras</Button>
                             </Box>
 

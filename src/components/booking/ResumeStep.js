@@ -7,11 +7,14 @@ import DateSelect from "./DateSelect"
 import SelectedBikesTable from "./SelectedBikesTable"
 import { Typography } from "@mui/material"
 import { format, addYears, differenceInDays } from 'date-fns'
+import { useState } from "react"
 
 
 const ResumeStep = () => {
     const isoDate = useSelector(getDate)
     const totalPrice = useSelector(getPrice)
+    const info = useSelector(getContactInfo)
+    const data = ['Nombre', 'Email', 'Teléfono', 'Dirección']
 
     const date = {
         from: isoDate.from ? new Date(isoDate.from) : null,
@@ -20,8 +23,10 @@ const ResumeStep = () => {
     const days = differenceInDays(date.to, date.from)
     // console.log(format(date.from, "dd/MM/yyyy"))
     console.log(isoDate)
-    const info = useSelector(getContactInfo)
-    const data = ['Nombre', 'Email', 'Teléfono', 'Dirección']
+
+
+
+
     return (
         <Box>
 

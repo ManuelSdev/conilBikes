@@ -46,20 +46,10 @@ export default function SelectedBikesList() {
 
                         <ListItemText
                             primary={`${bike.brand} ${bike.model}`}
-                            secondary={
-                                <React.Fragment>
+                            secondary={`${bike.type} - ${bike.range === 'premium' ? '' : 'gama'} ${bike.range} - ${bike.price}€/día`}
 
-                                    <Typography
-                                        // sx={{ display: 'inline' }}
-                                        //component="span"
-                                        variant="body2"
-                                        color="text.primary"
-                                    >
-                                        {`${bike.type} - ${bike.range === 'premium' ? '' : 'gama'} ${bike.range} - ${bike.price}€/día`}
-                                    </Typography>
 
-                                </React.Fragment>
-                            }
+
                         />
                     </ListItem>
                 )}

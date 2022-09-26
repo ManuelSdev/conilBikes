@@ -14,10 +14,11 @@ const BikeForm = () => {
 
     useEffect(() => {
         console.log("++++++++++++++Component mounted.");
-        return () => console.log("------------Component unmounted.")
+        return () => console.log("------------Component unmounted.") || dispatch(setAnotherForm())
     }, []);
     return (
         <Stack spacing={2}>
+
             <SizeSelect />
             <TypeSelect />
             <RangeSelect />
