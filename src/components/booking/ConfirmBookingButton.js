@@ -1,9 +1,10 @@
-import { Button } from "@mui/material"
+import { Button, Dialog, DialogContent } from "@mui/material"
 import { useRouter } from "next/router"
 import { useState } from "react"
 import { useSelector } from "react-redux"
 import { getBookingData } from "../../app/store/selectors"
 import { useAddBookingMutation } from "../../app/store/services/bookingApi"
+import CircularProgress from '@mui/material/CircularProgress';
 
 import Modal from "./Modal"
 
@@ -36,9 +37,8 @@ const ConfirmBookingButton = () => {
     return (
         <>
             <Modal
-                isLoading={true}
                 handleClose={handleClose}
-                open={true}
+                open={open}
                 mainMessage={
                     isSuccess ?
                         'Hemos registrado tu reserva correctamente'
@@ -46,6 +46,16 @@ const ConfirmBookingButton = () => {
                         'Hubo un error al procesar tu reserva. Vuelve a intentarlo'
                 }
             />
+            {true && <Dialog
+                open={true}
+            >
+                <DialogContent sx={{ width: '100%' }} >
+                    <CircularProgress />
+                </DialogContent>
+            </Dialog>
+            }
+
+
             <Button
                 fullWidth
                 onClick={handleSubmit}

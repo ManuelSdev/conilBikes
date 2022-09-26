@@ -44,18 +44,18 @@ export default function SizeSelect() {
             true : false
 
     React.useEffect(() => {
-        if (dateIsCorrect()) console.log('dispatch+++++++++++++++++++++')
 
         if (dateIsCorrect())
             skip ?
-                console.log('skip----------------------') || setSkip(false)
+                //     console.log('skip----------------------') || 
+                setSkip(false)
                 :
-                console.log('dispatch+++++++++++++++++++++') || dispatch(setSize(''))
+                //     console.log('dispatch+++++++++++++++++++++') || 
+                dispatch(setSize(''))
 
     }, [isoDate]);
 
 
-    console.log(isoDate)
 
 
     return (

@@ -21,11 +21,6 @@ const ResumeStep = () => {
         to: isoDate.to ? new Date(isoDate.to) : null
     }
     const days = differenceInDays(date.to, date.from)
-    // console.log(format(date.from, "dd/MM/yyyy"))
-    console.log(isoDate)
-
-
-
 
     return (
         <Box>

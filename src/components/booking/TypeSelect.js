@@ -27,7 +27,6 @@ const TypeSelect = () => {
 
 
     useEffect(() => {
-        console.log('useEffect+++++++++++++++++++++')
         selectedType &&
             //   console.log('@@@@@@@@ dispatch typeSelect') ||
             dispatch(setType(''))

@@ -22,7 +22,6 @@ const DateSelect = () => {
     const bikes = useSelector(getNumberOfBikes)
     const params = (b) => new URLSearchParams(b)
     const isoDate = useSelector(getDate)
-    console.log(isoDate)
     const errorDate = useSelector(getDateError)
     const date = {
         from: isoDate.from ? new Date(isoDate.from) : null,

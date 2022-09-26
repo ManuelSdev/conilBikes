@@ -5,8 +5,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import CircularProgress from '@mui/material/CircularProgress';
-export default function Modal({ open, mainMessage, handleClose, full, children, isLoading }) {
+export default function Modal({ open, mainMessage, handleClose, full, children }) {
 
     return (
         <div>
@@ -17,28 +16,18 @@ export default function Modal({ open, mainMessage, handleClose, full, children, 
                 aria-describedby="alert-dialog-description"
                 fullScreen={full ? true : false}
             >
-                {isLoading ?
-
-                    <DialogContent>
-                        <CircularProgress />
-                    </DialogContent>
-
-                    :
-                    <>
-                        <DialogTitle id="alert-dialog-title">
-                            {mainMessage}
-                        </DialogTitle>
-                        <DialogContent>
-                            <DialogContentText id="alert-dialog-description">
-                                {/**El pedido se ha sido completado*/}
-                            </DialogContentText>
-                        </DialogContent>
-                        <DialogActions>
-                            {children}
-                            <Button onClick={handleClose} autoFocus>Aceptar</Button>
-                        </DialogActions>
-                    </>
-                }
+                <DialogTitle id="alert-dialog-title">
+                    {mainMessage}
+                </DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                        {/**El pedido se ha sido completado*/}
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    {children}
+                    <Button onClick={handleClose} autoFocus>Aceptar</Button>
+                </DialogActions>
 
             </Dialog>
         </div>
