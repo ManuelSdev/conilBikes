@@ -13,6 +13,7 @@ import { getDate, getDateError, getNumberOfBikes } from "../../app/store/selecto
 import { setDate, setDateError } from "../../app/store/bookingFormSlice";
 import { Button } from "@mui/material";
 import compareAsc from "date-fns/compareAsc";
+import bookingPickersDay from "./bookingPickersDay";
 
 
 const DateSelect = () => {
@@ -27,7 +28,6 @@ const DateSelect = () => {
         from: isoDate.from ? new Date(isoDate.from) : null,
         to: isoDate.to ? new Date(isoDate.to) : null
     }
-
 
 
     const [trigger, result, lastPromiseInfo] = useLazyGetSizesQuery()
@@ -83,6 +83,7 @@ const DateSelect = () => {
     const nextYear = adapter.addYears(today, 1)
 
 
+
     return (
         <LocalizationProvider dateAdapter={AdapterDateFns}
             adapterLocale={esLocale} // use 'bg' locale for date parser/formatter
@@ -92,6 +93,7 @@ const DateSelect = () => {
                     readOnly={!!bikes}
                     label="Inicio"
                     disablePast
+
                     //      disableMaskedInput={true}
                     inputFormat="dd/MM/yyyy"
                     value={date.from}
@@ -100,6 +102,7 @@ const DateSelect = () => {
 
                     //https://github.com/mui/material-ui-pickers/issues/1751
                     renderInput={(params) => <TextField  {...params} />}
+                    // renderDay={bookingPickersDay}
                     minDate={nextDay(today)}
                     maxDate={nextYear}
                     toolbarTitle='Seleccione fecha de inicio'

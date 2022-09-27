@@ -1,4 +1,4 @@
-import { FormControl, InputLabel, MenuItem, Select, Stack, TextField } from "@mui/material"
+import { Box, FormControl, InputLabel, LinearProgress, MenuItem, Select, Stack, TextField } from "@mui/material"
 
 import { useEffect, useState } from "react"
 
@@ -23,7 +23,7 @@ const TypeSelect = () => {
     };
 
 
-    const [trigger, { data: avaiableTypes, isSuccess, unsubscribe }, lastPromiseInfo] = useLazyGetTypesQuery()
+    const [trigger, { data: avaiableTypes, isLoading, isSuccess, unsubscribe }, lastPromiseInfo] = useLazyGetTypesQuery()
 
 
     useEffect(() => {
@@ -33,10 +33,31 @@ const TypeSelect = () => {
         selectedSize && trigger(args)
     }, [selectedSize]);
 
+    const loadingLabel = () => (
+        <Box>
+            Cargando tipos de bicicleta
+            <LinearProgress
+                sx={{
+                    //      backgroundColor: 'grey',
+                    //      color: 'red',
+                    //display: 'flex',
+                    //       justifySelf: 'center',
+                    //      position: 'relative',
+                    //   '&..MuiCircularProgress-root.MuiCircularProgress-svg': { position: 'relative' },
+                }}
+            />
+        </Box>)
 
     return (
         <FormControl fullWidth disabled={!!!selectedSize}>
-            <InputLabel id="bike-type-select-label">Tipo</InputLabel>
+            <InputLabel id="bike-type-select-label"
+                sx={{ width: '100%' }}
+            >{isLoading ?
+                loadingLabel()
+                :
+                'Tipo'
+                }
+            </InputLabel>
             <Select
                 required
                 labelId="bike-type-select-label"

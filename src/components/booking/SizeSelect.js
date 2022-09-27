@@ -4,13 +4,18 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { FormHelperText } from '@mui/material';
+import { FormHelperText, IconButton, LinearProgress } from '@mui/material';
 import { sizesMap } from '../../lib/utils/detailsMaps';
 import { useGetSizesQuery, usePrefetch, useLazyGetSizesQuery, useGetSizesQueryState, useGetTypesQuery, useLazyGetTypesQuery } from '../../app/store/services/filterApi';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDate, getDateError, getSize } from '../../app/store/selectors';
 import { setSize } from '../../app/store/bookingFormSlice';
 import compareAsc from "date-fns/compareAsc";
+import CircularProgress from '@mui/material/CircularProgress';
+import { positions } from '@mui/system';
+
+
+
 export default function SizeSelect() {
     const dispatch = useDispatch()
     const isoDate = useSelector(getDate)
@@ -27,7 +32,7 @@ export default function SizeSelect() {
 
 
 
-    const { data: avaiableSizes, isSuccess, refetch, isFetching } = useGetSizesQuery(
+    const { data: avaiableSizes, isLoading, isSuccess, refetch, isFetching } = useGetSizesQuery(
         params(isoDate).toString(),
         {
             skip,
@@ -55,13 +60,34 @@ export default function SizeSelect() {
 
     }, [isoDate]);
 
-
+    const loadingLabel = () => (
+        <Box>
+            Cargando tallas disponibles
+            <LinearProgress
+                sx={{
+                    //      backgroundColor: 'grey',
+                    //      color: 'red',
+                    //display: 'flex',
+                    //       justifySelf: 'center',
+                    //      position: 'relative',
+                    //   '&..MuiCircularProgress-root.MuiCircularProgress-svg': { position: 'relative' },
+                }}
+            />
+        </Box>)
 
 
     return (
         <Box sx={{ minWidth: 120 }}>
-            <FormControl fullWidth disabled={!!!avaiableSizes}>
-                <InputLabel id="bike-size-select-label">Talla</InputLabel>
+            <FormControl fullWidth disabled={!!!avaiableSizes}
+            >
+                <InputLabel id="bike-size-select-label"
+                    sx={{ width: '100%' }}
+                >{isLoading ?
+                    loadingLabel()
+                    :
+                    'Talla'
+                    }
+                </InputLabel>
                 <Select
 
                     labelId="bike-size-select-label"

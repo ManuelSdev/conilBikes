@@ -1,4 +1,4 @@
-import { FormControl, InputLabel, MenuItem, Select, Stack, TextField } from "@mui/material"
+import { Box, FormControl, InputLabel, LinearProgress, MenuItem, Select, Stack, TextField } from "@mui/material"
 
 import { useEffect, useState } from "react"
 
@@ -26,7 +26,7 @@ const RangeSelect = () => {
 
     };
 
-    const [trigger, { data: avaiableRanges }, lastPromiseInfo] = useLazyGetRangesQuery()
+    const [trigger, { data: avaiableRanges, isLoading }, lastPromiseInfo] = useLazyGetRangesQuery()
 
     useEffect(() => {
 
@@ -39,10 +39,32 @@ const RangeSelect = () => {
 
     }, [selectedType]);
 
+    const loadingLabel = () => (
+        <Box>
+            Cargando gamas disponibles
+            <LinearProgress
+                sx={{
+                    //      backgroundColor: 'grey',
+                    //      color: 'red',
+                    //display: 'flex',
+                    //       justifySelf: 'center',
+                    //      position: 'relative',
+                    //   '&..MuiCircularProgress-root.MuiCircularProgress-svg': { position: 'relative' },
+                }}
+            />
+        </Box>)
+
 
     return (
         <FormControl fullWidth disabled={!!!selectedType}>
-            <InputLabel id="bike-range-select-label">Gama</InputLabel>
+            <InputLabel id="bike-range-select-label"
+                sx={{ width: '100%' }}
+            >{isLoading ?
+                loadingLabel()
+                :
+                'Gama'
+                }
+            </InputLabel>
             <Select
                 required
                 labelId="bike-range-select-label"
