@@ -55,7 +55,7 @@ const DateSelect = () => {
         console.log(reason)
     }
 
-
+    // console.log(date.from.getMonth())
     const handleValidate = () => {
         console.log('validando...')
         if (!!!date.from || !!!date.to || !!errorDate) {
@@ -103,9 +103,11 @@ const DateSelect = () => {
                     minDate={nextDay(today)}
                     maxDate={nextYear}
                     toolbarTitle='Seleccione fecha de inicio'
-                //   onError={handleError}
-                //  onAccept={handleRtkQuery}
-                // onClose={() => console.log('oncloseee')}
+                    //   onError={handleError}
+                    //  onAccept={handleRtkQuery}
+                    // onClose={() => console.log('oncloseee')}
+                    defaultCalendarMonth={date.to && new Date(date.to.getFullYear(), date.to.getMonth())}
+
                 />
                 <DatePicker
                     readOnly={!!bikes}
@@ -121,6 +123,7 @@ const DateSelect = () => {
                     minDate={nextDay(date.from)}
                     maxDate={nextYear}
                     onError={handleError}
+                    defaultCalendarMonth={date.from && new Date(date.from.getFullYear(), date.from.getMonth())}
 
                 />
 

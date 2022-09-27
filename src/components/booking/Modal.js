@@ -5,7 +5,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-export default function Modal({ open, mainMessage, handleClose, full, children }) {
+export default function Modal({ open, title, content, handleClose, full, children }) {
 
     return (
         <div>
@@ -17,16 +17,16 @@ export default function Modal({ open, mainMessage, handleClose, full, children }
                 fullScreen={full ? true : false}
             >
                 <DialogTitle id="alert-dialog-title">
-                    {mainMessage}
+                    {title}
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description">
-                        {/**El pedido se ha sido completado*/}
+                        {content}
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
                     {children}
-                    <Button onClick={handleClose} autoFocus>Aceptar</Button>
+
                 </DialogActions>
 
             </Dialog>

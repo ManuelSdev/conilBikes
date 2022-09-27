@@ -101,7 +101,7 @@ export default function BookingStepper() {
 
 
                 {activeStep === 0 ?
-                    <StepWrapper textHeader={'Selecciona la fecha'}> <DateSelect /></StepWrapper>
+                    <StepWrapper textHeader={'Selecciona la fecha'}> <DateStep /></StepWrapper>
 
                     :
                     activeStep === 1 ?

@@ -46,7 +46,10 @@ export const bookingFormSlice = createSlice({
         setRange: (state, action) => {
             state.range = action.payload
         },
-        setBikes: (state, action) => {
+        resetBikes: (state) => {
+            state.bikes = []
+        },
+        addBike: (state, action) => {
             const from = new Date(state.date.from)
             const to = new Date(state.date.to)
             const days = differenceInDays(to, from)
@@ -95,8 +98,9 @@ export const {
     setSize,
     setType,
     setRange,
-    setBikes,
+    addBike,
     deleteBike,
+    resetBikes,
     setName,
     setAddress,
     setPhone,

@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
 import { useDispatch } from 'react-redux';
-import { setBikes, setFormIsActive, setSize } from '../app/store/bookingFormSlice';
+import { addBike, setFormIsActive, setSize } from '../app/store/bookingFormSlice';
 
 export default function BikeCard({ bike, }) {
     const { brand, model, description, images, _id } = bike
@@ -16,7 +16,7 @@ export default function BikeCard({ bike, }) {
 
     const handleClick = () => {
 
-        dispatch(setBikes(bike))
+        dispatch(addBike(bike))
         dispatch(setFormIsActive(false))
         // dispatch(setSize(''))
     }

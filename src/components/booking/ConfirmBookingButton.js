@@ -19,7 +19,9 @@ const ConfirmBookingButton = () => {
         addBooking,
         { status, isUninitialized, isLoading, isSuccess, data: dato, isError, reset }
     ] = useAddBookingMutation({ fixedCacheKey: 'addBooking-key', })
+
     const [open, setOpen] = useState(false);
+
     const handleOpen = () => {
         setOpen(true);
 
@@ -39,21 +41,23 @@ const ConfirmBookingButton = () => {
             <Modal
                 handleClose={handleClose}
                 open={open}
-                mainMessage={
+                title={
                     isSuccess ?
                         'Hemos registrado tu reserva correctamente'
                         :
                         'Hubo un error al procesar tu reserva. Vuelve a intentarlo'
                 }
-            />
-            {true && <Dialog
-                open={true}
+            >
+                <Button onClick={handleClose} autoFocus>Aceptar</Button>
+            </Modal>
+            <Dialog
+                open={isLoading}
             >
                 <DialogContent sx={{ width: '100%' }} >
                     <CircularProgress />
                 </DialogContent>
             </Dialog>
-            }
+
 
 
             <Button

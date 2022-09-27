@@ -63,7 +63,7 @@ const ResumeStep = () => {
                 pr={1}
                 pl={1}
                 direction="row"
-                justifyContent=' space-between'
+                justifyContent='space-between'
                 sx={{ width: '100%' }}
             //mb={5}
             >
@@ -114,7 +114,7 @@ const ResumeStep = () => {
                 pr={1}
                 pl={1}
                 direction="row"
-                justifyContent=' space-between'
+                justifyContent='space-between'
                 sx={{ width: '100%' }}
             >
                 <Typography
