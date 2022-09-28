@@ -5,7 +5,7 @@ import Header from "../header/Header";
 import Footer from "../footer/Footer";
 import { Container } from "@mui/system";
 
-const Layout = ({ children }) => {
+const Layout = ({ header, children }) => {
     //const matches = useMediaQuery("(min-width:600px)", { color: 'red', });
     //const lgDown = useMediaQuery(theme.breakpoints.down('lg'));
 
@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
         <Box
             sx={{ minWidth: '400px' }}
         >
-            <Header />
+            {header}
             <main>
                 <Container sx={{ mb: 5 }}>
                     {children}

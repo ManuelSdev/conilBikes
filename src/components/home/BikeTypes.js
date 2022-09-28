@@ -15,7 +15,12 @@ const BikeTypes = () => {
             <Stack
                 alignItems='center'
                 spacing={2}
+            >   <Button
+                href="/patron"
+                variant="contained"
             >
+                    administración
+                </Button>
                 <Button
                     href="/bookings"
                     variant="contained"

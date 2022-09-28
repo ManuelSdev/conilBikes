@@ -4,6 +4,7 @@ import { createWrapper } from 'next-redux-wrapper'
 import { setupListeners } from '@reduxjs/toolkit/query'
 import { baseApi } from './services/baseApi'
 import bookingFormReducer from './bookingFormSlice'
+import drawerReducer from './drawerSlice'
 
 //import counterReducer from './counterSlice'
 /*
@@ -22,6 +23,7 @@ const makeStore = () =>
             drawer: drawerSlice,
 */
             // counter: counterReducer,
+            drawer: drawerReducer,
             bookingForm: bookingFormReducer,
             [baseApi.reducerPath]: baseApi.reducer,
         },
