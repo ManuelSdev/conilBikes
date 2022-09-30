@@ -3,6 +3,7 @@ import Bike from '../../models/Bike'
 import Booking from '../../models/Booking'
 import dbConnect from '../../lib/dbConnect'
 
+
 export async function createBooking(data) {
     await dbConnect()
     console.log('DATA createBooking api', data)
@@ -12,12 +13,51 @@ export async function createBooking(data) {
     console.log('savedBooking ############', savedBooking)
 
 }
+export async function getBooking(data) {
+
+    await dbConnect()
+    console.log('DATA getBooking api', data)
+    const { month } = data
+
+    const bookings = await Booking.find(
+        {
+            $expr: {
+                '$or': [
+                    { "$eq": [{ "$month": "$from" }, 9] },
+                    { "$eq": [{ "$month": "$to" }, 9] },
+                ]
+
+            }
+        }
+    )
+    console.log('newBooking ############', bookings)
+
+
+    console.log('yesssssssssssssss ############', data)
+    return bookings
+}
+
+const request = method => req => {
+    switch (method) {
+        case 'GET':
+            console.log('------------')
+            return getBooking(req.query)
+            break;
+        case 'POST':
+            return createBooking(req.body)
+            break;
+        default:
+            break;
+    }
+}
 
 export default async function handler(req, res) {
+    console.log('#########', req.method)
+    console.log('#########', request(req.method))
 
-    const data = req.body
+    //  const data = req.query
     try {
-        const result = await createBooking(data)
+        const result = await request(req.method)(req)
 
         res.status(201).json(result)
 

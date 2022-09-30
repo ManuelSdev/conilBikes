@@ -40,6 +40,7 @@ export const getBookingData = state => (
         address: state.bookingForm.address,
         phone: state.bookingForm.phone,
         price: state.bookingForm.price,
+        mail: state.bookingForm.mail,
 
     }
 )

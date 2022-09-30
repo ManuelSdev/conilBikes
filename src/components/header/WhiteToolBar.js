@@ -43,7 +43,10 @@ const WhiteToolBar = ({ handleChangeCollapsed, categories }) => {
                     justifyContent: 'space-between',
                 }}
             >
-                <IconButton onClick={handleOpenDrawer} >
+                <IconButton
+                    //      color='white'
+                    color="inherit"
+                    onClick={handleOpenDrawer} >
                     <GridViewIcon />
                 </IconButton>
 

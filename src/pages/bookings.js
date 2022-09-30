@@ -30,8 +30,9 @@ const BookingsPage = () => {
     const formIsActive = useSelector(getFormIsActive)
 
     const [bookingForms, setBookingForms] = useState([])
-
-
+    const a = new Date()
+    console.log(a.toISOString().slice(0, 10))
+    console.log(a)
     const handleAddBike = () => dispatch(setFormIsActive(true))
 
     const handleClick = () => {

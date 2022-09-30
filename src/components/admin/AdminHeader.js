@@ -13,13 +13,15 @@ import Link from "../elements/Link"
 import BlackToolbar from "../header/BlackToolbar"
 import WhiteToolBar from "../header/WhiteToolBar"
 
-const Header = () => {
+const AdminHeader = () => {
 
     return (
-        <AppBar className='appBar' position="sticky" sx={{ marginBottom: 7 }} >
+        <AppBar className='appBar' position="sticky"
+        // sx={{ marginBottom: 7 }}
+        >
 
             <WhiteToolBar></WhiteToolBar>
-        </AppBar>
+        </AppBar >
 
 
 
@@ -27,37 +29,6 @@ const Header = () => {
     )
 }
 
-export default Header
+export default AdminHeader
 
 
-/**
- *     <IconCorpName width='200' viewBox="0 0 100 100" > </IconCorpName>
- *   <img src='corpName.svg' alt="aaaa" />
- *         <Image
-                src={reactLogo}
-                alt="dddd main logo"
-                width={500}
-                height={500}
-            //layout='fill'
-            />
-   <CorpName
-                // width='200'
-                //viewBox="0 0 200 200"
-                fill='red'
-                //style={{ fill: "#FFFFFF" }}
-                // sx={{ style: { fill: "#FFFFFF" }, height: "100%", fontSize: 100 }}
-                sx={{
-                    // height: "100%",
-                    fontSize: 100
-                }}
-            />
-
-            <Image
-                src={bas}
-                alt="Corporation main logo"
-                //   width={500}
-                //  height={500}
-                layout='fill'
-            />
-             <img src={n} alt='dsjlhdlhls' />
- */

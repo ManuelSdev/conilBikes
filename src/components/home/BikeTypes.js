@@ -15,25 +15,19 @@ const BikeTypes = () => {
             <Stack
                 alignItems='center'
                 spacing={2}
-            >   <Button
-                href="/patron"
-                variant="contained"
             >
-                    administración
-                </Button>
-                <Button
-                    href="/bookings"
-                    variant="contained"
-                >
-                    RESERVAR
-                </Button>
+                <Link href="/patron">
+                    <Button variant="contained">administración</Button>
+                </Link>
+                <Link href="/bookings">
+                    <Button variant="contained">reservar</Button>
+                </Link>
+
                 {bikeLogos.map((arr, index) => {
                     const [type, url] = arr
                     return loading ?
                         <Skeleton key={index} variant="rectangular" width={210} height={118} />
                         :
-
-
                         <Link
                             href={`/type/${type}`}
                             key={type}
