@@ -18,11 +18,8 @@ export default function AdminPage() {
     return (
 
         <AdminLayout>
-
-
             <ContentCard>
                 <ContentCardHeader>Calendario de reservassss
-
 
                 </ContentCardHeader>
                 <ContentCardBody>

@@ -1,6 +1,7 @@
 
 import { PickersDay, pickersDayClasses } from '@mui/x-date-pickers';
 import { format, addYears, addDays } from 'date-fns'
+import isSameDay from 'date-fns/isSameDay';
 import { bookingDayColors } from '../../lib/utils/colors';
 
 
@@ -13,9 +14,10 @@ import { bookingDayColors } from '../../lib/utils/colors';
  */
 
 //https://stackoverflow.com/questions/69477377/mui-change-specific-day-color-in-datepicker
-const bookingPickersDay = (date, selectedDates, pickersDayProps) => {
+const bookingPickersDay = bookingDatesOnMonth => (date, selectedDates, pickersDayProps) => {
     // console.log(date)
     const { startDay, endDay, startEndDay } = bookingDayColors
+
     const nextDay = addDays(new Date(), 1)
     const today = new Date()
 
@@ -35,6 +37,20 @@ const bookingPickersDay = (date, selectedDates, pickersDayProps) => {
         { background: startEndDay, color: 'white' } : {}
     // { color: 'red' } : {}
     //console.log(date.toISOString().slice(0, 10))
+    console.log(date.getDay())
+    isSameDay
+    /*
+    const matchedStyles = bookingDatesOnMonth.reduce((acc, bookingDate) => {
+        const from = new Date(bookingDate.from)
+        const to = new Date(bookingDate.to)
+        if (isSameDay(date, from)) return { background: startDay, color: 'white' }
+        if (isSameDay(date, to)) return { background: endDay, color: 'white' }
+        //   if (isSameDay(date, from) && isSameDay(date, from)) return { background: startEndDay, color: 'white' }
+    },
+        {}
+    )
+*/
+
 
     return (
         <PickersDay
@@ -44,7 +60,7 @@ const bookingPickersDay = (date, selectedDates, pickersDayProps) => {
                 /**CUando queda seleccionado: primero pilla el color del hover por haberlo picado, pero
                  * si abres después el calendario, sale se aplica este
                  */
-                ...ob
+                // ...ob
                 // '&.MuiPickersDay-root.Mui-selected': { backgroundColor: "#ED1C24", color: 'blue' },
                 /**Cuando picas uno */
                 //  '&.MuiPickersDay-root:hover': { backgroundColor: "#FFC000", color: 'blue' },

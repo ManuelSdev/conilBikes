@@ -13,27 +13,28 @@ export async function createBooking(data) {
     console.log('savedBooking ############', savedBooking)
 
 }
-export async function getBooking(data) {
+export async function getBooking(dates) {
 
     await dbConnect()
-    console.log('DATA getBooking api', data)
-    const { month } = data
-
-    const bookings = await Booking.find(
-        {
-            $expr: {
-                '$or': [
-                    { "$eq": [{ "$month": "$from" }, 9] },
-                    { "$eq": [{ "$month": "$to" }, 9] },
-                ]
-
-            }
-        }
+    console.log('DATES getBooking api', dates)
+    const { from, to } = dates
+    const fromDate = new Date(from)
+    const toDate = new Date(to)
+    const bookings = await Booking.aggregate(
+        [
+            {
+                $match: {
+                    $or: [
+                        { from: { $gte: fromDate, $lt: toDate } },
+                        { to: { $gte: fromDate, $lt: toDate } }
+                    ]
+                }
+            },
+        ]
     )
     console.log('newBooking ############', bookings)
 
 
-    console.log('yesssssssssssssss ############', data)
     return bookings
 }
 
