@@ -20,9 +20,10 @@ export async function getBooking(dates) {
     const { from, to } = dates
     const fromDate = new Date(from)
     const toDate = new Date(to)
-    const bookings = await Booking.aggregate(
+    const matchedDays = await Booking.aggregate(
         [
             {
+                //Filtrado de los documentos que interesan
                 $match: {
                     $or: [
                         { from: { $gte: fromDate, $lt: toDate } },
@@ -30,12 +31,54 @@ export async function getBooking(dates) {
                     ]
                 }
             },
+            {
+                //Filtrado de los campos que necesitamos de cada documento...anular _id=>_id:0
+                $project: { from: 1, to: 1 }
+            },
+            {
+                $group: {
+                    _id: 'test',
+                    from: { $push: '$from' },
+                    to: { $push: '$to' }
+
+                }
+            },
+            {
+                $project: {
+                    _id: 0,
+                    startEndDates: {
+                        $setIntersection: [
+                            '$from', '$to'
+                        ]
+                    }
+                }
+            }
         ]
     )
-    console.log('newBooking ############', bookings)
+    const bookings = await Booking.aggregate(
+        [
+            {
+                //Filtrado de los documentos que interesan
+                $match: {
+                    $or: [
+                        { from: { $gte: fromDate, $lt: toDate } },
+                        { to: { $gte: fromDate, $lt: toDate } }
+                    ]
+                }
+            },
+            {
+                //Filtrado de los campos que necesitamos de cada documento...anular _id=>_id:0
+                $project: { from: 1, to: 1 }
+            },
+
+        ]
+    )
+    const [{ startEndDates }] = matchedDays
+    const result = { bookings, startEndDates }
+    console.log('newBooking ############', result)
 
 
-    return bookings
+    return result
 }
 
 const request = method => req => {
