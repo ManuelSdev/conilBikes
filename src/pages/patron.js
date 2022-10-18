@@ -5,11 +5,11 @@ import AdminLayout from '../components/layouts/AdminLayout'
 import AdDrawer from '../components/admin/AdDrawer'
 import StaticCalendar from '../components/admin/StaticCalendar'
 import ClientOnly from '../components/admin/ClientOnly'
-import ContentCard from '../components/elements/ContentCard'
-import ContentCardHeader from '../components/elements/ContentCardHeader'
-import ContentCardBody from '../components/elements/ContentCardBody'
+import ContentCard from '../components/contentCard/ContentCard'
+import ContentCardHeader from '../components/contentCard/ContentCardHeader'
+import ContentCardBody from '../components/contentCard/ContentCardBody'
 import CalendarCaptions from '../components/admin/CalendarCaptions'
-import ContentCardFooter from '../components/elements/ContentCardFooter'
+import ContentCardFooter from '../components/contentCard/ContentCardFooter'
 
 
 export default function AdminPage() {
