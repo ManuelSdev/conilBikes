@@ -3,8 +3,8 @@
 
 
 export const bookingDayColors = {
-    startDay: '#FF7F27 ',
-    endDay: '#00A2E8',
-    startEndDay: 'linear-gradient(90deg, #FF7F27 50%, #00A2E8 50%)'
+    startDay: '#60C5F1 ',
+    endDay: '#C785C8',
+    startEndDay: 'linear-gradient(90deg, #60C5F1 50%, #C785C8 50%)'
 }
 

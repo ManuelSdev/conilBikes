@@ -61,9 +61,18 @@ const bookingPickersDay = bookingDatesOnMonth => (date, selectedDates, pickersDa
         const from = new Date(bookingDate.from)
         const to = new Date(bookingDate.to)
         if (isSameDay(date, from)) {
-            return { background: startDay, color: 'white' }
+            return {
+                background: startDay,
+                color: 'white',
+                '&.MuiPickersDay-root.Mui-disabled': { color: 'white', },
+
+            }
         } else if (isSameDay(date, to)) {
-            return { background: endDay, color: 'white' }
+            return {
+                background: endDay,
+                color: 'white',
+                '&.MuiPickersDay-root.Mui-disabled': { color: 'white', },
+            }
         } else return acc
         //   if (isSameDay(date, from) && isSameDay(date, from)) return { background: startEndDay, color: 'white' }
     },
@@ -87,7 +96,7 @@ const bookingPickersDay = bookingDatesOnMonth => (date, selectedDates, pickersDa
                 /**Cuando picas uno */
                 //  '&.MuiPickersDay-root:hover': { backgroundColor: "#FFC000", color: 'blue' },
                 //'&.MuiPickersDay-root:not(.Mui-selected)': { backgroundColor: "#EDD3ED", color: 'blue' },
-                //'&.MuiPickersDay-root.MuiPickersDay-today': { backgroundColor: "#60C5F1", color: '#60C5F1' },
+                '&.MuiPickersDay-root.MuiPickersDay-today': { borderColor: '#FFC000', borderWidth: '2px' },
 
 
             }
