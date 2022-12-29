@@ -32,7 +32,7 @@ export async function getBooking(dates) {
                 }
             },
             {
-                //Filtrado de los campos que necesitamos de cada documento...anular _id=>_id:0
+                //Filtrado de los campos que necesitamos de cada documento...anulas el id con_id:0
                 $project: { from: 1, to: 1 }
             },
             {
@@ -73,6 +73,11 @@ export async function getBooking(dates) {
 
         ]
     )
+    console.log('------------------- ############', matchedDays)
+    //Si no coinciden fechas de inicio y fin de reserva, el $project...$intersection devuelve un array vacío como valor de matchedDays
+    //En ese caso, el primer elemento de array será undefined y puedo asignarle un objeto con el nullish coalescing assignment
+    matchedDays[0] ??= { startEndDates: [] }
+    console.log('++++++++++++++++++ ############', matchedDays)
     const [{ startEndDates }] = matchedDays
     const result = { bookings, startEndDates }
     console.log('newBooking ############', result)
@@ -106,7 +111,7 @@ export default async function handler(req, res) {
         res.status(201).json(result)
 
     } catch (err) {
-        console.log("ERROR POST CREATE BOOKING", err.message)
+        console.log("ERROR POST  BOOKING", err.message)
         res.status(500)
     }
 }

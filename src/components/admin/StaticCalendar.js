@@ -81,23 +81,23 @@ export default function StaticCalendar() {
     //con las fechas de las reservas del mes en formato ISO
 
     return (
-        <Link href='/'>
-            <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={esLocale}>
-                <StaticDatePicker
-                    displayStaticWrapperAs="desktop"
-                    //openTo="year"
-                    renderDay={handleRenderDay}
-                    loading={isLoading}
-                    renderLoading={() => <CircularProgress />}
-                    inputFormat="dd/MM/yyyy"
-                    value={value}
-                    onChange={handleChange}
-                    onMonthChange={handleMonthChange}
-                    renderInput={(params) => <TextField {...params} />}
-                    disabled
-                />
-            </LocalizationProvider>
-        </Link>
+
+        <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={esLocale}>
+            <StaticDatePicker
+                displayStaticWrapperAs="desktop"
+                //openTo="year"
+                renderDay={handleRenderDay}
+                loading={isLoading}
+                renderLoading={() => <CircularProgress />}
+                inputFormat="dd/MM/yyyy"
+                value={value}
+                onChange={handleChange}
+                onMonthChange={handleMonthChange}
+                renderInput={(params) => <TextField {...params} />}
+                disabled
+            />
+        </LocalizationProvider>
+
 
 
     );
