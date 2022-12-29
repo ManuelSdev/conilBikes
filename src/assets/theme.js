@@ -20,6 +20,7 @@ const theme = createTheme({
             md950: 950
         },
     },
+
     //Paleta de colores
     palette: {
 
@@ -48,6 +49,9 @@ const theme = createTheme({
             // This is green.A700 as hex.
             main: '#000000',
         },
+        reserve: {
+            main: 'red'
+        }
     },
     components: {
         MuiLocalizationProvider: {

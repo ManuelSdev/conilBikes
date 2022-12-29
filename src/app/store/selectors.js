@@ -1,6 +1,11 @@
 
 import { format, addYears, differenceInDays } from 'date-fns'
 
+
+// drawerSlice
+export const getDrawerState = state => state.drawer.isOpen
+
+// bookingFormSlice
 export const getFormIsActive = state => state.bookingForm.formIsActive
 
 export const getAddButton = state => state.bookingForm.addButton
@@ -35,6 +40,7 @@ export const getBookingData = state => (
         address: state.bookingForm.address,
         phone: state.bookingForm.phone,
         price: state.bookingForm.price,
+        mail: state.bookingForm.mail,
 
     }
 )

@@ -21,6 +21,7 @@ import DateSelect from "../components/booking/DateSelect";
 import { setAddButton, setAnotherForm, setFormIsActive } from "../app/store/bookingFormSlice";
 import { useEffect } from "react";
 import BookingStepper from '../components/booking/BookingStepper'
+import Header from "../components/header/Header";
 
 const BookingsPage = () => {
     const dispatch = useDispatch()
@@ -29,8 +30,9 @@ const BookingsPage = () => {
     const formIsActive = useSelector(getFormIsActive)
 
     const [bookingForms, setBookingForms] = useState([])
-
-
+    const a = new Date()
+    console.log(a.toISOString().slice(0, 10))
+    console.log(a)
     const handleAddBike = () => dispatch(setFormIsActive(true))
 
     const handleClick = () => {
@@ -43,7 +45,10 @@ const BookingsPage = () => {
         }, [amount]);
     */
     return (
-        <Layout>
+        <Layout
+            header={<Header />}
+        >
+
             <BookingStepper></BookingStepper>
         </Layout >
     )

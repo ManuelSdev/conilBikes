@@ -4,8 +4,9 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../header/Header";
 import Footer from "../footer/Footer";
 import { Container } from "@mui/system";
+import AdminHeader from "../admin/AdminHeader";
 
-const Layout = ({ header, children }) => {
+const AdminLayout = ({ header, children }) => {
     //const matches = useMediaQuery("(min-width:600px)", { color: 'red', });
     //const lgDown = useMediaQuery(theme.breakpoints.down('lg'));
 
@@ -20,9 +21,13 @@ const Layout = ({ header, children }) => {
                 // background: 'linear-gradient(90deg, blue, red)'
             }}
         >
-            {header}
+            <AdminHeader />
             <main>
-                <Container sx={{ mb: 5, backgroundColor: '#F4F6FD' }}>
+                <Container sx={{
+                    pt: 5,
+                    pb: 20,
+                    mb: 5, backgroundColor: '#F4F6FD'
+                }}>
                     {children}
                 </Container>
 
@@ -34,5 +39,5 @@ const Layout = ({ header, children }) => {
     )
 }
 
-export default Layout
+export default AdminLayout
 
