@@ -14,7 +14,7 @@ import { bookingDayColors } from '../../lib/utils/colors';
  */
 
 //https://stackoverflow.com/questions/69477377/mui-change-specific-day-color-in-datepicker
-const bookingPickersDay = bookingDatesOnMonth => (date, selectedDates, pickersDayProps) => {
+const BookingPickersDay = bookingDatesOnMonth => (date, selectedDates, pickersDayProps) => {
     //  console.log(date)
     const { startDay, endDay, startEndDay } = bookingDayColors
     const { bookings, startEndDates } = bookingDatesOnMonth
@@ -107,5 +107,5 @@ const bookingPickersDay = bookingDatesOnMonth => (date, selectedDates, pickersDa
 
 }
 
-export default bookingPickersDay
+export default BookingPickersDay
 

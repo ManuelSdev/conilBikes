@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
-import bookingPickersDay from '../booking/bookingPickersDay';
+import BookingPickersDay from '../booking/bookingPickersDay';
 import ContentCard from '../contentCard/ContentCard';
 import ContentCardBody from '../contentCard/ContentCardBody';
 import esLocale from 'date-fns/locale/es';
@@ -63,7 +63,7 @@ export default function StaticCalendar() {
 
     const handleRenderDay = (a, b, c) =>
         //console.log('handleRenderDay') ||
-        bookingPickersDay(bookingDatesOnMonth)(a, b, c)
+        BookingPickersDay(bookingDatesOnMonth)(a, b, c)
 
     const { data: bookingDatesOnMonth, isLoading, isSuccess, refetch, isFetching } = useGetBookingsQuery(
         dateRangeQuery(date),
