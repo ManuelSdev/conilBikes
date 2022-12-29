@@ -1,4 +1,4 @@
-
+/* eslint-disable react/display-name */
 import { PickersDay, pickersDayClasses } from '@mui/x-date-pickers';
 import { format, addYears, addDays } from 'date-fns'
 import isSameDay from 'date-fns/isSameDay';
