@@ -18,11 +18,10 @@ const bookingPickersDay = bookingDatesOnMonth => (date, selectedDates, pickersDa
     //  console.log(date)
     console.log('@@@@@@@@@@@', bookingDatesOnMonth)
     const { startDay, endDay, startEndDay } = bookingDayColors
-    // const { bookings, startEndDates } = bookingDatesOnMonth
-    const { startDates, endDates, startEndDates } = bookingDatesOnMonth
+    const { bookings, startEndDates } = bookingDatesOnMonth
 
     //     not(.Mui-selected)
-    const startEndStyles = startEndDates.reduce((acc, startEndDate) => {
+    const dualMatchedStyles = startEndDates.reduce((acc, startEndDate) => {
         const matchedDay = new Date(startEndDate)
         if (isSameDay(date, matchedDay)) {
             console.log('OK')
@@ -58,9 +57,10 @@ const bookingPickersDay = bookingDatesOnMonth => (date, selectedDates, pickersDa
         {}
     )
 
-    const startStyles = startDates.reduce((acc, startDate) => {
-        const from = new Date(startDate)
-        //const to = new Date(bookingDate.to)
+
+    const regularMatchedStyles = bookings.reduce((acc, bookingDate) => {
+        const from = new Date(bookingDate.from)
+        const to = new Date(bookingDate.to)
         if (isSameDay(date, from)) {
             return {
                 background: startDay,
@@ -68,16 +68,7 @@ const bookingPickersDay = bookingDatesOnMonth => (date, selectedDates, pickersDa
                 '&.MuiPickersDay-root.Mui-disabled': { color: 'white', },
 
             }
-        } else return acc
-        //   if (isSameDay(date, from) && isSameDay(date, from)) return { background: startEndDay, color: 'white' }
-    },
-        {}
-    )
-
-    const endStyles = endDates.reduce((acc, endDate) => {
-        //const from = new Date(bookingDate.from)
-        const to = new Date(endDate)
-        if (isSameDay(date, to)) {
+        } else if (isSameDay(date, to)) {
             return {
                 background: endDay,
                 color: 'white',
@@ -88,7 +79,6 @@ const bookingPickersDay = bookingDatesOnMonth => (date, selectedDates, pickersDa
     },
         {}
     )
-
 
     //console.log(matchedStyles)
 
@@ -101,9 +91,8 @@ const bookingPickersDay = bookingDatesOnMonth => (date, selectedDates, pickersDa
                  * si abres después el calendario, sale se aplica este
                  */
 
-                ...startStyles,
-                ...endStyles,
-                ...startEndStyles,
+                ...regularMatchedStyles,
+                ...dualMatchedStyles,
                 // '&.MuiPickersDay-root.Mui-selected': { backgroundColor: "#ED1C24", color: 'blue' },
                 /**Cuando picas uno */
                 //  '&.MuiPickersDay-root:hover': { backgroundColor: "#FFC000", color: 'blue' },

@@ -46,3 +46,5 @@ export const getBookingData = state => (
 )
 export const getBikes = state => state.bookingForm.bikes
 export const getNumberOfBikes = state => state.bookingForm.bikes.length
+
+export const getCalendarSelectedDay = state => state.bookingCalendar.selectedDay

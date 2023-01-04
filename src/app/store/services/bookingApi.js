@@ -4,7 +4,7 @@ import { baseApi } from "./baseApi";
 const bookingApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         getBookings: builder.query({
-            query: (filters) => `/booking?${filters}`,
+            query: (filters) => `/bookings/dates?${filters}`,
             // providesTags: ['User'],
         }),
         addBooking: builder.mutation({

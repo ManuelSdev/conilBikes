@@ -5,6 +5,7 @@ import { setupListeners } from '@reduxjs/toolkit/query'
 import { baseApi } from './services/baseApi'
 import bookingFormReducer from './bookingFormSlice'
 import drawerReducer from './drawerSlice'
+import bookingCalendarReducer from './bookingCalendarSlice'
 
 //import counterReducer from './counterSlice'
 /*
@@ -25,6 +26,7 @@ const makeStore = () =>
             // counter: counterReducer,
             drawer: drawerReducer,
             bookingForm: bookingFormReducer,
+            bookingCalendar: bookingCalendarReducer,
             [baseApi.reducerPath]: baseApi.reducer,
         },
         // Adding the api middleware enables caching, invalidation, polling,

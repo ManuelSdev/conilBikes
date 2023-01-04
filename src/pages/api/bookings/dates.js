@@ -1,7 +1,7 @@
 
-import Bike from '../../models/Bike'
-import Booking from '../../models/Booking'
-import dbConnect from '../../lib/dbConnect'
+import Bike from '../../../models/Bike'
+import Booking from '../../../models/Booking'
+import dbConnect from '../../../lib/dbConnect'
 
 
 export async function createBooking(data) {
@@ -20,7 +20,7 @@ export async function getBooking(dates) {
     const { from, to } = dates
     const fromDate = new Date(from)
     const toDate = new Date(to)
-    const matchedDays = await Booking.aggregate(
+    const bookingDatesOnRange = await Booking.aggregate(
         [
             {
                 //Filtrado de los documentos que interesan
@@ -45,9 +45,9 @@ export async function getBooking(dates) {
             },
             {
                 $project: {
-                    //    _id: 1,
-                    from: 1,
-                    to: 1,
+                    _id: 0,
+                    startDates: '$from',
+                    endDates: '$to',
                     startEndDates: {
                         $setIntersection: [
                             '$from', '$to'
@@ -75,15 +75,16 @@ export async function getBooking(dates) {
 
         ]
     )
-    console.log('------------------- ############', matchedDays)
+    console.log('------------------- ############', bookingDatesOnRange)
     console.log('++++++++++++++++++ ############', bookings)
     //Si no coinciden fechas de inicio y fin de reserva, el $project...$intersection devuelve un array vacío como valor de matchedDays
     //En ese caso, el primer elemento de array será undefined y puedo asignarle un objeto con el nullish coalescing assignment
-    matchedDays[0] ??= { startEndDates: [] }
+    //bookingDatesOnRange[0] ??= { startEndDates: [] }
 
-    const [{ startEndDates }] = matchedDays
-    const result = { bookings, startEndDates }
-    console.log('newBooking ############', result)
+    const [{ startEndDates }] = bookingDatesOnRange
+    //const result = { bookings, startEndDates }
+    const [result] = bookingDatesOnRange
+    console.log('newBooking ############', bookingDatesOnRange)
 
 
     return result

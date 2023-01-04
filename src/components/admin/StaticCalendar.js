@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
-import BookingPickersDay from '../booking/bookingPickersDay';
+import bookingPickersDay from '../booking/bookingPickersDay';
 import ContentCard from '../contentCard/ContentCard';
 import ContentCardBody from '../contentCard/ContentCardBody';
 import esLocale from 'date-fns/locale/es';
@@ -14,9 +14,11 @@ import { addMonths, set } from 'date-fns';
 import { Box } from '@mui/system';
 import { CircularProgress } from '@mui/material';
 import Link from '../elements/Link';
-
+import { selectDay } from '../../app/store/bookingCalendarSlice';
+import { useDispatch } from 'react-redux';
 
 export default function StaticCalendar() {
+    const dispatch = useDispatch()
     //  console.log('RENDER STATIC CALENDAR')
     //Obtiene el primer día del mes del mes actual que muestra por defecto el calendario
     //Este es el mismo formato que pasa onMonthChange
@@ -58,12 +60,14 @@ export default function StaticCalendar() {
     }
     // console.log('cambiaDate', date)
     const handleChange = newValue => {
+        console.log("ssssssssss", newValue)
+        dispatch(selectDay(newValue.toISOString()))
         setValue(newValue);
     }
 
     const handleRenderDay = (a, b, c) =>
         //console.log('handleRenderDay') ||
-        BookingPickersDay(bookingDatesOnMonth)(a, b, c)
+        bookingPickersDay(bookingDatesOnMonth)(a, b, c)
 
     const { data: bookingDatesOnMonth, isLoading, isSuccess, refetch, isFetching } = useGetBookingsQuery(
         dateRangeQuery(date),
@@ -94,7 +98,7 @@ export default function StaticCalendar() {
                 onChange={handleChange}
                 onMonthChange={handleMonthChange}
                 renderInput={(params) => <TextField {...params} />}
-                disabled
+            //disabled
             />
         </LocalizationProvider>
 

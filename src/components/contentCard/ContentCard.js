@@ -17,9 +17,6 @@ export default function ContentCard({ children }) {
                 // backgroundColor: 'red',
                 //  pt: 2, pr: 1, pb: 2, pl: 1,
                 p: 2,
-
-
-
             }}
         >
             {children}

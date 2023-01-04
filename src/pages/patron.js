@@ -10,6 +10,7 @@ import ContentCardHeader from '../components/contentCard/ContentCardHeader'
 import ContentCardBody from '../components/contentCard/ContentCardBody'
 import CalendarCaptions from '../components/admin/CalendarCaptions'
 import ContentCardFooter from '../components/contentCard/ContentCardFooter'
+import SelectedDayInfo from '../components/admin/bookingsCalendar/SelectedDayInfo'
 
 
 export default function AdminPage() {
@@ -20,13 +21,13 @@ export default function AdminPage() {
         <AdminLayout>
             <ContentCard>
                 <ContentCardHeader>Calendario de reservas
-
                 </ContentCardHeader>
                 <ContentCardBody>
+                    <CalendarCaptions />
                     <ClientOnly>
                         <StaticCalendar />
                     </ClientOnly>
-                    <CalendarCaptions />
+                    <SelectedDayInfo />
                 </ContentCardBody>
 
             </ContentCard>
