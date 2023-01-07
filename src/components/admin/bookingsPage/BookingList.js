@@ -11,9 +11,14 @@ import SendIcon from "@mui/icons-material/Send";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import StarBorder from "@mui/icons-material/StarBorder";
-
+import CircleIcon from "@mui/icons-material/Circle";
+import {bookingDayColors} from "../../../lib/utils/colors";
+import {Typography} from "@mui/material";
+import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+import StoreIcon from "@mui/icons-material/Store";
 export default function BookingsList() {
   const [open, setOpen] = React.useState(true);
+  const {startDay, endDay} = bookingDayColors;
 
   const handleClick = () => {
     setOpen(!open);
@@ -21,6 +26,7 @@ export default function BookingsList() {
 
   return (
     <List
+      //   disablePadding
       sx={{width: "100%", maxWidth: 360, bgcolor: "background.paper"}}
       component="nav"
       aria-labelledby="nested-list-subheader"
@@ -33,42 +39,60 @@ export default function BookingsList() {
         </ListSubheader>
       }
     >
-      <ListItemButton>
-        <ListItemIcon>
-          <SendIcon />
-        </ListItemIcon>
-        <ListItemText primary="Sent mail" />
-      </ListItemButton>
-      <ListItemButton>
-        <ListItemIcon>
-          <DraftsIcon />
-        </ListItemIcon>
-        <ListItemText primary="Drafts" />
-      </ListItemButton>
       <ListItemButton onClick={handleClick}>
         <ListItemIcon>
-          <InboxIcon />
+          <CircleIcon sx={{color: startDay}} />
         </ListItemIcon>
-        <ListItemText primary="Inbox" />
-        {open ? <ExpandLess /> : <ExpandMore />}
+        <ListItemText primary="Empiezan" />
+        <Typography>ss</Typography>
       </ListItemButton>
-      <Collapse
-        in={open}
-        timeout="auto"
-        unmountOnExit
+
+      <List
+        component="div"
+        disablePadding
       >
-        <List
-          component="div"
-          disablePadding
-        >
-          <ListItemButton sx={{pl: 4}}>
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <ListItemText primary="Starred" />
-          </ListItemButton>
-        </List>
-      </Collapse>
+        <ListItemButton sx={{pl: 4, pt: 0}}>
+          <ListItemIcon>
+            <LocalShippingIcon sx={{color: startDay}} />
+          </ListItemIcon>
+          <ListItemText primary="Entregas a domicilio" />
+          <Typography>ss</Typography>
+        </ListItemButton>
+        <ListItemButton sx={{pl: 4, pt: 0}}>
+          <ListItemIcon>
+            <StoreIcon sx={{color: startDay}} />
+          </ListItemIcon>
+          <ListItemText primary="Entregas en tienda" />
+          <Typography>ss</Typography>
+        </ListItemButton>
+      </List>
+
+      <ListItemButton onClick={handleClick}>
+        <ListItemIcon>
+          <CircleIcon sx={{color: endDay}} />
+        </ListItemIcon>
+        <ListItemText primary="Finalizan" />
+        <Typography>ss</Typography>
+      </ListItemButton>
+      <List
+        component="div"
+        disablePadding
+      >
+        <ListItemButton sx={{pl: 4, pt: 0}}>
+          <ListItemIcon>
+            <LocalShippingIcon sx={{color: endDay}} />
+          </ListItemIcon>
+          <ListItemText primary="Recogidas a domicilio" />
+          <Typography>ss</Typography>
+        </ListItemButton>
+        <ListItemButton sx={{pl: 4, pt: 0}}>
+          <ListItemIcon>
+            <StoreIcon sx={{color: endDay}} />
+          </ListItemIcon>
+          <ListItemText primary="Recogidas en tienda" />
+          <Typography>ss</Typography>
+        </ListItemButton>
+      </List>
     </List>
   );
 }

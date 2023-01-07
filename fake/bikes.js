@@ -23,9 +23,9 @@ export const bikess = [
   {
     brand: "Kross",
     model: "SPARK RC SL EVO AXS",
-    size: "L",
+    size: "l",
     type: "city",
-    range: "mid range",
+    range: "midRange",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -41,7 +41,7 @@ export const bikess = [
     model: "SPARK RC SL EVO AXS",
     size: "xxl",
     type: "road",
-    range: "high end",
+    range: "highEnd",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -73,7 +73,7 @@ export const bikess = [
   {
     brand: "Specialized",
     model: "S-Works Enduro",
-    size: "S",
+    size: "s",
     type: "mountain",
     range: "premium",
     price: 10,
@@ -88,7 +88,7 @@ export const bikess = [
   {
     brand: "Specialized",
     model: "S-Works Enduro",
-    size: "L",
+    size: "l",
     type: "mountain",
     range: "premium",
     price: 10,
@@ -103,7 +103,7 @@ export const bikess = [
   {
     brand: "Specialized",
     model: "Turbo Levo Comp",
-    size: "M",
+    size: "m",
     type: "mountain",
     range: "premium",
     price: 10,
@@ -118,9 +118,9 @@ export const bikess = [
   {
     brand: "Specialized",
     model: "Kenevo Comp",
-    size: "L",
+    size: "l",
     type: "mountain",
-    range: "high end",
+    range: "highEnd",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -133,9 +133,9 @@ export const bikess = [
   {
     brand: "Specialized",
     model: "Rockhopper Sport 29",
-    size: "M",
+    size: "m",
     type: "mountain",
-    range: "mid range",
+    range: "midRange",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -148,9 +148,9 @@ export const bikess = [
   {
     brand: "Specialized",
     model: "Chisel",
-    size: "L",
+    size: "l",
     type: "mountain",
-    range: "mid range",
+    range: "midRange",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -163,9 +163,9 @@ export const bikess = [
   {
     brand: "Specialized",
     model: "SPARK RC SL EVO AXS",
-    size: "L",
+    size: "l",
     type: "mountain",
-    range: "high end",
+    range: "highEnd",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -179,7 +179,7 @@ export const bikess = [
   {
     brand: "Scott",
     model: "S-Works Enduro",
-    size: "S",
+    size: "s",
     type: "mountain",
     range: "premium",
     price: 10,
@@ -194,7 +194,7 @@ export const bikess = [
   {
     brand: "Scott",
     model: "S-Works Enduro",
-    size: "L",
+    size: "l",
     type: "mountain",
     range: "premium",
     price: 10,
@@ -209,7 +209,7 @@ export const bikess = [
   {
     brand: "Scott",
     model: "Turbo Levo Comp",
-    size: "M",
+    size: "m",
     type: "mountain",
     range: "premium",
     price: 10,
@@ -224,9 +224,9 @@ export const bikess = [
   {
     brand: "Scott",
     model: "Kenevo Comp",
-    size: "L",
+    size: "l",
     type: "mountain",
-    range: "high end",
+    range: "highEnd",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -239,9 +239,9 @@ export const bikess = [
   {
     brand: "Scott",
     model: "Rockhopper Sport 29",
-    size: "M",
+    size: "m",
     type: "mountain",
-    range: "mid range",
+    range: "midRange",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -254,9 +254,9 @@ export const bikess = [
   {
     brand: "Scott",
     model: "Chisel",
-    size: "L",
+    size: "l",
     type: "mountain",
-    range: "high end",
+    range: "highEnd",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -270,9 +270,9 @@ export const bikess = [
   {
     brand: "Scott",
     model: "SPARK RC SL EVO AXS",
-    size: "L",
+    size: "l",
     type: "mountain",
-    range: "mid range",
+    range: "midRange",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -286,9 +286,9 @@ export const bikess = [
   {
     brand: "Kross",
     model: "SPARK RC SL EVO AXS",
-    size: "L",
+    size: "l",
     type: "mountain",
-    range: "mid range",
+    range: "midRange",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -302,7 +302,7 @@ export const bikess = [
   {
     brand: "Kross",
     model: "S-Works Enduro",
-    size: "S",
+    size: "s",
     type: "mountain",
     range: "premium",
     price: 10,
@@ -317,7 +317,7 @@ export const bikess = [
   {
     brand: "Kross",
     model: "S-Works Enduro",
-    size: "L",
+    size: "l",
     type: "mountain",
     range: "premium",
     price: 10,
@@ -332,7 +332,7 @@ export const bikess = [
   {
     brand: "Kross",
     model: "Turbo Levo Comp",
-    size: "M",
+    size: "m",
     type: "mountain",
     range: "premium",
     price: 10,
@@ -347,9 +347,9 @@ export const bikess = [
   {
     brand: "Kross",
     model: "Kenevo Comp",
-    size: "L",
+    size: "l",
     type: "mountain",
-    range: "high end",
+    range: "highEnd",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -362,9 +362,9 @@ export const bikess = [
   {
     brand: "Kross",
     model: "Rockhopper Sport 29",
-    size: "M",
+    size: "m",
     type: "mountain",
-    range: "mid range",
+    range: "midRange",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -377,9 +377,9 @@ export const bikess = [
   {
     brand: "Kross",
     model: "Chisel",
-    size: "L",
+    size: "l",
     type: "mountain",
-    range: "high end",
+    range: "highEnd",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -392,9 +392,9 @@ export const bikess = [
   {
     brand: "Kross",
     model: "SPARK RC SL EVO AXS",
-    size: "L",
+    size: "l",
     type: "mountain",
-    range: "mid range",
+    range: "midRange",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -408,7 +408,7 @@ export const bikess = [
   {
     brand: "Specialized",
     model: "S-Works Enduro",
-    size: "S",
+    size: "s",
     type: "city",
     range: "premium",
     price: 10,
@@ -423,7 +423,7 @@ export const bikess = [
   {
     brand: "Specialized",
     model: "S-Works Enduro",
-    size: "L",
+    size: "l",
     type: "city",
     range: "premium",
     price: 10,
@@ -438,7 +438,7 @@ export const bikess = [
   {
     brand: "Specialized",
     model: "Turbo Levo Comp",
-    size: "M",
+    size: "m",
     type: "city",
     range: "premium",
     price: 10,
@@ -453,9 +453,9 @@ export const bikess = [
   {
     brand: "Specialized",
     model: "Kenevo Comp",
-    size: "L",
+    size: "l",
     type: "city",
-    range: "high end",
+    range: "highEnd",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -468,9 +468,9 @@ export const bikess = [
   {
     brand: "Specialized",
     model: "Rockhopper Sport 29",
-    size: "M",
+    size: "m",
     type: "city",
-    range: "mid range",
+    range: "midRange",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -483,9 +483,9 @@ export const bikess = [
   {
     brand: "Specialized",
     model: "Chisel",
-    size: "L",
+    size: "l",
     type: "city",
-    range: "high end",
+    range: "highEnd",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -498,9 +498,9 @@ export const bikess = [
   {
     brand: "Specialized",
     model: "SPARK RC SL EVO AXS",
-    size: "L",
+    size: "l",
     type: "city",
-    range: "mid range",
+    range: "midRange",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -514,7 +514,7 @@ export const bikess = [
   {
     brand: "Scott",
     model: "S-Works Enduro",
-    size: "S",
+    size: "s",
     type: "city",
     range: "premium",
     price: 10,
@@ -529,7 +529,7 @@ export const bikess = [
   {
     brand: "Scott",
     model: "S-Works Enduro",
-    size: "L",
+    size: "l",
     type: "city",
     range: "premium",
     price: 10,
@@ -544,7 +544,7 @@ export const bikess = [
   {
     brand: "Scott",
     model: "Turbo Levo Comp",
-    size: "M",
+    size: "m",
     type: "city",
     range: "premium",
     price: 10,
@@ -559,9 +559,9 @@ export const bikess = [
   {
     brand: "Scott",
     model: "Kenevo Comp",
-    size: "L",
+    size: "l",
     type: "city",
-    range: "high end",
+    range: "highEnd",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -574,9 +574,9 @@ export const bikess = [
   {
     brand: "Scott",
     model: "Rockhopper Sport 29",
-    size: "M",
+    size: "m",
     type: "city",
-    range: "mid range",
+    range: "midRange",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -589,9 +589,9 @@ export const bikess = [
   {
     brand: "Scott",
     model: "Chisel",
-    size: "L",
+    size: "l",
     type: "city",
-    range: "high end",
+    range: "highEnd",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -604,9 +604,9 @@ export const bikess = [
   {
     brand: "Scott",
     model: "SPARK RC SL EVO AXS",
-    size: "L",
+    size: "l",
     type: "city",
-    range: "mid range",
+    range: "midRange",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -620,7 +620,7 @@ export const bikess = [
   {
     brand: "Kross",
     model: "S-Works Enduro",
-    size: "S",
+    size: "s",
     type: "city",
     range: "premium",
     price: 10,
@@ -635,7 +635,7 @@ export const bikess = [
   {
     brand: "Kross",
     model: "S-Works Enduro",
-    size: "L",
+    size: "l",
     type: "city",
     range: "premium",
     price: 10,
@@ -650,7 +650,7 @@ export const bikess = [
   {
     brand: "Kross",
     model: "Turbo Levo Comp",
-    size: "M",
+    size: "m",
     type: "city",
     range: "premium",
     price: 10,
@@ -665,9 +665,9 @@ export const bikess = [
   {
     brand: "Kross",
     model: "Kenevo Comp",
-    size: "L",
+    size: "l",
     type: "city",
-    range: "high end",
+    range: "highEnd",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -680,9 +680,9 @@ export const bikess = [
   {
     brand: "Kross",
     model: "Rockhopper Sport 29",
-    size: "M",
+    size: "m",
     type: "city",
-    range: "mid range",
+    range: "midRange",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -695,9 +695,9 @@ export const bikess = [
   {
     brand: "Kross",
     model: "Chisel",
-    size: "L",
+    size: "l",
     type: "city",
-    range: "high end",
+    range: "highEnd",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -710,9 +710,9 @@ export const bikess = [
   {
     brand: "Kross",
     model: "SPARK RC SL EVO AXS",
-    size: "L",
+    size: "l",
     type: "city",
-    range: "mid range",
+    range: "midRange",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -726,7 +726,7 @@ export const bikess = [
   {
     brand: "Specialized",
     model: "S-Works Enduro",
-    size: "S",
+    size: "s",
     type: "electric",
     range: "premium",
     price: 10,
@@ -741,7 +741,7 @@ export const bikess = [
   {
     brand: "Specialized",
     model: "S-Works Enduro",
-    size: "L",
+    size: "l",
     type: "electric",
     range: "premium",
     price: 10,
@@ -756,7 +756,7 @@ export const bikess = [
   {
     brand: "Specialized",
     model: "Turbo Levo Comp",
-    size: "M",
+    size: "m",
     type: "electric",
     range: "premium",
     price: 10,
@@ -771,9 +771,9 @@ export const bikess = [
   {
     brand: "Specialized",
     model: "Kenevo Comp",
-    size: "L",
+    size: "l",
     type: "electric",
-    range: "high end",
+    range: "highEnd",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -786,9 +786,9 @@ export const bikess = [
   {
     brand: "Specialized",
     model: "Rockhopper Sport 29",
-    size: "M",
+    size: "m",
     type: "electric",
-    range: "mid range",
+    range: "midRange",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -801,9 +801,9 @@ export const bikess = [
   {
     brand: "Specialized",
     model: "Chisel",
-    size: "L",
+    size: "l",
     type: "electric",
-    range: "high end",
+    range: "highEnd",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -816,9 +816,9 @@ export const bikess = [
   {
     brand: "Specialized",
     model: "SPARK RC SL EVO AXS",
-    size: "L",
+    size: "l",
     type: "electric",
-    range: "mid range",
+    range: "midRange",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -832,7 +832,7 @@ export const bikess = [
   {
     brand: "Scott",
     model: "S-Works Enduro",
-    size: "S",
+    size: "s",
     type: "electric",
     range: "premium",
     price: 10,
@@ -847,7 +847,7 @@ export const bikess = [
   {
     brand: "Scott",
     model: "S-Works Enduro",
-    size: "L",
+    size: "l",
     type: "electric",
     range: "premium",
     price: 10,
@@ -862,7 +862,7 @@ export const bikess = [
   {
     brand: "Scott",
     model: "Turbo Levo Comp",
-    size: "M",
+    size: "m",
     type: "electric",
     range: "premium",
     price: 10,
@@ -877,9 +877,9 @@ export const bikess = [
   {
     brand: "Scott",
     model: "Kenevo Comp",
-    size: "L",
+    size: "l",
     type: "electric",
-    range: "high end",
+    range: "highEnd",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -892,9 +892,9 @@ export const bikess = [
   {
     brand: "Scott",
     model: "Rockhopper Sport 29",
-    size: "M",
+    size: "m",
     type: "electric",
-    range: "mid range",
+    range: "midRange",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -907,9 +907,9 @@ export const bikess = [
   {
     brand: "Scott",
     model: "Chisel",
-    size: "L",
+    size: "l",
     type: "electric",
-    range: "high end",
+    range: "highEnd",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -922,9 +922,9 @@ export const bikess = [
   {
     brand: "Scott",
     model: "SPARK RC SL EVO AXS",
-    size: "L",
+    size: "l",
     type: "electric",
-    range: "mid range",
+    range: "midRange",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -938,7 +938,7 @@ export const bikess = [
   {
     brand: "Kross",
     model: "S-Works Enduro",
-    size: "S",
+    size: "s",
     type: "electric",
     range: "premium",
     price: 10,
@@ -953,7 +953,7 @@ export const bikess = [
   {
     brand: "Kross",
     model: "S-Works Enduro",
-    size: "L",
+    size: "l",
     type: "electric",
     range: "premium",
     price: 10,
@@ -968,7 +968,7 @@ export const bikess = [
   {
     brand: "Kross",
     model: "Turbo Levo Comp",
-    size: "M",
+    size: "m",
     type: "electric",
     range: "premium",
     price: 10,
@@ -983,9 +983,9 @@ export const bikess = [
   {
     brand: "Kross",
     model: "Kenevo Comp",
-    size: "L",
+    size: "l",
     type: "electric",
-    range: "high end",
+    range: "highEnd",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -998,9 +998,9 @@ export const bikess = [
   {
     brand: "Kross",
     model: "Rockhopper Sport 29",
-    size: "M",
+    size: "m",
     type: "electric",
-    range: "mid range",
+    range: "midRange",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -1013,9 +1013,9 @@ export const bikess = [
   {
     brand: "Kross",
     model: "Chisel",
-    size: "L",
+    size: "l",
     type: "electric",
-    range: "high end",
+    range: "highEnd",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -1028,9 +1028,9 @@ export const bikess = [
   {
     brand: "Kross",
     model: "SPARK RC SL EVO AXS",
-    size: "L",
+    size: "l",
     type: "electric",
-    range: "mid range",
+    range: "midRange",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -1044,7 +1044,7 @@ export const bikess = [
   {
     brand: "Specialized",
     model: "S-Works Enduro",
-    size: "S",
+    size: "s",
     type: "road",
     range: "premium",
     price: 10,
@@ -1059,7 +1059,7 @@ export const bikess = [
   {
     brand: "Specialized",
     model: "S-Works Enduro",
-    size: "L",
+    size: "l",
     type: "road",
     range: "premium",
     price: 10,
@@ -1074,7 +1074,7 @@ export const bikess = [
   {
     brand: "Specialized",
     model: "Turbo Levo Comp",
-    size: "M",
+    size: "m",
     type: "road",
     range: "premium",
     price: 10,
@@ -1089,9 +1089,9 @@ export const bikess = [
   {
     brand: "Specialized",
     model: "Kenevo Comp",
-    size: "L",
+    size: "l",
     type: "road",
-    range: "mid range",
+    range: "midRange",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -1104,9 +1104,9 @@ export const bikess = [
   {
     brand: "Specialized",
     model: "Rockhopper Sport 29",
-    size: "M",
+    size: "m",
     type: "road",
-    range: "mid range",
+    range: "midRange",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -1119,9 +1119,9 @@ export const bikess = [
   {
     brand: "Specialized",
     model: "Chisel",
-    size: "L",
+    size: "l",
     type: "road",
-    range: "high end",
+    range: "highEnd",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -1134,9 +1134,9 @@ export const bikess = [
   {
     brand: "Specialized",
     model: "SPARK RC SL EVO AXS",
-    size: "L",
+    size: "l",
     type: "road",
-    range: "mid range",
+    range: "midRange",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -1150,7 +1150,7 @@ export const bikess = [
   {
     brand: "Scott",
     model: "S-Works Enduro",
-    size: "S",
+    size: "s",
     type: "road",
     range: "premium",
     price: 10,
@@ -1165,7 +1165,7 @@ export const bikess = [
   {
     brand: "Scott",
     model: "S-Works Enduro",
-    size: "L",
+    size: "l",
     type: "road",
     range: "premium",
     price: 10,
@@ -1180,7 +1180,7 @@ export const bikess = [
   {
     brand: "Scott",
     model: "Turbo Levo Comp",
-    size: "M",
+    size: "m",
     type: "road",
     range: "premium",
     price: 10,
@@ -1195,9 +1195,9 @@ export const bikess = [
   {
     brand: "Scott",
     model: "Kenevo Comp",
-    size: "L",
+    size: "l",
     type: "road",
-    range: "mid range",
+    range: "midRange",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -1210,9 +1210,9 @@ export const bikess = [
   {
     brand: "Scott",
     model: "Rockhopper Sport 29",
-    size: "M",
+    size: "m",
     type: "road",
-    range: "mid range",
+    range: "midRange",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -1225,9 +1225,9 @@ export const bikess = [
   {
     brand: "Scott",
     model: "Chisel",
-    size: "L",
+    size: "l",
     type: "road",
-    range: "high end",
+    range: "highEnd",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -1240,9 +1240,9 @@ export const bikess = [
   {
     brand: "Scott",
     model: "SPARK RC SL EVO AXS",
-    size: "L",
+    size: "l",
     type: "road",
-    range: "mid range",
+    range: "midRange",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -1256,7 +1256,7 @@ export const bikess = [
   {
     brand: "Kross",
     model: "S-Works Enduro",
-    size: "S",
+    size: "s",
     type: "road",
     range: "premium",
     price: 10,
@@ -1271,7 +1271,7 @@ export const bikess = [
   {
     brand: "Kross",
     model: "S-Works Enduro",
-    size: "L",
+    size: "l",
     type: "road",
     range: "premium",
     price: 10,
@@ -1286,7 +1286,7 @@ export const bikess = [
   {
     brand: "Kross",
     model: "Turbo Levo Comp",
-    size: "M",
+    size: "m",
     type: "road",
     range: "premium",
     price: 10,
@@ -1301,9 +1301,9 @@ export const bikess = [
   {
     brand: "Kross",
     model: "Kenevo Comp",
-    size: "L",
+    size: "l",
     type: "road",
-    range: "mid range",
+    range: "midRange",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -1316,9 +1316,9 @@ export const bikess = [
   {
     brand: "Kross",
     model: "Rockhopper Sport 29",
-    size: "M",
+    size: "m",
     type: "road",
-    range: "mid range",
+    range: "midRange",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -1331,9 +1331,9 @@ export const bikess = [
   {
     brand: "Kross",
     model: "Chisel",
-    size: "L",
+    size: "l",
     type: "road",
-    range: "high end",
+    range: "highEnd",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
@@ -1346,9 +1346,9 @@ export const bikess = [
   {
     brand: "Kross",
     model: "SPARK RC SL EVO AXS",
-    size: "L",
+    size: "l",
     type: "road",
-    range: "mid range",
+    range: "midRange",
     price: 10,
     specs: ["spec1", "spec2"],
     description:
