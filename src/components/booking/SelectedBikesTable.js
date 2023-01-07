@@ -15,12 +15,7 @@ import {Button, Grid, Stack} from "@mui/material";
 import {useSelector} from "react-redux";
 import {getBikes} from "../../app/store/selectors";
 import Image from "next/image";
-import {
-  rangesMap,
-  typesMap,
-  BIKE_TYPES_MAP,
-  BIKE_RANGES_MAP,
-} from "../../lib/utils/detailsMaps";
+import {BIKE_TYPES_MAP, BIKE_RANGES_MAP} from "../../lib/utils/detailsMaps";
 
 const divStyle = {
   backgroundColor: "red",

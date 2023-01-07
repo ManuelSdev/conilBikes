@@ -16,6 +16,7 @@ const bookingSchema = new mongoose.Schema(
     completed: Boolean,
     state: {
       type: String,
+      default: "pending",
       enum: {
         values: [...Object.keys(BOOKING_STATES_MAP)],
         message:
