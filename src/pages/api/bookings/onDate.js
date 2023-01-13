@@ -28,7 +28,7 @@ export async function getBookings(date) {
         from: "bikes",
         localField: "bikes",
         foreignField: "_id",
-        as: "bicis",
+        as: "bikesFullData",
       },
     },
     /**
@@ -84,8 +84,11 @@ export async function getBookings(date) {
                 from: "$from",
                 to: "$to",
                 price: "$price",
-                bicis: "$bicis",
+                homeDelivery: "$homeDelivery",
+                homePickup: "$homePickup",
+                bikes: "$bikesFullData",
               },
+              //Si no cumple condición, se elimina y no añade nada al array
               "$$REMOVE",
             ],
           },
@@ -103,7 +106,9 @@ export async function getBookings(date) {
                 from: "$from",
                 to: "$to",
                 price: "$price",
-                bicis: "$bicis",
+                homeDelivery: "$homeDelivery",
+                homePickup: "$homePickup",
+                bikes: "$bikesFullData",
               },
               "$$REMOVE",
             ],
@@ -123,7 +128,9 @@ export async function getBookings(date) {
           from: 1,
           to: 1,
           price: 1,
-          bicis: {
+          homeDelivery: 1,
+          homePickup: 1,
+          bikes: {
             brand: 1,
             model: 1,
             size: 1,
@@ -139,7 +146,9 @@ export async function getBookings(date) {
           from: 1,
           to: 1,
           price: 1,
-          bicis: {
+          homeDelivery: 1,
+          homePickup: 1,
+          bikes: {
             brand: 1,
             model: 1,
             size: 1,

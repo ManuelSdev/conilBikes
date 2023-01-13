@@ -15,8 +15,8 @@ export const typesMap = [
 
 export const rangesMap = [
   ["premium", "premium"],
-  ["high end", "alta"],
-  ["mid range", "media"],
+  ["highEnd", "alta"],
+  ["midRange", "media"],
 ];
 
 export const BIKE_SIZES_MAP = {
@@ -51,3 +51,9 @@ export const BIKE_STATES_MAP = {
   inRepair: "en reparación",
   avaiable: "disponible",
 };
+
+export const EVENTS_MAP = {
+  start_booking: "Empiezan",
+};
+
+export const varNameToString = (variable) => Object.keys({variable}[0]);

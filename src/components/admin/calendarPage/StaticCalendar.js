@@ -7,13 +7,19 @@ import bookingPickersDay from "../../booking/bookingPickersDay";
 import ContentCard from "../../contentCard/ContentCard";
 import ContentCardBody from "../../contentCard/ContentCardBody";
 import esLocale from "date-fns/locale/es";
-import {useGetBookingsOnRangeQuery} from "../../../app/store/services/bookingApi";
+import {
+  useGetBookingsOnRangeQuery,
+  useLazyGetBookingsOnDateQuery,
+} from "../../../app/store/services/bookingApi";
 import format from "date-fns/format";
 import {addMonths, set} from "date-fns";
 import {Box} from "@mui/system";
 import {CircularProgress} from "@mui/material";
 import Link from "../../elements/Link";
-import {selectDay} from "../../../app/store/bookingCalendarSlice";
+import {
+  setBookings,
+  setSelectedDay,
+} from "../../../app/store/bookingCalendarSlice";
 import {useDispatch} from "react-redux";
 import {useRouter} from "next/router";
 
@@ -62,11 +68,20 @@ export default function StaticCalendar() {
     setDate(newDate);
   };
   // console.log('cambiaDate', date)
-  const handleChange = (newValue) => {
+  //const [trigger, { isLoading, isError, data, error }, lastPromiseInfo] = useLazyGetBookingsOnDateQuery();
+  const [trigger, result, lastPromiseInfo] = useLazyGetBookingsOnDateQuery();
+  const handleChange = async (newValue) => {
     console.log("ssssssssss", newValue);
-    dispatch(selectDay(newValue.toISOString()));
+
+    const {data, isLoading, isError, error} = await trigger(
+      newValue.toISOString(),
+    );
+
+    dispatch(setBookings(data));
+    console.log("#######-----@@@", data);
     setValue(newValue);
-    router.push(`/admin/bookings/${newValue.toISOString()}`);
+    router.push(`/admin/calendar/${newValue.toISOString()}`);
+    dispatch(setSelectedDay(newValue.toISOString()));
   };
 
   const handleRenderDay = (a, b, c) =>

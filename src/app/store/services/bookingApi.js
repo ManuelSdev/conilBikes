@@ -30,5 +30,6 @@ const bookingApi = baseApi.injectEndpoints({
 export const {
   useGetBookingsOnRangeQuery,
   useGetBookingsOnDateQuery,
+  useLazyGetBookingsOnDateQuery,
   useAddBookingMutation,
 } = bookingApi;

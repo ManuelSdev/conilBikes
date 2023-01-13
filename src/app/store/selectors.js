@@ -47,3 +47,10 @@ export const getNumberOfBikes = (state) => state.bookingForm.bikes.length;
 
 export const getCalendarSelectedDay = (state) =>
   state.bookingCalendar.selectedDay;
+
+export const getCalendarBookingsOnDate = (state) => {
+  return {
+    bookingsStarting: state.bookingCalendar.bookingsStarting,
+    bookingsEnding: state.bookingCalendar.bookingsEnding,
+  };
+};
