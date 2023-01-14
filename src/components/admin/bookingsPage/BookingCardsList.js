@@ -88,7 +88,10 @@ export default function BookingCardsList() {
   ) : filter ? (
     <Stack spacing={2}>
       {targetBookings.map((booking) => (
-        <BookingResumeCard booking={booking} />
+        <BookingResumeCard
+          key={booking._id}
+          booking={booking}
+        />
       ))}
     </Stack>
   ) : (
