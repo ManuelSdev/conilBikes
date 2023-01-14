@@ -6,6 +6,7 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Link from "../../elements/Link";
+import {useRouter} from "next/router";
 
 export default function BookingResumeCard({booking}) {
   console.log(booking);
@@ -47,8 +48,8 @@ export default function BookingResumeCard({booking}) {
             gutterBottom
           >
             {bikes.length === 1
-              ? `${bikes.length} bicicleta para entregar`
-              : `${bikes.length} bicicletas para entregar`}
+              ? `${bikes.length} bicicleta`
+              : `${bikes.length} bicicletas`}
           </Typography>
         </CardContent>
       </Card>

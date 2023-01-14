@@ -1,6 +1,4 @@
-import React from "react";
 import {useGetBookingsOnDateQuery} from "../app/store/services/bookingApi";
-import {BOOKING_STATES_MAP} from "../lib/utils/detailsMaps";
 
 const useBookingsOnDate = (date) => {
   const {

@@ -6,7 +6,7 @@ import ContentCardHeader from "../../../../../components/contentCard/ContentCard
 import ContentCardBody from "../../../../../components/contentCard/ContentCardBody";
 
 import {useRouter} from "next/router";
-import BookingsList from "../../../../../components/admin/bookingsPage/BookingsList";
+import BookingDetails from "../../../../../components/admin/bookingsPage/BookingDetails";
 
 export default function BookingsListPage() {
   const router = useRouter();
@@ -16,7 +16,7 @@ export default function BookingsListPage() {
       <ContentCard>
         <ContentCardHeader>Detalles de reserva</ContentCardHeader>
         <ContentCardBody>
-          <BookingsList />
+          <BookingDetails />
         </ContentCardBody>
       </ContentCard>
 

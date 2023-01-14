@@ -32,7 +32,7 @@ import {
   PENDING,
 } from "../../../lib/utils/appConsts";
 
-export default function BookingsList() {
+export default function BookingCardsList() {
   const router = useRouter();
   const {date, filter} = router.query;
   const composedFilter = (constA, constB) => `${constA}-${constB}`;
@@ -50,7 +50,7 @@ export default function BookingsList() {
     isLoading,
   } = useBookingsOnDate(date);
 
-  const setTargetBookings = () => {
+  const getTargetBookings = () => {
     if (filter === START)
       return [...startingBookings.home, ...startingBookings.store];
     if (filter === composedFilter(START, DONE))
@@ -76,7 +76,7 @@ export default function BookingsList() {
     if (filter === composedFilter(STORE, PENDING))
       return getStorePendingBookings();
   };
-  const targetBookings = setTargetBookings();
+  const targetBookings = getTargetBookings();
   console.log("oooooooooooooo", targetBookings);
   const {startDay, endDay} = bookingDayColors;
 
