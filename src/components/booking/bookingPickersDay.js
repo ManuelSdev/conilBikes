@@ -81,10 +81,25 @@ const bookingPickersDay =
     }, {});
 
     //console.log(matchedStyles)
-
+    //Pone disabled los días que no hay reservas
+    const modPickersDayProps = () => {
+      const fromDays = startDates.filter((startDate) =>
+        isSameDay(date, new Date(startDate)),
+      );
+      const toDays = endDates.filter((endDate) =>
+        isSameDay(date, new Date(endDate)),
+      );
+      //  console.log("++++++++++", f);
+      //   console.log("----------", t);
+      if (fromDays.length !== 0 || toDays.length !== 0) {
+        return {...pickersDayProps};
+      } else return {...pickersDayProps, disabled: true};
+    };
+    //console.log(modPickersDayProps());
     return (
       <PickersDay
         {...pickersDayProps}
+        {...modPickersDayProps()}
         // day={nextDay}
         sx={{
           /**CUando queda seleccionado: primero pilla el color del hover por haberlo picado, pero
