@@ -54,3 +54,5 @@ export const getCalendarBookingsOnDate = (state) => {
     bookingsEnding: state.bookingCalendar.bookingsEnding,
   };
 };
+
+export const getCurrentBooking = (state) => state.currentBooking;

@@ -31,6 +31,8 @@ import {
   DONE,
   PENDING,
 } from "../../../lib/utils/appConsts";
+import {useDispatch} from "react-redux";
+import {setCurrentBooking} from "../../../app/store/currentBookingSlice";
 
 export default function BookingCardsList() {
   const router = useRouter();
@@ -81,7 +83,11 @@ export default function BookingCardsList() {
   const {startDay, endDay} = bookingDayColors;
 
   //console.log("***************", bookingsStarting);
-  const handleClick = () => router.push("/admin/date/bookings-list");
+  const handleClick = (e) => {
+    console.log(e);
+    dispatch(setCurrentBooking(booking));
+    router.push("/admin/booking/details");
+  };
 
   return isLoading ? (
     <CircularProgress />
@@ -89,6 +95,7 @@ export default function BookingCardsList() {
     <Stack spacing={2}>
       {targetBookings.map((booking) => (
         <BookingResumeCard
+          //    onClick={handleClick}
           key={booking._id}
           booking={booking}
         />

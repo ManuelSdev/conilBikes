@@ -7,52 +7,62 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Link from "../../elements/Link";
 import {useRouter} from "next/router";
+import {useDispatch} from "react-redux";
+import {setCurrentBooking} from "../../../app/store/currentBookingSlice";
 
 export default function BookingResumeCard({booking}) {
   console.log(booking);
-
+  const router = useRouter();
+  const dispatch = useDispatch();
   const {name, surname, phone, address, bikes} = booking;
   console.log("oooooooooooooo", bikes.length);
   console.log("vvvvvvvvvvvvvv", bikes.length === 1);
-  return (
-    <Link href="/">
-      <Card sx={{minWidth: 275}}>
-        <CardContent sx={{paddingBottom: 0}}>
-          <Typography
-            variant="subtitle1"
-            component="div"
-          >
-            {`${name} `}
-          </Typography>
-          <Typography
-            // sx={{fontSize: 14}}
-            variant="subtitle1"
-            color="text.secondary"
-            gutterBottom
-          >
-            {address}
-          </Typography>
-          <Typography
-            //sx={{fontSize: 14}}
-            variant="subtitle2"
-            color="text.secondary"
-            gutterBottom
-          >
-            {phone}
-          </Typography>
 
-          <Typography
-            //sx={{fontSize: 14}}
-            variant="subtitle2"
-            color="text.secondary"
-            gutterBottom
-          >
-            {bikes.length === 1
-              ? `${bikes.length} bicicleta`
-              : `${bikes.length} bicicletas`}
-          </Typography>
-        </CardContent>
-      </Card>
-    </Link>
+  const handleClick = () => {
+    console.log(booking);
+    dispatch(setCurrentBooking(booking));
+    router.push("/admin/booking/details");
+  };
+  return (
+    <Card
+      onClick={handleClick}
+      sx={{minWidth: 275}}
+    >
+      <CardContent sx={{paddingBottom: 0}}>
+        <Typography
+          variant="subtitle1"
+          component="div"
+        >
+          {`${name} `}
+        </Typography>
+        <Typography
+          // sx={{fontSize: 14}}
+          variant="subtitle1"
+          color="text.secondary"
+          gutterBottom
+        >
+          {address}
+        </Typography>
+        <Typography
+          //sx={{fontSize: 14}}
+          variant="subtitle2"
+          color="text.secondary"
+          gutterBottom
+        >
+          {phone}
+        </Typography>
+
+        <Typography
+          //sx={{fontSize: 14}}
+          variant="subtitle2"
+          color="text.secondary"
+          gutterBottom
+        >
+          {bikes.length === 1
+            ? `${bikes.length} bicicleta`
+            : `${bikes.length} bicicletas`}
+        </Typography>
+      </CardContent>
+    </Card>
   );
 }
