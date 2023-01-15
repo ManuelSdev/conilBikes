@@ -87,6 +87,7 @@ export async function getBookings(date) {
                 homeDelivery: "$homeDelivery",
                 homePickup: "$homePickup",
                 bikes: "$bikesFullData",
+                state: "$state",
               },
               //Si no cumple condición, se elimina y no añade nada al array
               "$$REMOVE",
@@ -109,6 +110,7 @@ export async function getBookings(date) {
                 homeDelivery: "$homeDelivery",
                 homePickup: "$homePickup",
                 bikes: "$bikesFullData",
+                state: "$state",
               },
               "$$REMOVE",
             ],
@@ -130,6 +132,7 @@ export async function getBookings(date) {
           price: 1,
           homeDelivery: 1,
           homePickup: 1,
+          state: 1,
           bikes: {
             brand: 1,
             model: 1,
@@ -148,6 +151,7 @@ export async function getBookings(date) {
           price: 1,
           homeDelivery: 1,
           homePickup: 1,
+          state: 1,
           bikes: {
             brand: 1,
             model: 1,

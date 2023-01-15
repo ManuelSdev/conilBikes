@@ -10,6 +10,7 @@ import InboxIcon from "@mui/icons-material/Inbox";
 import DraftsIcon from "@mui/icons-material/Drafts";
 import {useSelector} from "react-redux";
 import {getCurrentBooking} from "../../../app/store/selectors";
+import {BOOKING_STATES_MAP} from "../../../lib/utils/detailsMaps";
 
 const BookingDetails = () => {
   console.log("=============", new Date().valueOf());
@@ -27,6 +28,12 @@ const BookingDetails = () => {
     homeDelivery,
     homePickup,
   } = booking;
+
+  const modBookingState =
+    BOOKING_STATES_MAP[state].charAt(0).toUpperCase() +
+    BOOKING_STATES_MAP[state].slice(1);
+  const modBookingPrice = price + "€";
+  console.log(BOOKING_STATES_MAP[state]);
   const listStructure = [
     ["Nombre", name],
     ["Correo eléctronico", mail],
@@ -34,8 +41,8 @@ const BookingDetails = () => {
     ["Dirección", address],
     ["Desde", from],
     ["Hasta", to],
-    ["Importe total", price],
-    ["Estado", state],
+    ["Importe total", modBookingPrice],
+    ["Estado", modBookingState],
     ["Entrega de bicicletas", homeDelivery ? "A domicilio" : "En tienda"],
     ["Devolución de bicicletas", homePickup ? "A domicilio" : "En tienda"],
   ];

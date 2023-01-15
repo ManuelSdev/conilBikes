@@ -79,7 +79,7 @@ export default function BookingCardsList() {
       return getStorePendingBookings();
   };
   const targetBookings = getTargetBookings();
-  console.log("oooooooooooooo", targetBookings);
+
   const {startDay, endDay} = bookingDayColors;
 
   //console.log("***************", bookingsStarting);
@@ -93,13 +93,16 @@ export default function BookingCardsList() {
     <CircularProgress />
   ) : filter ? (
     <Stack spacing={2}>
-      {targetBookings.map((booking) => (
-        <BookingResumeCard
-          //    onClick={handleClick}
-          key={booking._id}
-          booking={booking}
-        />
-      ))}
+      {targetBookings.map(
+        (booking) =>
+          console.log("oooooooooooooo", booking) || (
+            <BookingResumeCard
+              //    onClick={handleClick}
+              key={booking._id}
+              booking={booking}
+            />
+          ),
+      )}
     </Stack>
   ) : (
     <CircularProgress />

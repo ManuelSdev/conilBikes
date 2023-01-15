@@ -11,6 +11,7 @@ const initialState = {
   homeDelivery: false,
   homePickup: false,
   price: 0,
+  state: "",
   _id: "",
 };
 
