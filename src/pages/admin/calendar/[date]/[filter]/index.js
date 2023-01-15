@@ -15,6 +15,7 @@ import {
   START,
   STORE,
 } from "../../../../../lib/utils/appConsts";
+import {Typography} from "@mui/material";
 
 export default function BookingsListPage() {
   const router = useRouter();
@@ -44,12 +45,9 @@ export default function BookingsListPage() {
   console.log(filter);
   return (
     <AdminLayout>
-      <ContentCard>
-        <ContentCardHeader>{getTargetBookings()}</ContentCardHeader>
-        <ContentCardBody>
-          <BookingCardsList />
-        </ContentCardBody>
-      </ContentCard>
+      <Typography>{getTargetBookings()}</Typography>
+
+      <BookingCardsList />
 
       <AdDrawer />
     </AdminLayout>

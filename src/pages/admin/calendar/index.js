@@ -10,20 +10,17 @@ import ContentCardBody from "../../../components/contentCard/ContentCardBody";
 import CalendarCaptions from "../../../components/admin/calendarPage/CalendarCaptions";
 import ContentCardFooter from "../../../components/contentCard/ContentCardFooter";
 import SelectedDayInfo from "../../../components/admin/calendarPage/SelectedDayInfo";
+import {Typography} from "@mui/material";
 
 export default function CalendarPage() {
   return (
     <AdminLayout>
-      <ContentCard>
-        <ContentCardHeader>Calendario de reservas</ContentCardHeader>
-        <ContentCardBody>
-          <CalendarCaptions />
-          <ClientOnly>
-            <StaticCalendar />
-          </ClientOnly>
-          <SelectedDayInfo />
-        </ContentCardBody>
-      </ContentCard>
+      <Typography>Calendario de reservas</Typography>
+      <CalendarCaptions />
+      <ClientOnly>
+        <StaticCalendar />
+      </ClientOnly>
+      <SelectedDayInfo />
 
       <AdDrawer />
     </AdminLayout>

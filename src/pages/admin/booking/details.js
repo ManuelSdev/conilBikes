@@ -1,3 +1,4 @@
+import {Typography} from "@mui/material";
 import {useRouter} from "next/router";
 import AdDrawer from "../../../components/admin/AdDrawer";
 import BookingDetails from "../../../components/admin/bookingsPage/BookingDetails";
@@ -11,12 +12,8 @@ export default function BookingDetailsPage() {
 
   return (
     <AdminLayout>
-      <ContentCard>
-        <ContentCardHeader>Detalles de reserva</ContentCardHeader>
-        <ContentCardBody>
-          <BookingDetails />
-        </ContentCardBody>
-      </ContentCard>
+      <Typography>Detalles de reserva</Typography>
+      <BookingDetails />
 
       <AdDrawer />
     </AdminLayout>

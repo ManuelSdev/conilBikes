@@ -11,6 +11,7 @@ import DraftsIcon from "@mui/icons-material/Drafts";
 import {useSelector} from "react-redux";
 import {getCurrentBooking} from "../../../app/store/selectors";
 import {BOOKING_STATES_MAP} from "../../../lib/utils/detailsMaps";
+import {CircularProgress} from "@mui/material";
 
 const BookingDetails = () => {
   console.log("=============", new Date().valueOf());
@@ -46,7 +47,7 @@ const BookingDetails = () => {
     ["Entrega de bicicletas", homeDelivery ? "A domicilio" : "En tienda"],
     ["Devolución de bicicletas", homePickup ? "A domicilio" : "En tienda"],
   ];
-  return (
+  return booking ? (
     <List dense>
       {listStructure.map((pair, index) => {
         const [title, info] = pair;
@@ -71,6 +72,8 @@ const BookingDetails = () => {
         );
       })}
     </List>
+  ) : (
+    <CircularProgress />
   );
 };
 
