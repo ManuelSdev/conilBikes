@@ -30,10 +30,10 @@ const BookingDetails = () => {
     homePickup,
   } = booking;
 
-  const modBookingState = booking
-    ? BOOKING_STATES_MAP[state].charAt(0).toUpperCase() +
-      BOOKING_STATES_MAP[state].slice(1)
-    : "loading";
+  const modBookingState =
+    BOOKING_STATES_MAP[state]?.charAt(0).toUpperCase() +
+    BOOKING_STATES_MAP[state]?.slice(1);
+
   const modBookingPrice = price + "€";
   console.log(BOOKING_STATES_MAP[state]);
   const listStructure = [
