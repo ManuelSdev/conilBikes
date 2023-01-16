@@ -36,8 +36,8 @@ import {setCurrentBooking} from "../../../app/store/currentBookingSlice";
 
 export default function BookingCardsList() {
   const router = useRouter();
-  const {date, filter} = router.query;
-  const composedFilter = (constA, constB) => `${constA}-${constB}`;
+  const {date, type} = router.query;
+  const composedType = (constA, constB) => `${constA}-${constB}`;
   const {
     startingBookings,
     endingBookings,
@@ -53,45 +53,35 @@ export default function BookingCardsList() {
   } = useBookingsOnDate(date);
 
   const getTargetBookings = () => {
-    if (filter === START)
+    if (type === START)
       return [...startingBookings.home, ...startingBookings.store];
-    if (filter === composedFilter(START, DONE))
-      return getStartingDoneBookings();
-    if (filter === composedFilter(START, PENDING))
+    if (type === composedType(START, DONE)) return getStartingDoneBookings();
+    if (type === composedType(START, PENDING))
       return getStartingPendingBookings();
 
-    if (filter === END)
-      return [...endingBookings.home, ...endingBookings.store];
-    if (filter === composedFilter(END, DONE)) return getEndingDoneBookings();
-    if (filter === composedFilter(END, PENDING))
-      return getEndingPendingBookings();
+    if (type === END) return [...endingBookings.home, ...endingBookings.store];
+    if (type === composedType(END, DONE)) return getEndingDoneBookings();
+    if (type === composedType(END, PENDING)) return getEndingPendingBookings();
 
-    if (filter === HOME)
+    if (type === HOME)
       return [...startingBookings.home, ...endingBookings.home];
-    if (filter === composedFilter(HOME, DONE)) return getHomeDoneBookings();
-    if (filter === composedFilter(HOME, PENDING))
-      return getHomePendingBookings();
+    if (type === composedType(HOME, DONE)) return getHomeDoneBookings();
+    if (type === composedType(HOME, PENDING)) return getHomePendingBookings();
 
-    if (filter === STORE)
+    if (type === STORE)
       return [...startingBookings.store, ...endingBookings.store];
-    if (filter === composedFilter(STORE, DONE)) return getStoreDoneBookings();
-    if (filter === composedFilter(STORE, PENDING))
-      return getStorePendingBookings();
+    if (type === composedType(STORE, DONE)) return getStoreDoneBookings();
+    if (type === composedType(STORE, PENDING)) return getStorePendingBookings();
   };
   const targetBookings = getTargetBookings();
 
   const {startDay, endDay} = bookingDayColors;
 
   //console.log("***************", bookingsStarting);
-  const handleClick = (e) => {
-    console.log(e);
-    dispatch(setCurrentBooking(booking));
-    router.push("/admin/booking/details");
-  };
 
   return isLoading ? (
     <CircularProgress />
-  ) : filter ? (
+  ) : type ? (
     <Stack spacing={2}>
       {targetBookings.map(
         (booking) =>

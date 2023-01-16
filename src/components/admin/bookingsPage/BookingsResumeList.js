@@ -44,9 +44,11 @@ export default function BookingsResumeList() {
     getStorePendingBookings,
     isLoading,
   } = useBookingsOnDate(date);
+
   console.log("---------------", getEndingPendingBookings());
-  const handleClick = (filter) => () =>
-    router.push(`/admin/calendar/${date}/${filter}`);
+
+  const handleClick = (type) => () =>
+    router.push(`/admin/bookings/${date}/${type}`);
 
   const listBlocks = [
     {

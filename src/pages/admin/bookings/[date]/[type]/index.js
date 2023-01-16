@@ -19,30 +19,28 @@ import {Typography} from "@mui/material";
 
 export default function BookingsListPage() {
   const router = useRouter();
-  const {filter} = router.query;
-  const composedFilter = (constA, constB) => `${constA}-${constB}`;
+  const {type} = router.query;
+  const composedtype = (constA, constB) => `${constA}-${constB}`;
 
   const getTargetBookings = () => {
-    if (filter === START) return "Reservas que empiezan";
-    if (filter === composedFilter(START, DONE)) return "Inicios completados";
-    if (filter === composedFilter(START, PENDING)) return "Inicios pendientes";
+    if (type === START) return "Reservas que empiezan";
+    if (type === composedtype(START, DONE)) return "Inicios completados";
+    if (type === composedtype(START, PENDING)) return "Inicios pendientes";
 
-    if (filter === END) return "Reservas que finalizan";
-    if (filter === composedFilter(END, DONE)) return "Cierres completados";
-    if (filter === composedFilter(END, PENDING)) return "Cierres pendientes";
+    if (type === END) return "Reservas que finalizan";
+    if (type === composedtype(END, DONE)) return "Cierres completados";
+    if (type === composedtype(END, PENDING)) return "Cierres pendientes";
 
-    if (filter === HOME) return "Desplazamientos";
-    if (filter === composedFilter(HOME, DONE))
-      return "Desplazamientos completados";
-    if (filter === composedFilter(HOME, PENDING))
+    if (type === HOME) return "Desplazamientos";
+    if (type === composedtype(HOME, DONE)) return "Desplazamientos completados";
+    if (type === composedtype(HOME, PENDING))
       return "Desplazamientos pendientes";
 
-    if (filter === STORE) return "En tienda";
-    if (filter === composedFilter(STORE, DONE)) return "En tienda completados";
-    if (filter === composedFilter(STORE, PENDING))
-      return "En tienda pendientes";
+    if (type === STORE) return "En tienda";
+    if (type === composedtype(STORE, DONE)) return "En tienda completados";
+    if (type === composedtype(STORE, PENDING)) return "En tienda pendientes";
   };
-  console.log(filter);
+  console.log(type);
   return (
     <AdminLayout subsectionTitle={getTargetBookings()}>
       <BookingCardsList />

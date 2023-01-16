@@ -14,8 +14,7 @@ import {Typography} from "@mui/material";
 
 export default function CalendarPage() {
   return (
-    <AdminLayout>
-      <Typography>Calendario de reservas</Typography>
+    <AdminLayout sectionTitle={"Calendario de reservas"}>
       <CalendarCaptions />
       <ClientOnly>
         <StaticCalendar />

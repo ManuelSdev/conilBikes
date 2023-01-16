@@ -2,8 +2,14 @@ import {baseApi} from "./baseApi";
 
 const bookingApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
+    getBooking: builder.query({
+      query: (id) =>
+        console.log("IDDDDDDDDDDDDDDDDDDDDDDD", id) || `/bookings/${id}`,
+      // providesTags: ['User'],
+    }),
     getBookingsOnDate: builder.query({
-      query: (date) => `/bookings/onDate?date=${date}`,
+      query: (date) =>
+        console.log("DATEEEEEEEE", date) || `/bookings/onDate?date=${date}`,
       // providesTags: ['User'],
     }),
     getBookingsOnRange: builder.query({
@@ -28,6 +34,7 @@ const bookingApi = baseApi.injectEndpoints({
 });
 
 export const {
+  useGetBookingQuery,
   useGetBookingsOnRangeQuery,
   useGetBookingsOnDateQuery,
   useLazyGetBookingsOnDateQuery,

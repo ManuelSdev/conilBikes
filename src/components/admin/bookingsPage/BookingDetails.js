@@ -12,10 +12,20 @@ import {useSelector} from "react-redux";
 import {getCurrentBooking} from "../../../app/store/selectors";
 import {BOOKING_STATES_MAP} from "../../../lib/utils/detailsMaps";
 import {CircularProgress} from "@mui/material";
+import {useRouter} from "next/router";
+import {useGetBookingQuery} from "../../../app/store/services/bookingApi";
 
-const BookingDetails = () => {
-  console.log("=============", new Date().valueOf());
-  const booking = useSelector(getCurrentBooking);
+const BookingDetails = ({booking}) => {
+  const router = useRouter();
+  // const {id} = router.query;
+  //console.log("++++++++----------", id);
+  //const {data, idLoading, isSuccess} = useGetBookingQuery(id);
+  // if (!booking) return <div>MIERDA</div>;
+  console.log("=============", booking);
+
+  //const [booking, setBooking] = React.useState({});
+  //isSuccess && setBooking({...data});
+  //const booking = useSelector(getCurrentBooking);
   const {
     name,
     mail,
@@ -35,7 +45,7 @@ const BookingDetails = () => {
     BOOKING_STATES_MAP[state]?.slice(1);
 
   const modBookingPrice = price + "€";
-  console.log(BOOKING_STATES_MAP[state]);
+
   const listStructure = [
     ["Nombre", name],
     ["Correo eléctronico", mail],
@@ -48,33 +58,34 @@ const BookingDetails = () => {
     ["Entrega de bicicletas", homeDelivery ? "A domicilio" : "En tienda"],
     ["Devolución de bicicletas", homePickup ? "A domicilio" : "En tienda"],
   ];
-  return booking ? (
-    <List dense>
-      {listStructure.map((pair, index) => {
-        const [title, info] = pair;
-        return (
-          <ListItem
-            key={index}
-            disablePadding
-          >
-            <ListItemText
-              primaryTypographyProps={{
-                variant: "body2",
-                sx: {color: "rgba(0, 0, 0, 0.6)"},
-              }}
-              secondaryTypographyProps={{
-                variant: "body1",
-                sx: {color: "black"},
-              }}
-              primary={title}
-              secondary={info}
-            />
-          </ListItem>
-        );
-      })}
-    </List>
-  ) : (
-    <CircularProgress />
+
+  return (
+    <Box>
+      <List dense>
+        {listStructure.map((pair, index) => {
+          const [title, info] = pair;
+          return (
+            <ListItem
+              key={index}
+              disablePadding
+            >
+              <ListItemText
+                primaryTypographyProps={{
+                  variant: "body2",
+                  sx: {color: "rgba(0, 0, 0, 0.6)"},
+                }}
+                secondaryTypographyProps={{
+                  variant: "body1",
+                  sx: {color: "black"},
+                }}
+                primary={title}
+                secondary={info}
+              />
+            </ListItem>
+          );
+        })}
+      </List>
+    </Box>
   );
 };
 

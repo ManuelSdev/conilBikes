@@ -80,7 +80,7 @@ export default function StaticCalendar() {
     dispatch(setBookings(data));
     console.log("#######-----@@@", data);
     setValue(newValue);
-    router.push(`/admin/calendar/${newValue.toISOString()}`);
+    router.push(`/admin/bookings/${newValue.toISOString()}`);
     dispatch(setSelectedDay(newValue.toISOString()));
   };
 
@@ -108,23 +108,25 @@ export default function StaticCalendar() {
   //con las fechas de las reservas del mes en formato ISO
 
   return (
-    <LocalizationProvider
-      dateAdapter={AdapterDateFns}
-      adapterLocale={esLocale}
-    >
-      <StaticDatePicker
-        displayStaticWrapperAs="desktop"
-        //openTo="year"
-        renderDay={handleRenderDay}
-        loading={isLoading}
-        renderLoading={() => <CircularProgress />}
-        inputFormat="dd/MM/yyyy"
-        value={value}
-        onChange={handleChange}
-        onMonthChange={handleMonthChange}
-        renderInput={(params) => <TextField {...params} />}
-        //disabled
-      />
-    </LocalizationProvider>
+    <Box sx={{pb: 3}}>
+      <LocalizationProvider
+        dateAdapter={AdapterDateFns}
+        adapterLocale={esLocale}
+      >
+        <StaticDatePicker
+          displayStaticWrapperAs="desktop"
+          //openTo="year"
+          renderDay={handleRenderDay}
+          loading={isLoading}
+          renderLoading={() => <CircularProgress />}
+          inputFormat="dd/MM/yyyy"
+          value={value}
+          onChange={handleChange}
+          onMonthChange={handleMonthChange}
+          renderInput={(params) => <TextField {...params} />}
+          //disabled
+        />
+      </LocalizationProvider>
+    </Box>
   );
 }

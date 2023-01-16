@@ -10,7 +10,7 @@ export default function CalendarCaptions() {
   const {startDay, endDay, startEndDay} = bookingDayColors;
 
   return (
-    <Box sx={{pl: 5}}>
+    <Box sx={{pl: 5, pb: 3}}>
       <Box
         sx={{
           display: "flex",

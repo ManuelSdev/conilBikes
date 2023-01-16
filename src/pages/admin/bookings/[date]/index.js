@@ -7,7 +7,7 @@ import ContentCardBody from "../../../../components/contentCard/ContentCardBody"
 
 import BookingsResumeList from "../../../../components/admin/bookingsPage/BookingsResumeList";
 import {Typography} from "@mui/material";
-export default function BookingsPage() {
+export default function BookingsDayResumePage() {
   return (
     <AdminLayout subsectionTitle={"Lista de reservas"}>
       <BookingsResumeList />

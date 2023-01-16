@@ -21,7 +21,7 @@ export default function BookingResumeCard({booking}) {
   const handleClick = () => {
     console.log(booking);
     dispatch(setCurrentBooking(booking));
-    router.push("/admin/booking/details");
+    router.push(`/admin/bookings/booking-details/${booking._id}`);
   };
   return (
     <Card
