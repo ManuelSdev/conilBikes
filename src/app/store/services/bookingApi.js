@@ -3,22 +3,20 @@ import {baseApi} from "./baseApi";
 const bookingApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getBooking: builder.query({
-      query: (id) =>
-        console.log("IDDDDDDDDDDDDDDDDDDDDDDD", id) || `/bookings/${id}`,
-      // providesTags: ['User'],
+      query: (id) => `/bookings?_id=${id}`,
+      providesTags: ["Booking"],
     }),
     getBookingsOnDate: builder.query({
-      query: (date) =>
-        console.log("DATEEEEEEEE", date) || `/bookings/onDate?date=${date}`,
+      query: (date) => `/bookings/onDate?date=${date}`,
       // providesTags: ['User'],
     }),
-    getBookingsOnRange: builder.query({
-      query: (dateRange) => `/bookings/onDateRange?${dateRange}`,
+    getBookingDatesOnRange: builder.query({
+      query: (dateRange) => `/bookings/datesOnRange?${dateRange}`,
       // providesTags: ['User'],
     }),
     addBooking: builder.mutation({
       query: (data) => ({
-        url: "/booking",
+        url: "/bookings",
         method: "POST",
         /*
                 headers: {
@@ -30,13 +28,29 @@ const bookingApi = baseApi.injectEndpoints({
       }),
       // invalidatesTags: ['Orders'],
     }),
+    updateBooking: builder.mutation({
+      query: (data) => ({
+        url: "/bookings",
+        method: "PATCH",
+        /*
+                headers: {
+                    //'Accept': 'application/json',
+                    "Content-type": "application/json; charset=UTF-8"
+                },
+                */
+        body: data,
+      }),
+      invalidatesTags: ["Booking"],
+    }),
   }),
 });
 
 export const {
   useGetBookingQuery,
-  useGetBookingsOnRangeQuery,
+  useGetBookingDatesOnRangeQuery,
   useGetBookingsOnDateQuery,
   useLazyGetBookingsOnDateQuery,
   useAddBookingMutation,
+
+  useUpdateBookingMutation,
 } = bookingApi;

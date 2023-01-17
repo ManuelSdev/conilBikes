@@ -18,6 +18,14 @@ export async function getBooking(_id) {
   return booking;
 }
 
+export async function updateBooking(data) {
+  await dbConnect();
+  const {_id, state} = data;
+  console.log("[bookingId]************ modBooking api", data);
+
+  const [booking] = await Booking.find({_id, state});
+  return booking;
+}
 const request = (req) => {
   switch (req.method) {
     case "GET":
@@ -26,6 +34,9 @@ const request = (req) => {
       return getBooking(bookingId);
       break;
     case "POST":
+      return createBooking(req.body);
+      break;
+    case "PATCH":
       return createBooking(req.body);
       break;
     default:
@@ -43,7 +54,7 @@ export default async function handler(req, res) {
 
     res.status(201).json(result);
   } catch (err) {
-    console.log("ERROR POST  BOOKING", err.message);
+    console.log("ERROR api/bookings/[bookingId].js  -----", err.message);
     res.status(500);
   }
 }

@@ -67,7 +67,6 @@ export default function AdDrawer() {
   });
 
   const toogleList = (sectionIndex) => (ev) => {
-    //  console.log(sectionName)
     setOpenList({
       0: false,
       1: false,

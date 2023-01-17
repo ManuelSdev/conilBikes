@@ -20,7 +20,6 @@ export const currentBookingSlice = createSlice({
   initialState,
   reducers: {
     setCurrentBooking: (state, action) => {
-      console.log(action.payload);
       return action.payload;
     },
   },

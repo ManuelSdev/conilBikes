@@ -1,4 +1,5 @@
 import {useGetBookingsOnDateQuery} from "../app/store/services/bookingApi";
+import {ACTIVE, CANCELLED, FINISHED, PENDING} from "../lib/utils/appConsts";
 
 const useBookingsOnDate = (date) => {
   const {
@@ -41,62 +42,62 @@ const useBookingsOnDate = (date) => {
 
   const getStartingDoneBookings = () =>
     [startingBookings.home, ...startingBookings.store].filter(
-      (booking) => booking.state === "active",
+      (booking) => booking.state === ACTIVE,
     );
 
   const getStartingPendingBookings = () =>
     [startingBookings.home, ...startingBookings.store].filter(
-      (booking) => booking.state === "pending",
+      (booking) => booking.state === PENDING,
     );
 
   const getEndingDoneBookings = () =>
     [endingBookings.home, ...endingBookings.store].filter(
-      (booking) => booking.state === "finished",
+      (booking) => booking.state === FINISHED,
     );
 
   const getEndingPendingBookings = () =>
     [endingBookings.home, ...endingBookings.store].filter(
-      (booking) => booking.state === "pending",
+      (booking) => booking.state === PENDING,
     );
 
   const getHomeDoneBookings = () => {
     const homeStartingDone = startingBookings.home.filter(
-      (booking) => booking.status === "active",
+      (booking) => booking.state === ACTIVE,
     );
     const homeEndingDone = endingBookings.home.filter(
-      (booking) => booking.status === "finished",
+      (booking) => booking.state === FINISHED,
     );
     return [...homeStartingDone, ...homeEndingDone];
   };
 
   const getHomePendingBookings = () => {
     const homeStartingDone = startingBookings.home.filter(
-      (booking) => booking.status === "pending",
+      (booking) => booking.state === PENDING,
     );
     const homeEndingDone = endingBookings.home.filter(
-      (booking) => booking.status === "active",
+      (booking) => booking.state === ACTIVE,
     );
     return [...homeStartingDone, ...homeEndingDone];
   };
 
   const getStoreDoneBookings = () => {
     const storeStartingDone = startingBookings.store.filter(
-      (booking) => booking.status === "active",
+      (booking) => booking.state === ACTIVE,
     );
     const storeEndingDone = endingBookings.store.filter(
-      (booking) => booking.status === "finished",
+      (booking) => booking.state === FINISHED,
     );
     return [...storeStartingDone, ...storeEndingDone];
   };
 
   const getStorePendingBookings = () => {
-    const storeStartingDone = startingBookings.store.filter(
-      (booking) => booking.status === "pending",
+    const storeStartingPending = startingBookings.store.filter(
+      (booking) => booking.state === PENDING,
     );
-    const storeEndingDone = endingBookings.store.filter(
-      (booking) => booking.status === "active",
+    const storeEndingPending = endingBookings.store.filter(
+      (booking) => booking.state === ACTIVE,
     );
-    return [...storeStartingDone, ...storeEndingDone];
+    return [...storeStartingPending, ...storeEndingPending];
   };
 
   return {

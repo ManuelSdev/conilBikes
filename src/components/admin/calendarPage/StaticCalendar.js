@@ -8,7 +8,7 @@ import ContentCard from "../../contentCard/ContentCard";
 import ContentCardBody from "../../contentCard/ContentCardBody";
 import esLocale from "date-fns/locale/es";
 import {
-  useGetBookingsOnRangeQuery,
+  useGetBookingDatesOnRangeQuery,
   useLazyGetBookingsOnDateQuery,
 } from "../../../app/store/services/bookingApi";
 import format from "date-fns/format";
@@ -94,7 +94,7 @@ export default function StaticCalendar() {
     isSuccess,
     refetch,
     isFetching,
-  } = useGetBookingsOnRangeQuery(dateRangeQuery(date), {
+  } = useGetBookingDatesOnRangeQuery(dateRangeQuery(date), {
     //  skip,
     // refetchOnMountOrArgChange: true
   });

@@ -14,9 +14,7 @@ export default function BookingResumeCard({booking}) {
   console.log(booking);
   const router = useRouter();
   const dispatch = useDispatch();
-  const {name, surname, phone, address, bikes} = booking;
-  console.log("oooooooooooooo", bikes.length);
-  console.log("vvvvvvvvvvvvvv", bikes.length === 1);
+  const {name, surname, phone, address, bikes, state} = booking;
 
   const handleClick = () => {
     console.log(booking);
@@ -61,6 +59,14 @@ export default function BookingResumeCard({booking}) {
           {bikes.length === 1
             ? `${bikes.length} bicicleta`
             : `${bikes.length} bicicletas`}
+        </Typography>
+        <Typography
+          //sx={{fontSize: 14}}
+          variant="subtitle2"
+          color="text.secondary"
+          gutterBottom
+        >
+          {state}
         </Typography>
       </CardContent>
     </Card>

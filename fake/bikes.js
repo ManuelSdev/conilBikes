@@ -6,7 +6,6 @@ const adapter = new AdapterDateFns();
 
 const today = new Date();
 const nextDay = (days) => addDays(today, days);
-//console.log('datasss', today)
 const dates = [[new Date(2022, 8, 20)]];
 export const bookings = [
   {

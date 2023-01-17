@@ -20,7 +20,6 @@ export const bookingsCalendarSlice = createSlice({
       state.bookingsStarting = action.payload.end;
     },
     setBookings: (state, action) => {
-      console.log("***********", action.payload);
       state.bookingsStarting = action.payload.start;
       state.bookingsEnding = action.payload.end;
     },

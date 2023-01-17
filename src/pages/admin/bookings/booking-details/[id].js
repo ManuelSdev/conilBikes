@@ -12,7 +12,8 @@ export default function BookingDetailsPage() {
   const router = useRouter();
   const {id} = router.query;
   const {data: booking, isLoading, isSuccess} = useGetBookingQuery(id);
-  console.log("=============", booking);
+  console.log("=============", isLoading);
+  console.log("+++++++++++++", booking);
   return (
     <AdminLayout subsectionTitle={"Detalles de reserva"}>
       {isLoading ? <CircularProgress /> : <BookingDetails booking={booking} />}

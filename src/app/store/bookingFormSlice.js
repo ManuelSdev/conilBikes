@@ -31,7 +31,6 @@ export const bookingFormSlice = createSlice({
       state.formIsActive = action.payload;
     },
     setDate: (state, action) => {
-      //  console.log('******************', action.payload)
       const [key, value] = action.payload;
       state.date = {...state.date, [key]: value};
     },

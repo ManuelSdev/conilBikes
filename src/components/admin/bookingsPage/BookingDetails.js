@@ -11,9 +11,13 @@ import DraftsIcon from "@mui/icons-material/Drafts";
 import {useSelector} from "react-redux";
 import {getCurrentBooking} from "../../../app/store/selectors";
 import {BOOKING_STATES_MAP} from "../../../lib/utils/detailsMaps";
-import {CircularProgress} from "@mui/material";
+import {Button, CircularProgress} from "@mui/material";
 import {useRouter} from "next/router";
-import {useGetBookingQuery} from "../../../app/store/services/bookingApi";
+import {
+  useGetBookingQuery,
+  useUpdateBookingMutation,
+} from "../../../app/store/services/bookingApi";
+import {ACTIVE, FINISHED, PENDING} from "../../../lib/utils/appConsts";
 
 const BookingDetails = ({booking}) => {
   const router = useRouter();
@@ -38,6 +42,7 @@ const BookingDetails = ({booking}) => {
     state,
     homeDelivery,
     homePickup,
+    _id,
   } = booking;
 
   const modBookingState =
@@ -58,7 +63,24 @@ const BookingDetails = ({booking}) => {
     ["Entrega de bicicletas", homeDelivery ? "A domicilio" : "En tienda"],
     ["Devolución de bicicletas", homePickup ? "A domicilio" : "En tienda"],
   ];
+  const [
+    modBooking,
+    {status, isUninitialized, isLoading, isSuccess, data, isError, reset},
+  ] = useUpdateBookingMutation({fixedCacheKey: "addBooking-key"});
 
+  const changeBookingState = () => {
+    if (state === PENDING) return ACTIVE;
+    if (state === ACTIVE) return FINISHED;
+  };
+  const handleSubmit = async () => {
+    const newState = changeBookingState();
+    const result = await modBooking({_id, state: newState}).unwrap();
+    console.log("___________", result);
+  };
+  const getButtonText = () => {
+    if (state === PENDING) return "Iniciar";
+    if (state === ACTIVE) return "Finalizar";
+  };
   return (
     <Box>
       <List dense>
@@ -85,6 +107,7 @@ const BookingDetails = ({booking}) => {
           );
         })}
       </List>
+      <Button onClick={handleSubmit}>{getButtonText()} reserva</Button>
     </Box>
   );
 };

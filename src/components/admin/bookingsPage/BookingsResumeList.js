@@ -45,7 +45,7 @@ export default function BookingsResumeList() {
     isLoading,
   } = useBookingsOnDate(date);
 
-  console.log("---------------", getEndingPendingBookings());
+  console.log("---------------", getStorePendingBookings());
 
   const handleClick = (type) => () =>
     router.push(`/admin/bookings/${date}/${type}`);
