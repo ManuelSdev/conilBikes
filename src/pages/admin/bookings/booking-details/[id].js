@@ -11,12 +11,18 @@ import AdminLayout from "../../../../components/layouts/AdminLayout";
 export default function BookingDetailsPage() {
   const router = useRouter();
   const {id} = router.query;
-  const {data: booking, isLoading, isSuccess} = useGetBookingQuery(id);
+  const {
+    data: booking,
+    isLoading,
+    isSuccess,
+  } = id ? useGetBookingQuery(id) : useGetBookingQuery(id, {skip: true});
+
   console.log("=============", isLoading);
   console.log("+++++++++++++", booking);
+  //TODO: afina esto con isLoading, error, etc
   return (
     <AdminLayout subsectionTitle={"Detalles de reserva"}>
-      {isLoading ? <CircularProgress /> : <BookingDetails booking={booking} />}
+      {isSuccess ? <BookingDetails booking={booking} /> : <CircularProgress />}
 
       <AdDrawer />
     </AdminLayout>

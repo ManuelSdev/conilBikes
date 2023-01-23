@@ -6,6 +6,7 @@ import dbConnect from "../../../lib/dbConnect";
 export async function getBooking(_id) {
   await dbConnect();
   const [booking] = await Booking.find({_id});
+  //console.log("¿¿¿¿¿¿¿¿¿", booking);
   return booking;
 }
 

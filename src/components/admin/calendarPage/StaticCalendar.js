@@ -91,16 +91,13 @@ export default function StaticCalendar() {
     setDate(newDate);
   };
   const handleChange = async (newValue) => {
-    console.log("ssssssssss", new Date());
-    console.log("ssssssssss", newValue);
-    console.log("ssssssssss", newValue.toISOString());
-
+    /*
     const {data, isLoading, isError, error} = await trigger(
       newValue.toISOString(),
     );
-
     dispatch(setBookings(data));
-    console.log("#######-----@@@", data);
+    */
+
     setValue(newValue);
     router.push(`/admin/bookings/${newValue.toISOString()}`);
     dispatch(setSelectedDay(newValue.toISOString()));

@@ -19,30 +19,34 @@ import {Typography} from "@mui/material";
 
 export default function BookingsListPage() {
   const router = useRouter();
-  const {type} = router.query;
-  const composedtype = (constA, constB) => `${constA}-${constB}`;
+  const {context} = router.query;
+  const composedcontext = (constA, constB) => `${constA}-${constB}`;
 
-  const getTargetBookings = () => {
-    if (type === START) return "Reservas que empiezan";
-    if (type === composedtype(START, DONE)) return "Inicios completados";
-    if (type === composedtype(START, PENDING)) return "Inicios pendientes";
+  const getTitle = () => {
+    if (context === START) return "Reservas que empiezan";
+    if (context === composedcontext(START, DONE)) return "Inicios completados";
+    if (context === composedcontext(START, PENDING))
+      return "Inicios pendientes";
 
-    if (type === END) return "Reservas que finalizan";
-    if (type === composedtype(END, DONE)) return "Cierres completados";
-    if (type === composedtype(END, PENDING)) return "Cierres pendientes";
+    if (context === END) return "Reservas que finalizan";
+    if (context === composedcontext(END, DONE)) return "Cierres completados";
+    if (context === composedcontext(END, PENDING)) return "Cierres pendientes";
 
-    if (type === HOME) return "Desplazamientos";
-    if (type === composedtype(HOME, DONE)) return "Desplazamientos completados";
-    if (type === composedtype(HOME, PENDING))
+    if (context === HOME) return "Desplazamientos";
+    if (context === composedcontext(HOME, DONE))
+      return "Desplazamientos completados";
+    if (context === composedcontext(HOME, PENDING))
       return "Desplazamientos pendientes";
 
-    if (type === STORE) return "En tienda";
-    if (type === composedtype(STORE, DONE)) return "En tienda completados";
-    if (type === composedtype(STORE, PENDING)) return "En tienda pendientes";
+    if (context === STORE) return "En tienda";
+    if (context === composedcontext(STORE, DONE))
+      return "En tienda completados";
+    if (context === composedcontext(STORE, PENDING))
+      return "En tienda pendientes";
   };
-  console.log(type);
+  console.log(context);
   return (
-    <AdminLayout subsectionTitle={getTargetBookings()}>
+    <AdminLayout subsectionTitle={getTitle()}>
       <BookingCardsList />
 
       <AdDrawer />

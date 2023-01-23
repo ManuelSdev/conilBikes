@@ -8,6 +8,11 @@ import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
 import InboxIcon from "@mui/icons-material/Inbox";
 import DraftsIcon from "@mui/icons-material/Drafts";
+import ExpandLess from "@mui/icons-material/ExpandLess";
+import ExpandMore from "@mui/icons-material/ExpandMore";
+import Collapse from "@mui/material/Collapse";
+import StarBorder from "@mui/icons-material/StarBorder";
+import PedalBikeIcon from "@mui/icons-material/PedalBike";
 import {useSelector} from "react-redux";
 import {getCurrentBooking} from "../../../app/store/selectors";
 import {BOOKING_STATES_MAP} from "../../../lib/utils/detailsMaps";
@@ -18,6 +23,8 @@ import {
   useUpdateBookingMutation,
 } from "../../../app/store/services/bookingApi";
 import {ACTIVE, FINISHED, PENDING} from "../../../lib/utils/appConsts";
+import format from "date-fns/format";
+import {useGetBikesQuery} from "../../../app/store/services/bikeApi";
 
 const BookingDetails = ({booking}) => {
   const router = useRouter();
@@ -25,11 +32,12 @@ const BookingDetails = ({booking}) => {
   //console.log("++++++++----------", id);
   //const {data, idLoading, isSuccess} = useGetBookingQuery(id);
   // if (!booking) return <div>MIERDA</div>;
-  console.log("=============", booking);
+  // console.log("=============", booking);
 
   //const [booking, setBooking] = React.useState({});
   //isSuccess && setBooking({...data});
   //const booking = useSelector(getCurrentBooking);
+
   const {
     name,
     mail,
@@ -45,6 +53,17 @@ const BookingDetails = ({booking}) => {
     _id,
   } = booking;
 
+  //const arrayOfBikesIds = new URLSearchParams({a: [...bikes]});
+
+  const {
+    data: bikesData,
+    isLoading: isLoadingBikes,
+    isSuccess: isSuccessBikes,
+    refetch,
+    isFetching,
+  } = useGetBikesQuery({arrayOfBikesIds: [...bikes]});
+  console.log(bikesData);
+
   const modBookingState =
     BOOKING_STATES_MAP[state]?.charAt(0).toUpperCase() +
     BOOKING_STATES_MAP[state]?.slice(1);
@@ -56,13 +75,25 @@ const BookingDetails = ({booking}) => {
     ["Correo eléctronico", mail],
     ["Teléfono", phone],
     ["Dirección", address],
-    ["Desde", from],
-    ["Hasta", to],
+    [
+      "Fecha",
+      `Del ${format(new Date(from), "dd/MM/yyyy")} al ${format(
+        new Date(to),
+        "dd/MM/yyyy",
+      )} `,
+    ],
     ["Importe total", modBookingPrice],
     ["Estado", modBookingState],
     ["Entrega de bicicletas", homeDelivery ? "A domicilio" : "En tienda"],
     ["Devolución de bicicletas", homePickup ? "A domicilio" : "En tienda"],
   ];
+
+  const [open, setOpen] = React.useState(true);
+
+  const handleClick = () => {
+    setOpen(!open);
+  };
+
   const [
     modBooking,
     {status, isUninitialized, isLoading, isSuccess, data, isError, reset},
@@ -83,7 +114,50 @@ const BookingDetails = ({booking}) => {
   };
   return (
     <Box>
-      <List dense>
+      <List
+        disablePadding
+        dense
+      >
+        <ListItemButton
+          //disablePadding
+          sx={{p: 0}}
+          onClick={handleClick}
+        >
+          <ListItemIcon>
+            <PedalBikeIcon />
+          </ListItemIcon>
+          <ListItemText
+            primaryTypographyProps={{
+              variant: "body1",
+              sx: {color: "black"},
+            }}
+            primary={`x ${bikes.length}`}
+          />
+          {open ? <ExpandLess /> : <ExpandMore />}
+        </ListItemButton>
+        <Collapse
+          in={open}
+          timeout="auto"
+          unmountOnExit
+        >
+          <List
+            component="div"
+            disablePadding
+          >
+            {bikesData.map((bike) => (
+              <ListItemButton
+                key={bike._id}
+                sx={{pl: 4, py: 0}}
+              >
+                <ListItemText
+                  primary={`x 1 ${bike.brand} ${bike.model}`}
+                  secondary={`Talla ${bike.size.toUpperCase()}`}
+                />
+              </ListItemButton>
+            ))}
+          </List>
+        </Collapse>
+        <Divider />
         {listStructure.map((pair, index) => {
           const [title, info] = pair;
           return (
@@ -107,7 +181,18 @@ const BookingDetails = ({booking}) => {
           );
         })}
       </List>
-      <Button onClick={handleSubmit}>{getButtonText()} reserva</Button>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          flexDirection: "column",
+          gap: 2,
+          pt: 2,
+        }}
+      >
+        <Button onClick={handleSubmit}>{getButtonText()} reserva</Button>
+        <Button disabled>Modificar reserva</Button>
+      </Box>
     </Box>
   );
 };

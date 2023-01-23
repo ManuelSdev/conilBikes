@@ -9,6 +9,8 @@ import Link from "../../elements/Link";
 import {useRouter} from "next/router";
 import {useDispatch} from "react-redux";
 import {setCurrentBooking} from "../../../app/store/currentBookingSlice";
+import {BOOKING_STATES_MAP} from "../../../lib/utils/detailsMaps";
+import {capitalizeFirst} from "../../../lib/utils/functions";
 
 export default function BookingResumeCard({booking}) {
   console.log(booking);
@@ -66,7 +68,7 @@ export default function BookingResumeCard({booking}) {
           color="text.secondary"
           gutterBottom
         >
-          {state}
+          {capitalizeFirst(BOOKING_STATES_MAP[state])}
         </Typography>
       </CardContent>
     </Card>

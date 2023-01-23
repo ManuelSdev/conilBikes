@@ -25,12 +25,13 @@ import {
   DONE,
   PENDING,
 } from "../../../lib/utils/appConsts";
+import isToday from "date-fns/isToday";
 
 export default function BookingsResumeList() {
   const router = useRouter();
   const {date} = router.query;
   const {startDay, endDay} = bookingDayColors;
-
+  const today = isToday(new Date(date));
   const {
     startingBookings,
     endingBookings,
@@ -45,7 +46,7 @@ export default function BookingsResumeList() {
     isLoading,
   } = useBookingsOnDate(date);
 
-  console.log("---------------", getStorePendingBookings());
+  //console.log("---------------", getStorePendingBookings());
 
   const handleClick = (context) => () =>
     router.push(`/admin/bookings/${date}/${context}`);
@@ -99,7 +100,7 @@ export default function BookingsResumeList() {
           component="div"
           id="nested-list-subheader"
         >
-          Nested List Items
+          {`Es hoy: ${today}`}
         </ListSubheader>
       }
     >
@@ -124,36 +125,38 @@ export default function BookingsResumeList() {
                     <strong>{block.number}</strong>
                   </Typography>
                 </ListItemButton>
-
-                <ListItemButton
-                  disabled={!!!block.doneNumber}
-                  onClick={handleClick(block.context + "-" + DONE)}
-                  sx={{pl: 4, pt: 0}}
-                >
-                  <ListItemIcon>
-                    <CheckCircleIcon
-                      sx={{color: "green"}}
-                      fontSize="small"
-                    />
-                  </ListItemIcon>
-                  <ListItemText primary="Gestionadas" />
-                  <Typography>{block.doneNumber}</Typography>
-                </ListItemButton>
-
-                <ListItemButton
-                  disabled={!!!block.pendingNumber}
-                  onClick={handleClick(block.context + "-" + PENDING)}
-                  sx={{pl: 4, pt: 0}}
-                >
-                  <ListItemIcon>
-                    <PendingIcon
-                      sx={{color: "DarkSalmon"}}
-                      fontSize="small"
-                    />
-                  </ListItemIcon>
-                  <ListItemText primary="Pendientes" />
-                  <Typography>{block.pendingNumber}</Typography>
-                </ListItemButton>
+                {today && (
+                  <ListItemButton
+                    disabled={!!!block.doneNumber}
+                    onClick={handleClick(block.context + "-" + DONE)}
+                    sx={{pl: 4, pt: 0}}
+                  >
+                    <ListItemIcon>
+                      <CheckCircleIcon
+                        sx={{color: "green"}}
+                        fontSize="small"
+                      />
+                    </ListItemIcon>
+                    <ListItemText primary="Gestionadas" />
+                    <Typography>{block.doneNumber}</Typography>
+                  </ListItemButton>
+                )}
+                {today && (
+                  <ListItemButton
+                    disabled={!!!block.pendingNumber}
+                    onClick={handleClick(block.context + "-" + PENDING)}
+                    sx={{pl: 4, pt: 0}}
+                  >
+                    <ListItemIcon>
+                      <PendingIcon
+                        sx={{color: "DarkSalmon"}}
+                        fontSize="small"
+                      />
+                    </ListItemIcon>
+                    <ListItemText primary="Pendientes" />
+                    <Typography>{block.pendingNumber}</Typography>
+                  </ListItemButton>
+                )}
               </Box>
             );
         })}

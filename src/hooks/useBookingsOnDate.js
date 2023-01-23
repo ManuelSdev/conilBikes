@@ -39,27 +39,36 @@ const useBookingsOnDate = (date) => {
     home: homeEndingBookings,
     store: storeEndingBookings,
   };
+  // console.log("endingBookings: ", endingBookings);
 
+  //Reservas que empiezan
   const getStartingDoneBookings = () =>
-    [startingBookings.home, ...startingBookings.store].filter(
+    [...startingBookings.home, ...startingBookings.store].filter(
       (booking) => booking.state === ACTIVE,
     );
 
   const getStartingPendingBookings = () =>
-    [startingBookings.home, ...startingBookings.store].filter(
+    [...startingBookings.home, ...startingBookings.store].filter(
       (booking) => booking.state === PENDING,
     );
 
+  //Reservas que finalizan
   const getEndingDoneBookings = () =>
-    [endingBookings.home, ...endingBookings.store].filter(
+    [...endingBookings.home, ...endingBookings.store].filter(
       (booking) => booking.state === FINISHED,
     );
 
   const getEndingPendingBookings = () =>
-    [endingBookings.home, ...endingBookings.store].filter(
+    [...endingBookings.home, ...endingBookings.store].filter(
       (booking) => booking.state === ACTIVE,
     );
 
+  const getEndingInactiveBookings = () =>
+    [...endingBookings.home, ...endingBookings.store].filter(
+      (booking) => booking.state === PENDING,
+    );
+  const c = [...endingBookings.home, ...endingBookings.store];
+  //  console.log("getEndingPendingBookings: ", c);
   const getHomeDoneBookings = () => {
     const homeStartingDone = startingBookings.home.filter(
       (booking) => booking.state === ACTIVE,
