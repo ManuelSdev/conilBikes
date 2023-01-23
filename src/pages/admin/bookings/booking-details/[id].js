@@ -11,11 +11,14 @@ import AdminLayout from "../../../../components/layouts/AdminLayout";
 export default function BookingDetailsPage() {
   const router = useRouter();
   const {id} = router.query;
+  //const id = "63ced64e6916b2e8adfe11ab";
   const {
     data: booking,
     isLoading,
     isSuccess,
-  } = id ? useGetBookingQuery(id) : useGetBookingQuery(id, {skip: true});
+  } = useGetBookingQuery(id, {skip: !!!id});
+
+  console.log("------------", id);
 
   console.log("=============", isLoading);
   console.log("+++++++++++++", booking);

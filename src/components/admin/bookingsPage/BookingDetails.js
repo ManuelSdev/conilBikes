@@ -22,6 +22,7 @@ import {
   useGetBookingQuery,
   useUpdateBookingMutation,
 } from "../../../app/store/services/bookingApi";
+
 import {ACTIVE, FINISHED, PENDING} from "../../../lib/utils/appConsts";
 import format from "date-fns/format";
 import {useGetBikesQuery} from "../../../app/store/services/bikeApi";
@@ -29,7 +30,7 @@ import {useGetBikesQuery} from "../../../app/store/services/bikeApi";
 const BookingDetails = ({booking}) => {
   const router = useRouter();
   // const {id} = router.query;
-  //console.log("++++++++----------", id);
+  console.log("++++++++----------", booking);
   //const {data, idLoading, isSuccess} = useGetBookingQuery(id);
   // if (!booking) return <div>MIERDA</div>;
   // console.log("=============", booking);
@@ -61,7 +62,7 @@ const BookingDetails = ({booking}) => {
     isSuccess: isSuccessBikes,
     refetch,
     isFetching,
-  } = useGetBikesQuery({arrayOfBikesIds: [...bikes]});
+  } = useGetBikesQuery({arrayOfBikesIds: [...bikes]}, {skip: !!!booking});
   console.log(bikesData);
 
   const modBookingState =
@@ -88,7 +89,7 @@ const BookingDetails = ({booking}) => {
     ["Devolución de bicicletas", homePickup ? "A domicilio" : "En tienda"],
   ];
 
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
 
   const handleClick = () => {
     setOpen(!open);
@@ -112,7 +113,9 @@ const BookingDetails = ({booking}) => {
     if (state === PENDING) return "Iniciar";
     if (state === ACTIVE) return "Finalizar";
   };
-  return (
+  return isLoadingBikes ? (
+    <CircularProgress />
+  ) : (
     <Box>
       <List
         disablePadding
