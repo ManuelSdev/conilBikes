@@ -36,8 +36,8 @@ import {setCurrentBooking} from "../../../app/store/currentBookingSlice";
 
 export default function BookingCardsList() {
   const router = useRouter();
-  const {date, type} = router.query;
-  const composedType = (constA, constB) => `${constA}-${constB}`;
+  const {date, context} = router.query;
+  const composedContext = (constA, constB) => `${constA}-${constB}`;
   const {
     startingBookings,
     endingBookings,
@@ -53,25 +53,30 @@ export default function BookingCardsList() {
   } = useBookingsOnDate(date);
 
   const getTargetBookings = () => {
-    if (type === START)
+    if (context === START)
       return [...startingBookings.home, ...startingBookings.store];
-    if (type === composedType(START, DONE)) return getStartingDoneBookings();
-    if (type === composedType(START, PENDING))
+    if (context === composedContext(START, DONE))
+      return getStartingDoneBookings();
+    if (context === composedContext(START, PENDING))
       return getStartingPendingBookings();
 
-    if (type === END) return [...endingBookings.home, ...endingBookings.store];
-    if (type === composedType(END, DONE)) return getEndingDoneBookings();
-    if (type === composedType(END, PENDING)) return getEndingPendingBookings();
+    if (context === END)
+      return [...endingBookings.home, ...endingBookings.store];
+    if (context === composedContext(END, DONE)) return getEndingDoneBookings();
+    if (context === composedContext(END, PENDING))
+      return getEndingPendingBookings();
 
-    if (type === HOME)
+    if (context === HOME)
       return [...startingBookings.home, ...endingBookings.home];
-    if (type === composedType(HOME, DONE)) return getHomeDoneBookings();
-    if (type === composedType(HOME, PENDING)) return getHomePendingBookings();
+    if (context === composedContext(HOME, DONE)) return getHomeDoneBookings();
+    if (context === composedContext(HOME, PENDING))
+      return getHomePendingBookings();
 
-    if (type === STORE)
+    if (context === STORE)
       return [...startingBookings.store, ...endingBookings.store];
-    if (type === composedType(STORE, DONE)) return getStoreDoneBookings();
-    if (type === composedType(STORE, PENDING)) return getStorePendingBookings();
+    if (context === composedContext(STORE, DONE)) return getStoreDoneBookings();
+    if (context === composedContext(STORE, PENDING))
+      return getStorePendingBookings();
   };
   const targetBookings = getTargetBookings();
 
@@ -81,7 +86,7 @@ export default function BookingCardsList() {
 
   return isLoading ? (
     <CircularProgress />
-  ) : type ? (
+  ) : context ? (
     <Stack spacing={2}>
       {targetBookings.map(
         (booking) =>

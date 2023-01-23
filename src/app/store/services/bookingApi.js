@@ -8,7 +8,7 @@ const bookingApi = baseApi.injectEndpoints({
     }),
     getBookingsOnDate: builder.query({
       query: (date) => `/bookings/onDate?date=${date}`,
-      // providesTags: ['User'],
+      providesTags: ["Booking"],
     }),
     getBookingDatesOnRange: builder.query({
       query: (dateRange) => `/bookings/datesOnRange?${dateRange}`,
@@ -48,6 +48,7 @@ const bookingApi = baseApi.injectEndpoints({
 export const {
   useGetBookingQuery,
   useGetBookingDatesOnRangeQuery,
+  useLazyGetBookingDatesOnRangeQuery,
   useGetBookingsOnDateQuery,
   useLazyGetBookingsOnDateQuery,
   useAddBookingMutation,

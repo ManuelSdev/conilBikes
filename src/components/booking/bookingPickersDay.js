@@ -16,7 +16,7 @@ import {bookingDayColors} from "../../lib/utils/colors";
 const bookingPickersDay =
   (bookingDatesOnMonth) => (date, selectedDates, pickersDayProps) => {
     //  console.log(date)
-    console.log("@@@@@@@@@@@", bookingDatesOnMonth);
+    // console.log("@@@@@@@@@@@", bookingDatesOnMonth);
     const {startDay, endDay, startEndDay} = bookingDayColors;
     // const { bookings, startEndDates } = bookingDatesOnMonth
     const {startDates, endDates, startEndDates} = bookingDatesOnMonth;

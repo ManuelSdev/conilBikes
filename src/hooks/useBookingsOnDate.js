@@ -57,7 +57,7 @@ const useBookingsOnDate = (date) => {
 
   const getEndingPendingBookings = () =>
     [endingBookings.home, ...endingBookings.store].filter(
-      (booking) => booking.state === PENDING,
+      (booking) => booking.state === ACTIVE,
     );
 
   const getHomeDoneBookings = () => {

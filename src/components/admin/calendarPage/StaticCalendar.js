@@ -9,6 +9,7 @@ import ContentCardBody from "../../contentCard/ContentCardBody";
 import esLocale from "date-fns/locale/es";
 import {
   useGetBookingDatesOnRangeQuery,
+  useLazyGetBookingDatesOnRangeQuery,
   useLazyGetBookingsOnDateQuery,
 } from "../../../app/store/services/bookingApi";
 import format from "date-fns/format";
@@ -32,11 +33,25 @@ export default function StaticCalendar() {
   //Esta primera fecha, pasada al día 1, se usa en la primera petición para
   //encontrar las reservas que corresponden al mes actual, que es el que muestra por defecto
   //el calendario
-  const firstDay = set(new Date(), {date: 1, hours: 0, minutes: 0, seconds: 0});
+  /*
+  const firstDay2 = set(new Date(), {
+    date: 1,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+  */
+  /**
+   * La primera petición se hace con today como fecha de inicio. El resto de peticiones se lanzan
+   * cuando se cambia de mes en el calendario y el método handleMonthChange recibe el primer día de cada mes.
+   * Al lanzar la primera petición con today, en lugar de con el primer día del mes actual, se evita
+   * que se reciban reservas anteriores al día actual
+   */
+  const today = set(new Date(), {hours: 0, minutes: 0, seconds: 0});
 
   const [value, setValue] = React.useState(null);
 
-  const [date, setDate] = React.useState(firstDay);
+  const [date, setDate] = React.useState(today);
   const [skip, setSkip] = React.useState(true);
 
   //addMonth sera el extremo del rango para buscar fechas dentro del mes actual
@@ -63,15 +78,22 @@ export default function StaticCalendar() {
   //onMonthChange pasa la Date así Tue Nov 01 2022 00:00:00 GMT+0100 (hora estándar de Europa central)
   //cuando cambias el mes del calendario
   //Al pasar a ISO, será un día antes porque la Date se registra a las 00:00h e ISO va con 2h menos
-  const handleMonthChange = (newDate) => {
-    //  console.log('handleMonthChanges')
-    setDate(newDate);
-  };
+
   // console.log('cambiaDate', date)
   //const [trigger, { isLoading, isError, data, error }, lastPromiseInfo] = useLazyGetBookingsOnDateQuery();
-  const [trigger, result, lastPromiseInfo] = useLazyGetBookingsOnDateQuery();
+  const [trigger, result, lastPromiseInfo] =
+    useLazyGetBookingDatesOnRangeQuery();
+
+  const handleMonthChange = async (newDate) => {
+    //  console.log('handleMonthChanges')
+    //await trigger(newDate);
+    // console.log("_________", result);
+    setDate(newDate);
+  };
   const handleChange = async (newValue) => {
+    console.log("ssssssssss", new Date());
     console.log("ssssssssss", newValue);
+    console.log("ssssssssss", newValue.toISOString());
 
     const {data, isLoading, isError, error} = await trigger(
       newValue.toISOString(),

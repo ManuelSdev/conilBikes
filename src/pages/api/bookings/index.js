@@ -42,7 +42,7 @@ const request = (req) => {
 };
 
 export default async function handler(req, res) {
-  console.log("//////////////////", req.query);
+  //  console.log("//////////////////", req.query);
   try {
     const result = await request(req);
 

@@ -76,7 +76,7 @@ export async function getBookingDatesOnRange(range) {
   // const [{startEndDates}] = bookingDatesOnRange;
   //const result = { bookings, startEndDates }
   const [result] = bookingDatesOnRange;
-  // console.log("newBooking ############", result);
+  console.log("newBooking ############", result);
 
   return result;
 }

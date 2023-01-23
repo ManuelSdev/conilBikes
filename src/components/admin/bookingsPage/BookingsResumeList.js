@@ -47,8 +47,8 @@ export default function BookingsResumeList() {
 
   console.log("---------------", getStorePendingBookings());
 
-  const handleClick = (type) => () =>
-    router.push(`/admin/bookings/${date}/${type}`);
+  const handleClick = (context) => () =>
+    router.push(`/admin/bookings/${date}/${context}`);
 
   const listBlocks = [
     {
@@ -58,7 +58,7 @@ export default function BookingsResumeList() {
       number: startingBookings.home.length + startingBookings.store.length,
       doneNumber: getStartingDoneBookings().length,
       pendingNumber: getStartingPendingBookings().length,
-      path: START,
+      context: START,
     },
     {
       title: "Finalizan",
@@ -67,7 +67,7 @@ export default function BookingsResumeList() {
       number: endingBookings.home.length + endingBookings.store.length,
       doneNumber: getEndingDoneBookings().length,
       pendingNumber: getEndingPendingBookings().length,
-      path: END,
+      context: END,
     },
     {
       title: "A domicilio",
@@ -75,7 +75,7 @@ export default function BookingsResumeList() {
       number: startingBookings.home.length + endingBookings.home.length,
       doneNumber: getHomeDoneBookings().length,
       pendingNumber: getHomePendingBookings().length,
-      path: HOME,
+      context: HOME,
     },
     {
       title: "En tienda",
@@ -83,7 +83,7 @@ export default function BookingsResumeList() {
       number: startingBookings.store.length + endingBookings.store.length,
       doneNumber: getStoreDoneBookings().length,
       pendingNumber: getStorePendingBookings().length,
-      path: STORE,
+      context: STORE,
     },
   ];
   return isLoading ? (
@@ -106,55 +106,56 @@ export default function BookingsResumeList() {
       <List>
         {listBlocks.map((block) => {
           const Icon = block.icon;
-          return (
-            <Box key={block.path}>
-              <ListItemButton
-                disabled={!!!block.number}
-                onClick={handleClick(block.path)}
-              >
-                <ListItemIcon>
-                  <Icon
-                    sx={{color: block.iconColor}}
-                    fontSize="large"
-                  />
-                </ListItemIcon>
-                <ListItemText primary={<strong>{block.title}</strong>} />
-                <Typography>
-                  <strong>{block.number}</strong>
-                </Typography>
-              </ListItemButton>
+          if (!!block.number)
+            return (
+              <Box key={block.context}>
+                <ListItemButton
+                  disabled={!!!block.number}
+                  onClick={handleClick(block.context)}
+                >
+                  <ListItemIcon>
+                    <Icon
+                      sx={{color: block.iconColor}}
+                      fontSize="large"
+                    />
+                  </ListItemIcon>
+                  <ListItemText primary={<strong>{block.title}</strong>} />
+                  <Typography>
+                    <strong>{block.number}</strong>
+                  </Typography>
+                </ListItemButton>
 
-              <ListItemButton
-                disabled={!!!block.doneNumber}
-                onClick={handleClick(block.path + "-" + DONE)}
-                sx={{pl: 4, pt: 0}}
-              >
-                <ListItemIcon>
-                  <CheckCircleIcon
-                    sx={{color: "green"}}
-                    fontSize="small"
-                  />
-                </ListItemIcon>
-                <ListItemText primary="Gestionadas" />
-                <Typography>{block.doneNumber}</Typography>
-              </ListItemButton>
+                <ListItemButton
+                  disabled={!!!block.doneNumber}
+                  onClick={handleClick(block.context + "-" + DONE)}
+                  sx={{pl: 4, pt: 0}}
+                >
+                  <ListItemIcon>
+                    <CheckCircleIcon
+                      sx={{color: "green"}}
+                      fontSize="small"
+                    />
+                  </ListItemIcon>
+                  <ListItemText primary="Gestionadas" />
+                  <Typography>{block.doneNumber}</Typography>
+                </ListItemButton>
 
-              <ListItemButton
-                disabled={!!!block.pendingNumber}
-                onClick={handleClick(block.path + "-" + PENDING)}
-                sx={{pl: 4, pt: 0}}
-              >
-                <ListItemIcon>
-                  <PendingIcon
-                    sx={{color: "DarkSalmon"}}
-                    fontSize="small"
-                  />
-                </ListItemIcon>
-                <ListItemText primary="Pendientes" />
-                <Typography>{block.pendingNumber}</Typography>
-              </ListItemButton>
-            </Box>
-          );
+                <ListItemButton
+                  disabled={!!!block.pendingNumber}
+                  onClick={handleClick(block.context + "-" + PENDING)}
+                  sx={{pl: 4, pt: 0}}
+                >
+                  <ListItemIcon>
+                    <PendingIcon
+                      sx={{color: "DarkSalmon"}}
+                      fontSize="small"
+                    />
+                  </ListItemIcon>
+                  <ListItemText primary="Pendientes" />
+                  <Typography>{block.pendingNumber}</Typography>
+                </ListItemButton>
+              </Box>
+            );
         })}
       </List>
     </List>
