@@ -3,7 +3,7 @@ import {baseApi} from "./baseApi";
 const bikeApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     _getBikes: builder.query({
-      query: (arrayOfIds) => `/bikes?${arrayOfIds}`,
+      query: (filters) => `/bikes?${filters}`,
       // providesTags: ['User'],
     }),
     getBikes: builder.query({

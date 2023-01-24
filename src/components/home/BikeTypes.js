@@ -34,7 +34,7 @@ const BikeTypes = () => {
             />
           ) : (
             <Link
-              href={`/type/${type}`}
+              //href={`/type/${type}`}
               key={type}
             >
               <Image
