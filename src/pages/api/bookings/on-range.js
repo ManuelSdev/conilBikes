@@ -2,10 +2,10 @@ import Bike from "../../../models/Bike";
 import Booking from "../../../models/Booking";
 import dbConnect from "../../../lib/dbConnect";
 
-export async function getBookingDatesOnRange(range) {
+export async function getBookingDatesOnRange(req) {
   await dbConnect();
-  console.log("DATES getBooking api", range);
-  const {from, to} = range;
+  console.log("DATES getBooking api", req.query);
+  const {from, to} = req.query;
   const fromDate = new Date(from);
   const toDate = new Date(to);
   const bookingDatesOnRange = await Booking.aggregate([
@@ -81,25 +81,12 @@ export async function getBookingDatesOnRange(range) {
   return result;
 }
 
-const request = (req) => {
-  switch (req.method) {
-    case "GET":
-      console.log("------------");
-      return getBookingDatesOnRange(req.query);
-      break;
-    case "POST":
-      break;
-    default:
-      break;
-  }
-};
-
 export default async function handler(req, res) {
   //console.log("#########", req.method);
   // console.log("#########", request(req.method));
   //  const data = req.query
   try {
-    const result = await request(req);
+    const result = await getBookingDatesOnRange(req);
     res.status(201).json(result);
   } catch (err) {
     console.log(
