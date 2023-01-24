@@ -1,63 +1,69 @@
-import { Button, Stack } from "@mui/material"
-import { Container } from "@mui/system"
-import { useEffect, useState } from "react"
-import { useSelector } from "react-redux"
-import { getDate, getRange, getSize, getType } from "../../app/store/selectors"
-import { useGetAvaiableBikesQuery, useLazyGetAvaiableBikesQuery } from "../../app/store/services/bikeApi"
-import BikesGrid from "../BikesGrid"
+import {Button, Stack} from "@mui/material";
+import {Container} from "@mui/system";
+import {useEffect, useState} from "react";
+import {useSelector} from "react-redux";
+import {getDate, getRange, getSize, getType} from "../../app/store/selectors";
+import {useLazyGetAvaiableBikesQuery} from "../../app/store/services/bikeApi";
+import BikesGrid from "../BikesGrid";
 
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 const BikesSelect = () => {
+  const isoDate = useSelector(getDate);
+  const selectedSize = useSelector(getSize);
+  const selectedType = useSelector(getType);
+  const selectedRange = useSelector(getRange);
 
-    const isoDate = useSelector(getDate)
-    const selectedSize = useSelector(getSize)
-    const selectedType = useSelector(getType)
-    const selectedRange = useSelector(getRange)
+  const args = {
+    ...isoDate,
+    size: selectedSize,
+    type: selectedType,
+    range: selectedRange,
+  };
 
-    const params = (b) => new URLSearchParams(b)
-    const args = params({ ...isoDate, size: selectedSize, type: selectedType, range: selectedRange }).toString()
+  const [bikes, setBikes] = useState([]);
 
+  const [
+    trigger,
+    {data: avaiableBikes, isFetching, isSuccess},
+    lastPromiseInfo,
+  ] = useLazyGetAvaiableBikesQuery((a) => console.log("0000000000000000", a));
 
-    const [bikes, setBikes] = useState([])
+  const handleTrigger = () => trigger(args);
 
-    const [trigger, { data: avaiableBikes, isFetching, isSuccess }, lastPromiseInfo] = useLazyGetAvaiableBikesQuery(a => console.log('0000000000000000', a))
+  useEffect(() => {
+    !!!selectedRange && setBikes([]);
+  }, [selectedRange]);
 
+  useEffect(() => {
+    isSuccess && setBikes([...avaiableBikes]);
+  }, [avaiableBikes]);
 
-    const handleTrigger = () => trigger(args)
+  return (
+    <Container>
+      <Stack
+        alignItems="center"
+        spacing={2}
+      >
+        {selectedRange && (
+          <Button
+            //disabled={!!!selectedRange}
+            onClick={handleTrigger}
+          >
+            Mostrar bicicletas
+          </Button>
+        )}
+        {isFetching ? (
+          <Box sx={{display: "flex"}}>
+            <CircularProgress />
+          </Box>
+        ) : (
+          bikes && <BikesGrid bikes={bikes} />
+        )}
+      </Stack>
+    </Container>
+  );
+};
 
-
-    useEffect(() => {
-        !!!selectedRange && setBikes([])
-    }, [selectedRange]);
-
-    useEffect(() => {
-
-        isSuccess && setBikes([...avaiableBikes])
-    }, [avaiableBikes]);
-
-    return (
-        <Container
-        >
-            <Stack alignItems='center' spacing={2}>
-                {selectedRange &&
-                    <Button
-
-                        //disabled={!!!selectedRange}
-                        onClick={handleTrigger}
-                    >Mostrar bicicletas</Button>}
-                {isFetching ?
-                    <Box sx={{ display: 'flex' }}>
-                        <CircularProgress />
-                    </Box>
-                    :
-                    bikes && < BikesGrid bikes={bikes} />
-                }
-            </Stack>
-        </Container>
-
-    )
-}
-
-export default BikesSelect
+export default BikesSelect;

@@ -1,4 +1,5 @@
 import {baseApi} from "./baseApi";
+const urlParams = (obj) => new URLSearchParams(obj);
 
 const bookingApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -7,11 +8,11 @@ const bookingApi = baseApi.injectEndpoints({
       providesTags: ["Booking"],
     }),
     getBookingsOnDate: builder.query({
-      query: (date) => `/bookings/onDate?date=${date}`,
+      query: (date) => `/bookings/on-date?date=${date}`,
       providesTags: ["Booking"],
     }),
     getBookingDatesOnRange: builder.query({
-      query: (dateRange) => `/bookings/datesOnRange?${dateRange}`,
+      query: ({from, to}) => `/bookings/on-range?${urlParams({from, to})}`,
       // providesTags: ['User'],
     }),
     addBooking: builder.mutation({

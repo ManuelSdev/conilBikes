@@ -5,24 +5,17 @@ import {
   LinearProgress,
   MenuItem,
   Select,
-  Stack,
-  TextField,
 } from "@mui/material";
 
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 
 import {useDispatch, useSelector} from "react-redux";
 import {getDate, getSize, getType} from "../../app/store/selectors";
-import {
-  useGetRangesQuery,
-  useGetTypesQuery,
-  useGetTypesQueryState,
-  useLazyGetRangesQuery,
-  useLazyGetTypesQuery,
-} from "../../app/store/services/filterApi";
+
 import {typesMap} from "../../lib/utils/detailsMaps";
 import {setType} from "../../app/store/bookingFormSlice";
 import {capitalizeFirst} from "../../lib/utils/functions";
+import {useLazyGetAvaiableTypesQuery} from "../../app/store/services/bikeApi";
 
 const TypeSelect = () => {
   const dispatch = useDispatch();
@@ -30,8 +23,7 @@ const TypeSelect = () => {
   const selectedSize = useSelector(getSize);
   const selectedType = useSelector(getType);
 
-  const params = (b) => new URLSearchParams(b);
-  const args = params({...isoDate, size: selectedSize}).toString();
+  const args = {...isoDate, size: selectedSize};
 
   const handleChange = (event) => {
     dispatch(setType(event.target.value));
@@ -41,12 +33,10 @@ const TypeSelect = () => {
     trigger,
     {data: avaiableTypes, isLoading, isSuccess, unsubscribe},
     lastPromiseInfo,
-  ] = useLazyGetTypesQuery();
+  ] = useLazyGetAvaiableTypesQuery();
 
   useEffect(() => {
-    selectedType &&
-      //   console.log('@@@@@@@@ dispatch typeSelect') ||
-      dispatch(setType(""));
+    selectedType && dispatch(setType(""));
     selectedSize && trigger(args);
   }, [selectedSize]);
 

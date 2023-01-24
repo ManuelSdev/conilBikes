@@ -1,10 +1,10 @@
 import {baseApi} from "./baseApi";
+const urlParams = (obj) => new URLSearchParams(obj);
 
 const bikeApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getBikes: builder.query({
       query: (filters) => `/bikes?${filters}`,
-      // providesTags: ['User'],
     }),
     getBikesById: builder.query({
       query: (arrayOfIds) => ({
@@ -13,11 +13,22 @@ const bikeApi = baseApi.injectEndpoints({
 
         body: arrayOfIds,
       }),
-      // providesTags: ['User'],
+    }),
+
+    getAvaiableSizes: builder.query({
+      query: ({from, to}) => `/bikes/avaiable-sizes?${urlParams({from, to})}`,
+    }),
+    getAvaiableTypes: builder.query({
+      query: ({from, to, size}) =>
+        `/bikes/avaiable-types?${urlParams({from, to, size})}`,
+    }),
+    getAvaiableRanges: builder.query({
+      query: ({from, to, size, type}) =>
+        `/bikes/avaiable-ranges?${urlParams({from, to, size, type})}`,
     }),
     getAvaiableBikes: builder.query({
-      query: (dateRange) => `/bikes/avaiable?${dateRange}`,
-      // providesTags: ['User'],
+      query: ({from, to, size, type, range}) =>
+        `/bikes/avaiable?${urlParams({from, to, size, type, range})}`,
     }),
   }),
 });
@@ -29,6 +40,11 @@ export const useGetAvaiableBikesQueryState =
 export const {
   useGetBikesQuery,
   useGetBikesByIdQuery,
+  useGetAvaiableSizesQuery,
+  useGetAvaiableTypesQuery,
+  useLazyGetAvaiableTypesQuery,
+  useLazyGetAvaiableRangesQuery,
+  useGetAvaiableRangesQuery,
   useGetAvaiableBikesQuery,
   useLazyGetAvaiableBikesQuery,
 } = bikeApi;
