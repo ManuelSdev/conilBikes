@@ -5,25 +5,15 @@ import {
   LinearProgress,
   MenuItem,
   Select,
-  Stack,
-  TextField,
 } from "@mui/material";
 
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 
 import {useDispatch, useSelector} from "react-redux";
 import {getDate, getRange, getSize, getType} from "../../app/store/selectors";
-import {
-  useGetRangesQuery,
-  useGetRangesQueryState,
-  useLazyGetRangesQuery,
-} from "../../app/store/services/filterApi";
 import {rangesMap} from "../../lib/utils/detailsMaps";
 import {setRange} from "../../app/store/bookingFormSlice";
-import {
-  useGetAvaiableBikesQuery,
-  useLazyGetAvaiableBikesQuery,
-} from "../../app/store/services/bikeApi";
+import {useLazyGetAvaiableRangesQuery} from "../../app/store/services/bikeApi";
 import {capitalizeFirst} from "../../lib/utils/functions";
 
 const RangeSelect = () => {
@@ -34,11 +24,11 @@ const RangeSelect = () => {
   const selectedRange = useSelector(getRange);
 
   const params = (b) => new URLSearchParams(b);
-  const args = params({
+  const args = {
     ...isoDate,
     size: selectedSize,
     type: selectedType,
-  }).toString();
+  };
 
   const handleChange = (event) => {
     //  console.log('@@@@@@@@ handleChange rangeSelect')
@@ -46,7 +36,7 @@ const RangeSelect = () => {
   };
 
   const [trigger, {data: avaiableRanges, isLoading}, lastPromiseInfo] =
-    useLazyGetRangesQuery();
+    useLazyGetAvaiableRangesQuery();
 
   useEffect(() => {
     selectedRange &&

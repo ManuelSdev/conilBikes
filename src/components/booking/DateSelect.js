@@ -14,25 +14,18 @@ import {format, addYears, addDays} from "date-fns";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import {
-  useGetSizesQuery,
-  useLazyGetSizesQuery,
-} from "../../app/store/services/filterApi";
-import {
   getDate,
   getDateError,
   getNumberOfBikes,
 } from "../../app/store/selectors";
 import {setDate, setDateError} from "../../app/store/bookingFormSlice";
-import {Button} from "@mui/material";
 import compareAsc from "date-fns/compareAsc";
-import bookingPickersDay from "./bookingPickersDay";
 
 const DateSelect = () => {
   //  console.log('oooooo')
   const dispatch = useDispatch();
   //Si ya hay alguna bici seleccionada, bikes!=0 y se bloquea la selección de fecha
   const bikes = useSelector(getNumberOfBikes);
-  const params = (b) => new URLSearchParams(b);
   const isoDate = useSelector(getDate);
   const errorDate = useSelector(getDateError);
   const date = {
@@ -40,7 +33,7 @@ const DateSelect = () => {
     to: isoDate.to ? new Date(isoDate.to) : null,
   };
 
-  const [trigger, result, lastPromiseInfo] = useLazyGetSizesQuery();
+  //const [trigger, result, lastPromiseInfo] = useLazyGetSizesQuery();
 
   const handleChange = (picker) => (newValue) => {
     // console.log('handleChange', [picker, newValue])

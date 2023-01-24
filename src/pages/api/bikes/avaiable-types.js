@@ -1,11 +1,12 @@
 import Bike from "../../../models/Bike";
-import dbConnect from "../../../lib/dbConnect";
 import Booking from "../../../models/Booking";
+import dbConnect from "../../../lib/dbConnect";
 
-export async function getBikes(filters) {
+export async function getTypes(filters) {
   await dbConnect();
-  console.log("FILTERS bikes/avaiable api", filters);
-  const {from: fromDate, to: toDate, size, type, range} = filters;
+  console.log("FILTERS type api", filters);
+
+  const {from: fromDate, to: toDate, size} = filters;
   // console.log('toDate en ISO', ISODate(toDate))
   //Consideramos que el día de entrega o recogida no se puede reservar
   // por eso usa  gt/lt en lugar de gte/lte
@@ -33,22 +34,20 @@ export async function getBikes(filters) {
     return a;
   };
   const d = b();
-  const avaiableBikes = await Bike.find({
+  const avaiableBikesTypes = await Bike.distinct("type", {
     _id: {$nin: d},
     size: size,
-    type: type,
-    range: range,
   });
-  //console.log('activeBookings', activeBookings)
-  console.log("AVAIABLE BIKES RES", avaiableBikes.length);
+  //  console.log('activeBookings', activeBookings)
+  console.log("BIKES TYPES RES", avaiableBikesTypes);
   // console.log('BIKES', bikes)
-  return avaiableBikes;
+  return avaiableBikesTypes;
 }
 
 export default async function handler(req, res) {
   const filters = req.query;
   try {
-    const result = await getBikes(filters);
+    const result = await getTypes(filters);
 
     res.status(201).json(result);
   } catch (err) {

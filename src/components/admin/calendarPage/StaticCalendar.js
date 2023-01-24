@@ -72,32 +72,17 @@ export default function StaticCalendar() {
     (arg) =>
       fns.reduce((acc, fn) => fn(acc), arg);
 
-  const dateRangeQuery = (date) =>
-    pipe(dateToRange, rangeToISORange, toParamsToString)(date);
+  const dateRangeQuery = (date) => pipe(dateToRange, rangeToISORange)(date);
 
   //onMonthChange pasa la Date así Tue Nov 01 2022 00:00:00 GMT+0100 (hora estándar de Europa central)
   //cuando cambias el mes del calendario
   //Al pasar a ISO, será un día antes porque la Date se registra a las 00:00h e ISO va con 2h menos
 
-  // console.log('cambiaDate', date)
-  //const [trigger, { isLoading, isError, data, error }, lastPromiseInfo] = useLazyGetBookingsOnDateQuery();
-  const [trigger, result, lastPromiseInfo] =
-    useLazyGetBookingDatesOnRangeQuery();
-
   const handleMonthChange = async (newDate) => {
-    //  console.log('handleMonthChanges')
-    //await trigger(newDate);
     // console.log("_________", result);
     setDate(newDate);
   };
   const handleChange = async (newValue) => {
-    /*
-    const {data, isLoading, isError, error} = await trigger(
-      newValue.toISOString(),
-    );
-    dispatch(setBookings(data));
-    */
-
     setValue(newValue);
     router.push(`/admin/bookings/${newValue.toISOString()}`);
     dispatch(setSelectedDay(newValue.toISOString()));

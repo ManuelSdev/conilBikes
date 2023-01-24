@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 
 export async function getBikes(req) {
   await dbConnect();
+  console.log("REEEEEEEEE", req.query);
   const filters = req.query;
   const bikes = await Bike.find(filters);
   return bikes;
@@ -13,6 +14,7 @@ export async function getBikesByIds(req) {
   const ObjectId = mongoose.Types.ObjectId;
   await dbConnect();
   // const bikes = await Bike.find(filters)
+  //console.log('REEEEEEEEE',req.query)
   const {arrayOfBikesIds} = req.body;
   console.log("llll", arrayOfBikesIds);
   const toObjectId = arrayOfBikesIds.map((id) => ObjectId(id));
