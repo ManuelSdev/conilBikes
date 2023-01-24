@@ -3,6 +3,13 @@ import dbConnect from "../../../lib/dbConnect";
 import mongoose from "mongoose";
 
 export async function getBikes(req) {
+  await dbConnect();
+  const filters = req.query;
+  const bikes = await Bike.find(filters);
+  return bikes;
+}
+
+export async function getBikesByIds(req) {
   const ObjectId = mongoose.Types.ObjectId;
   await dbConnect();
   // const bikes = await Bike.find(filters)
@@ -23,12 +30,25 @@ export async function getBikes(req) {
   return bikes;
 }
 
+const request = (req) => {
+  switch (req.method) {
+    case "GET":
+      console.log("------------");
+      return getBikes(req);
+      break;
+    case "POST":
+      return getBikesByIds(req);
+      break;
+    default:
+      break;
+  }
+};
 export default async function handler(req, res) {
   // const filters = req.query;
-  console.log("** req.body: ", req.body);
+  // console.log("** req.body: ", req.body);
   try {
     await dbConnect();
-    const result = await getBikes(req);
+    const result = await request(req);
 
     res.status(201).json(result);
   } catch (err) {

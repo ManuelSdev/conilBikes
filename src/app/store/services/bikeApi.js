@@ -2,11 +2,11 @@ import {baseApi} from "./baseApi";
 
 const bikeApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    _getBikes: builder.query({
+    getBikes: builder.query({
       query: (filters) => `/bikes?${filters}`,
       // providesTags: ['User'],
     }),
-    getBikes: builder.query({
+    getBikesById: builder.query({
       query: (arrayOfIds) => ({
         url: "/bikes",
         method: "POST",
@@ -28,6 +28,7 @@ export const useGetAvaiableBikesQueryState =
 
 export const {
   useGetBikesQuery,
+  useGetBikesByIdQuery,
   useGetAvaiableBikesQuery,
   useLazyGetAvaiableBikesQuery,
 } = bikeApi;

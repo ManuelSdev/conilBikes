@@ -25,7 +25,7 @@ import {
 
 import {ACTIVE, FINISHED, PENDING} from "../../../lib/utils/appConsts";
 import format from "date-fns/format";
-import {useGetBikesQuery} from "../../../app/store/services/bikeApi";
+import {useGetBikesByIdQuery} from "../../../app/store/services/bikeApi";
 
 const BookingDetails = ({booking}) => {
   const router = useRouter();
@@ -62,7 +62,7 @@ const BookingDetails = ({booking}) => {
     isSuccess: isSuccessBikes,
     refetch,
     isFetching,
-  } = useGetBikesQuery({arrayOfBikesIds: [...bikes]}, {skip: !!!booking});
+  } = useGetBikesByIdQuery({arrayOfBikesIds: [...bikes]}, {skip: !!!booking});
   console.log(bikesData);
 
   const modBookingState =
