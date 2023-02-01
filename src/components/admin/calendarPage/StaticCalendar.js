@@ -23,6 +23,9 @@ import {
 } from "../../../app/store/bookingCalendarSlice";
 import {useDispatch} from "react-redux";
 import {useRouter} from "next/router";
+import endOfMonth from "date-fns/endOfMonth";
+import lastDayOfMonth from "date-fns/lastDayOfMonth";
+import startOfMonth from "date-fns/startOfMonth";
 
 export default function StaticCalendar() {
   const dispatch = useDispatch();
@@ -33,29 +36,43 @@ export default function StaticCalendar() {
   //Esta primera fecha, pasada al día 1, se usa en la primera petición para
   //encontrar las reservas que corresponden al mes actual, que es el que muestra por defecto
   //el calendario
-  /*
-  const firstDay2 = set(new Date(), {
+
+  const firstDay = set(new Date(), {
     date: 1,
     hours: 0,
     minutes: 0,
     seconds: 0,
   });
-  */
+
   /**
-   * La primera petición se hace con today como fecha de inicio. El resto de peticiones se lanzan
-   * cuando se cambia de mes en el calendario y el método handleMonthChange recibe el primer día de cada mes.
+   * La primera petición se hace con today como fecha de inicio y con el último día del mes como fecha final: dateToRange
+   *  El resto de peticiones se lanzan cuando se cambia de mes en el calendario: el método handleMonthChange
+   *  recibe el primer día de cada mes y dateToRange le añade el último día del mes
    * Al lanzar la primera petición con today, en lugar de con el primer día del mes actual, se evita
    * que se reciban reservas anteriores al día actual
    */
-  const today = set(new Date(), {hours: 0, minutes: 0, seconds: 0});
+  const today = set(new Date(), {
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+    milliseconds: 0,
+  });
 
+  const lastDayOfThisMonth = lastDayOfMonth(today);
+  console.log("=================", lastDayOfThisMonth.toISOString());
   const [value, setValue] = React.useState(null);
 
-  const [date, setDate] = React.useState(today);
+  const [date, setDate] = React.useState(false);
   const [skip, setSkip] = React.useState(true);
 
   //addMonth sera el extremo del rango para buscar fechas dentro del mes actual
-  const dateToRange = (date) => ({from: date, to: addMonths(date, 1)});
+  //Pero, en la primera petición, es posible que from no coincida con el día uno.
+  //En ese caso, addMonth sumará un mes completo a la fecha from. Por eso usamos startOfMOnth, para
+  //ajustar al primer día del siguiente mes/último momento del mes actual
+  const dateToRange = (date) =>
+    date
+      ? {from: date, to: addMonths(date, 1)}
+      : {from: today, to: startOfMonth(addMonths(today, 1))};
 
   const rangeToISORange = ({from, to}) => ({
     from: from.toISOString(),

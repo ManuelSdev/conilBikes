@@ -18,6 +18,7 @@ export async function getBookingDatesOnRange(req) {
         ],
       },
     },
+
     {
       //Filtrado de los campos que necesitamos de cada documento...anulas el id con_id:0
       $project: {from: 1, to: 1},
@@ -27,10 +28,35 @@ export async function getBookingDatesOnRange(req) {
         _id: "test",
         //  from: {$push: "$from"},
         //push los añade todos al array, addToSet solo si no existe en el array
-        from: {$addToSet: "$from"},
-        to: {$addToSet: "$to"},
+        //Condiciones para incluir fechas anteriore a fromDate ni posteriores a toDate
+        //Ya que puede haber inicios de reserva que finalizan el mes siguiente
+        //O finales de reserva que iniciaron el mes anterior
+        //Evitamos incluir estas fechas que corresponden a meses anteriores o posteriores
+        from: {
+          $addToSet: {
+            $cond: {
+              if: {
+                $gte: ["$from", fromDate],
+              },
+              then: "$from",
+              else: "$$REMOVE",
+            },
+          },
+        },
+        to: {
+          $addToSet: {
+            $cond: {
+              if: {
+                $lt: ["$to", toDate],
+              },
+              then: "$to",
+              else: "$$REMOVE",
+            },
+          },
+        },
       },
     },
+
     {
       $project: {
         _id: 0,
@@ -61,7 +87,7 @@ export async function getBookingDatesOnRange(req) {
       },
     },
   ]);
-  // console.log("------------------- ############", bookingDatesOnRange);
+  console.log("------------------- ############", bookingDatesOnRange);
   //console.log("++++++++++++++++++ ############", bookings);
   //Si no coinciden fechas de inicio y fin de reserva, el $project...$intersection devuelve un array vacío como valor de matchedDays
   //En ese caso, el primer elemento de array será undefined y puedo asignarle un objeto con el nullish coalescing assignment
