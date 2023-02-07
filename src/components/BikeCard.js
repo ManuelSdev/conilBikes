@@ -5,12 +5,12 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import {Box} from "@mui/system";
-import {useDispatch} from "react-redux";
-import {addBike, setFormIsActive, setSize} from "../app/store/bookingFormSlice";
-
-export default function BikeCard({bike}) {
-  const {brand, model, description, images, _id} = bike;
+import { Box } from "@mui/system";
+import { useDispatch } from "react-redux";
+import { addBike, setFormIsActive, setSize } from "../app/store/bookingFormSlice";
+import T from 'prop-types'
+export default function BikeCard({ bike }) {
+  const { brand, model, description, images, _id } = bike;
 
   const dispatch = useDispatch();
 
@@ -50,7 +50,7 @@ export default function BikeCard({bike}) {
           {description}
         </Typography>
       </CardContent>
-      <CardActions sx={{justifyContent: "center"}}>
+      <CardActions sx={{ justifyContent: "center" }}>
         <Button
           onClick={handleClick}
           size="small"
@@ -60,4 +60,15 @@ export default function BikeCard({bike}) {
       </CardActions>
     </Card>
   );
+}
+
+BikeCard.propTypes = {
+  bike: T.shape({
+    avaiable: T.string,
+    bookings: T.array,
+    brand: T.string,
+    description: T.string,
+    images: T.array,
+    model: T.string
+  })
 }

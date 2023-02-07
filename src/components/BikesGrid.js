@@ -1,6 +1,7 @@
 import { Stack } from "@mui/material"
 import { Container } from "@mui/system"
 import BikeCard from "./BikeCard"
+import T from 'prop-types'
 
 
 const BikesGrid = ({ bikes, ...props }) => {
@@ -18,3 +19,8 @@ const BikesGrid = ({ bikes, ...props }) => {
 }
 
 export default BikesGrid
+
+
+BikesGrid.propTypes = {
+    bikes: T.array
+}
