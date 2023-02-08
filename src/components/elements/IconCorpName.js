@@ -1,5 +1,5 @@
 import SvgIcon from "@mui/material/SvgIcon";
-import CorpName from '../../assets/images/corpName.svg'
+import CorpName from '../../assets/images/logo_1.svg'
 import Link from './Link'
 
 const IconCorpName = (props) =>
