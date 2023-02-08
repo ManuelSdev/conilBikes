@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+      "baseUrl": "src",
+      "paths": {
+        "@store/*": ["app/store/*"],
+        "@components/*": ["components/*"],
+        "@hooks/*": ["hooks/*"],
+      }
+    }
+  }

@@ -4,12 +4,14 @@ import Image from 'next/image'
 import IconCorpName from '../elements/IconCorpName'
 import Link from '../elements/Link'
 import a from './../../assets/images/corpName.svg'
-import CorpName from "./../../assets/images/corpName.svg"
-
+//import CorpName from "./../../assets/images/corpName.svg"
+import B from '../../../public/correcto.svg'
 //import bb from "./../../../public/corpName.svg"
 
 import BlackToolbar from './BlackToolbar'
 import { AppBar } from '@mui/material'
+import IconLogo from '@components/elements/IconLogo'
+//import IconLogo from '@components/elements/IconLogo'
 
 /**
  * https://stackoverflow.com/questions/54519654/how-do-i-add-color-to-my-svg-image-in-react
@@ -23,18 +25,32 @@ const Header = () => {
     const n = 'vaca.jpg'
 
     return (
-        <AppBar className='appBar' position="sticky" sx={{ marginBottom: 7 }} >
-            <BlackToolbar className='blackToolBar' />
-            <Link href='/'>
-                <Image
+        <AppBar className='appBar' position="sticky"
+        // sx={{ marginBottom: 0 }}
+        >
+            {/**
+              <BlackToolbar className='blackToolBar' />
+             */}
 
-                    src="/corpName.svg"
-                    alt="Corporation main logo"
-                    width={650}
-                    height={100}
-                // layout='fill'
+            <Box
+                sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', py: 2 }}
+            >
+                <B
+                //  style={'color:red'}
+                // fill='blue'
+                //    stroke='white'
+                //color='red'
+
+                //viewBox="0 0 110 90"
+                //style={{ isolation: 'auto', color: 'green', fill: 'yellow' }}
+                //    style={{ stroke: 'blue !important', fill: 'red', color: 'red !important' }}
+
                 />
-            </Link>
+            </Box>
+
+
+
+
 
         </AppBar>
 
@@ -77,4 +93,17 @@ export default Header
                 layout='fill'
             />
              <img src={n} alt='dsjlhdlhls' />
+
+
+             /////BUENA
+                       <Link href='/'>
+                <Image
+
+                    src="/corpName.svg"
+                    alt="Corporation main logo"
+                    width={650}
+                    height={100}
+                // layout='fill'
+                />
+            </Link>
  */

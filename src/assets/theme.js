@@ -27,6 +27,10 @@ const theme = createTheme({
         primary: {
             // Rojo.
             main: "#009CAC",
+            main: '#9FC28F',
+
+            main: '#E4F39E',
+            //main: '#B8C4AC'
         },
         /*
         secondary: {
