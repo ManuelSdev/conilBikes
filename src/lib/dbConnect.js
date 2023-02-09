@@ -29,7 +29,7 @@ async function dbConnect() {
       bufferCommands: false,
     }
     mongoose.connection.on('error', err => {
-      console.log('Error de conexión', err);
+      console.log('Error de conexión MongoDB', err);
       process.exit(1);
     });
 

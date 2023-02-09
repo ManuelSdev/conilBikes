@@ -12,7 +12,6 @@ import BookingForm from './BikeForm';
 import { setAddButton, resetBikes, setFormIsActive } from '../../app/store/bookingFormSlice';
 import { getAddButton, getFormIsActive, getNumberOfBikes, getDate, getBikes } from '../../app/store/selectors';
 import DateSelect from './DateSelect';
-import SelectedBikesList from './SelectedBikesList';
 import Modal from './Modal';
 
 

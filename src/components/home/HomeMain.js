@@ -3,11 +3,20 @@ const { ReplayCircleFilled } = require("@mui/icons-material");
 
 
 
+import Stack from '@mui/material/Stack';
 import React from 'react'
 
 const HomeMain = () => {
     return (
-        <div>HomeMain</div>
+        <Box>
+            <Stack
+                alignItems="center"
+                spacing={2}
+            >
+
+            </Stack>
+        </Box>
+
     )
 }
 

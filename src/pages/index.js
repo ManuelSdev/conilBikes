@@ -1,5 +1,5 @@
-import {Button, Container} from "@mui/material";
-import {Box} from "@mui/system";
+import { Button, Container } from "@mui/material";
+import { Box } from "@mui/system";
 import Head from "next/head";
 import Image from "next/image";
 import Header from "../components/header/Header";
